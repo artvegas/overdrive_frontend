@@ -44,7 +44,7 @@ export class RegisterComponent {
     }
 
     onSubmit(user) {
-      if(login){
+      if(false){
         console.log("hit area for /login");
         return this.http.post("http://localhost:8080/api/users/login", user, httpOptions)
           .subscribe( data => {
