@@ -1,27 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { MainNavComponent } from '../main-nav/main-nav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-/* GENRE COMPONENTS */
-import { GenreComponent } from '../genre/genre.component';
-
-import { PopularComponent } from '../popular/popular.component';
-
-import { DiscoverComponent } from '../discover/discover.component';
-
+import { AppComponent }       from './app.component';
+import { MainNavComponent }   from '../main-nav/main-nav.component';
+import { GenreComponent }     from '../genre/genre.component';
+import { PopularComponent }   from '../popular/popular.component';
+import { DiscoverComponent }  from '../discover/discover.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { CreateComponent }    from '../create/create.component';
+import { RegisterComponent }  from '../register/register.component';
+import { ProfileComponent }   from '../profile/profile.component';
+import { SettingComponent }   from '../setting/setting.component';
+import { EditorComponent }    from '../editor/editor.component';
 
-import { CreateComponent } from '../create/create.component';
-
-import { RegisterComponent } from '../register/register.component';
-
-import { ProfileComponent } from '../profile/profile.component';
-
-import { SettingComponent } from '../setting/setting.component';
-
-import { EditorComponent } from '../editor/editor.component';
+import { RegisterService }  from '../register/register.service';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -71,13 +66,16 @@ const appRoutes: Routes = [
       EditorComponent
   ],
   imports: [
+      HttpClientModule,
+      ReactiveFormsModule,
+      FormsModule,
     BrowserModule,
       RouterModule.forRoot(
           appRoutes,
           { enableTracing: true } // <-- debugging purposes only
       )
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent,
       MainNavComponent,
       GenreComponent,
