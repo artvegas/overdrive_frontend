@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { RegisterService } from './register.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
     selector: 'register',
@@ -23,19 +21,5 @@ export class RegisterComponent {
         })
     }
 
-
-    userForm = this.fb.group({
-        email: ['', Validators.required],
-        username: ['', Validators.required],
-        password: ['', Validators.required],
-        password2: ['', Validators.required],
-    });
-
-    constructor( private fb: FormBuilder, private _registerService: RegisterService,) { }
-
-    onSubmit() {
-        // TODO: Use EventEmitter with form value
-        console.warn(this.userForm.value);
-    }
 
 }

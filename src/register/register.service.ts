@@ -14,6 +14,6 @@ export class RegisterService {
     // call login endpoint with user body
     loginUser(user) {
         let body = JSON.stringify(user);
-        return this.http.post('/api/food', body, httpOptions);
+        return this.http.post('/api/users/register', body, httpOptions);
     }
 }
