@@ -44,22 +44,22 @@ export class RegisterComponent {
     }
 
     onSubmit(user) {
-      if(false){
-        console.log("hit area for /login");
-        return this.http.post("http://localhost:8080/api/users/login", user, httpOptions)
-          .subscribe( data => {
-            if(data.status == 200){
-              window.location = "/genre";
-            }
-          });
-      } else{
+      // if(false){
+      //   console.log("hit area for /login");
+      //   return this.http.post("http://localhost:8080/api/users/login", user, httpOptions)
+      //     .subscribe( data => {
+      //       if(data.status == 200){
+      //         window.location = "/genre";
+      //       }
+      //     });
+      // } else{
         console.log(user);
         console.log("Hit area for register");
         return this.http.post("http://localhost:8080/api/users/register", user, httpOptions)
           .subscribe( data => {
               console.log(data);
           });
-      }
+      //}
 
     }
 
