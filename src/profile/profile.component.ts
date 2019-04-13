@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Profile } from './profile';
 
 @Component({
     selector: 'profile',
@@ -21,6 +22,16 @@ export class ProfileComponent {
             document.body.appendChild(scriptElement);
         })
     }
+
+    profile : Profile = {
+        username : 'artvegas',
+        email     : 'aritra@gmail.com',
+        followers : 213123,
+        following : 213,
+        comics    : 12,
+        likes     : 123
+    };
+    
 
     scroll(el: HTMLElement) {
         el.scrollIntoView();
