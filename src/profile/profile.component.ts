@@ -23,15 +23,28 @@ export class ProfileComponent {
         })
     }
 
+
+    profile2 : Profile = {
+        username : 'test followers',
+        email     : 'test@gmail.com',
+        followers : 213123,
+        following : 213,
+        comics    : 12,
+        likes     : 123,
+        followers_arr : null
+    };
+
     profile : Profile = {
         username : 'artvegas',
         email     : 'aritra@gmail.com',
         followers : 213123,
         following : 213,
         comics    : 12,
-        likes     : 123
+        likes     : 123,
+        followers_arr : [this.profile2]
     };
-    
+
+
 
     scroll(el: HTMLElement) {
         el.scrollIntoView();

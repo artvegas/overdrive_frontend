@@ -98,3 +98,11 @@ function show_all() {
     $('#all_comics').slideDown();
 }
 
+var login_check = getUrlParam('login','Empty');
+
+if(login_check == 'true') {
+    toggle_login(true);
+}else {
+    toggle_login(false);
+}
+
