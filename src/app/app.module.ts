@@ -18,6 +18,7 @@ import { EditorComponent }    from '../editor/editor.component';
 
 import { RegisterService }  from '../register/register.service';
 import { ProfileService } from '../profile/profile.service';
+import { CreateService } from '../create/create.service';
 
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     RegisterService,
-    ProfileService
+    ProfileService,
+    CreateService
   ],
   bootstrap: [AppComponent,
       MainNavComponent,
