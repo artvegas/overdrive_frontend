@@ -17,6 +17,7 @@ import { SettingComponent }   from '../setting/setting.component';
 import { EditorComponent }    from '../editor/editor.component';
 
 import { RegisterService }  from '../register/register.service';
+import { ProfileService } from '../profile/profile.service';
 
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
@@ -78,7 +79,10 @@ const appRoutes: Routes = [
           { enableTracing: true } // <-- debugging purposes only
       )
   ],
-  providers: [RegisterService],
+  providers: [
+    RegisterService,
+    ProfileService
+  ],
   bootstrap: [AppComponent,
       MainNavComponent,
       GenreComponent,

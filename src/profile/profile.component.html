@@ -6,8 +6,8 @@
 <div class='comics content' style='padding:40px;'>
 	<div class='row'>
 		<div class='small-4 columns'>
-			<p style='font-size:40px;'>
-				{{profile.username}}
+			<p *ngIf="currentUser" style='font-size:40px;'>
+				{{currentUser.username}}
 				<button class='small black radius button'><a routerLink='/setting'>Edit Profile</a></button>
 			</p>
 			<div class='comic_banner'>
@@ -18,10 +18,8 @@
 			<button class='user_data small success radius button'><span class='user_info'>{{profile.followers}} followers</span></button>
 			<button class='user_data small success radius button'><span class='user_info'>{{profile.likes}} likes</span></button>
 			<button class='user_data ssmall success radius button'><span class='user_info'>{{profile.comics}} comics</span></button>
-			<p style='font-size:16px; position:relative; top:30px'>
-				Hey, welcome to my page. I mostly make action and drama comics.
-				I love reading comedy comics and I also like making fun comics
-				during my free time.
+			<p *ngIf="currentUser" style='font-size:16px; position:relative; top:30px'>
+				{{ currentUser.bio }}
 			</p>
 		</div>
 	</div>
