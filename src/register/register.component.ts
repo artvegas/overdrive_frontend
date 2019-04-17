@@ -19,10 +19,6 @@ const httpOptions: {headers; observe;} = {
 export class RegisterComponent {
     title = 'Create';
 
-    async ngAfterViewInit() {
-        await this.loadScript('./src/js/main.js');
-    }
-
     constructor (private http: HttpClient) {
       this.http = http;
     }
@@ -35,14 +31,6 @@ export class RegisterComponent {
       email: new FormControl('')
     });
 
-    private loadScript(scriptUrl: string) {
-        return new Promise((resolve, reject) => {
-            const scriptElement = document.createElement('script');
-            scriptElement.src = scriptUrl;
-            scriptElement.onload = resolve;
-            document.body.appendChild(scriptElement);
-        })
-    }
 
     onSubmit(user) {
         console.log(user);

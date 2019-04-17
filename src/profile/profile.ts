@@ -5,4 +5,5 @@ export interface Profile {
     following : number;
     comics    : number;
     likes     : number;
+    followers_arr : Profile []
 }

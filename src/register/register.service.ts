@@ -11,8 +11,6 @@ export class RegisterService {
 
     constructor(private http:HttpClient) {}
 
-    // call login endpoint with user body
-
     addUser(user) {
         let body = JSON.stringify(user);
         return this.http.post('/api/users/register', body, httpOptions);

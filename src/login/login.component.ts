@@ -36,23 +36,24 @@ export class LoginComponent implements OnInit {
       console.log(user.username);
       console.log("Hit area for register");
 
-      var headers = new HttpHeaders();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      console.log(" changes");
+      // var headers = new HttpHeaders();
+      // headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      // console.log(" changes");
 
-      let payload = new HttpParams()
-        .set('username', user.username)
-        .set('password', user.password);
+      // let payload = new HttpParams()
+      //   .set('username', user.username)
+      //   .set('password', user.password);
 
-       this.http.post("http://localhost:8080/login", user, {headers: headers, responseType: 'text'})
+       this.http.post("http://localhost:8080/api/users/login", user)
         .subscribe( data => {
             console.log("inside login post request");
             console.log(data);
-             this.http.get("http://localhost:8080/api/users/profile", {headers: headers, responseType: 'text'})
-              .subscribe( data => {
-                  console.log("inside api/users/profile get request");
-                  console.log(data);
-              });
+            this.router.navigateByUrl('/profile');
+             // this.http.get("http://localhost:8080/api/users/profile", {headers: headers, responseType: 'text'})
+             //  .subscribe( data => {
+             //      console.log("inside api/users/profile get request");
+             //      console.log(data);
+             //  });
         });
   }
 

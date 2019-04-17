@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'overdrive-comics';
+
+
+    async ngAfterViewInit() {
+        await this.loadScript('./src/js/main.js');
+        await this.loadScript('./src/js/genre.js');
+    }
+
+    private loadScript(scriptUrl: string) {
+        return new Promise((resolve, reject) => {
+            const scriptElement = document.createElement('script');
+            scriptElement.src = scriptUrl;
+            scriptElement.onload = resolve;
+            document.body.appendChild(scriptElement);
+        })
+    }
 }

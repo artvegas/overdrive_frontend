@@ -25,23 +25,6 @@ import { LoginComponent } from '../login/login.component';
 
 
 const appRoutes: Routes = [
-    //{
-      // path: 'genre',
-      //   children: [
-      //       { path: '',
-      //           redirectTo: '/genre/all',
-      //           pathMatch: 'full'
-      //       },
-      //       {
-      //           path: 'all',
-      //           component: GenreComponent
-      //       },
-      //       {
-      //           path: 'action',
-      //           component: GenreActionComponent
-      //       }
-      //   ]
-    //}
     { path: 'genre', component: GenreComponent },
     { path: '',  redirectTo: 'genre', pathMatch: 'full'},
     { path: 'popular', component: PopularComponent },
