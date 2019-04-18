@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Profile } from './profile';
+import { Users } from '../models/users/users';
+import { ProfileService } from './profile.service';
 
 @Component({
     selector: 'profile',
@@ -9,9 +11,22 @@ import { Profile } from './profile';
 export class ProfileComponent {
     title = 'profile';
 
+    /*In order to refer to service with 'this' dependency inject as private field*/
+    constructor(private profileService: ProfileService){
+      this.profileService = profileService;
+    }
+
+    /* Current logged in user */
+    currentUser: Users;
+
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
         await this.loadScript('./src/js/genre.js');
+    }
+
+    ngOnInit(){
+      console.log("inside ngOnInit");
+      this.populatePage();
     }
 
     private loadScript(scriptUrl: string) {
@@ -20,31 +35,18 @@ export class ProfileComponent {
             scriptElement.src = scriptUrl;
             scriptElement.onload = resolve;
             document.body.appendChild(scriptElement);
-        })
+        });
     }
 
-
-    profile2 : Profile = {
-        username : 'test followers',
-        email     : 'test@gmail.com',
-        followers : 213123,
-        following : 213,
-        comics    : 12,
-        likes     : 123,
-        followers_arr : null
-    };
-
-    profile : Profile = {
-        username : 'artvegas',
-        email     : 'aritra@gmail.com',
-        followers : 213123,
-        following : 213,
-        comics    : 12,
-        likes     : 123,
-        followers_arr : [this.profile2]
-    };
-
-
+    populatePage(){
+      console.log("in populate page");
+      this.profileService.getUserDetails()
+      .subscribe( data => {
+        console.log("inside get request: PROFILE");
+        console.log(data);
+        this.currentUser = data;
+      });
+    }
 
     scroll(el: HTMLElement) {
         el.scrollIntoView();

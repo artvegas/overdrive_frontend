@@ -17,29 +17,14 @@ import { SettingComponent }   from '../setting/setting.component';
 import { EditorComponent }    from '../editor/editor.component';
 
 import { RegisterService }  from '../register/register.service';
+import { ProfileService } from '../profile/profile.service';
+import { CreateService } from '../create/create.service';
 
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 
 
 const appRoutes: Routes = [
-    //{
-      // path: 'genre',
-      //   children: [
-      //       { path: '',
-      //           redirectTo: '/genre/all',
-      //           pathMatch: 'full'
-      //       },
-      //       {
-      //           path: 'all',
-      //           component: GenreComponent
-      //       },
-      //       {
-      //           path: 'action',
-      //           component: GenreActionComponent
-      //       }
-      //   ]
-    //}
     { path: 'genre', component: GenreComponent },
     { path: '',  redirectTo: 'genre', pathMatch: 'full'},
     { path: 'popular', component: PopularComponent },
@@ -54,6 +39,17 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  imports: [
+      HttpClientModule,
+      ReactiveFormsModule,
+      FormsModule,
+      BrowserModule,
+      RouterModule.forRoot(
+          appRoutes,
+          { 
+            enableTracing: true } // <-- debugging purposes only
+      )
+  ],
   declarations: [
     AppComponent,
       MainNavComponent,
@@ -68,17 +64,11 @@ const appRoutes: Routes = [
       EditorComponent,
       LoginComponent
   ],
-  imports: [
-      HttpClientModule,
-      ReactiveFormsModule,
-      FormsModule,
-    BrowserModule,
-      RouterModule.forRoot(
-          appRoutes,
-          { enableTracing: true } // <-- debugging purposes only
-      )
+  providers: [
+    RegisterService,
+    ProfileService,
+    CreateService
   ],
-  providers: [RegisterService],
   bootstrap: [AppComponent,
       MainNavComponent,
       GenreComponent,
