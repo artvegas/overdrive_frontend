@@ -41,7 +41,8 @@ export class CreateComponent {
 
     onSubmit(comicSeries) {
       console.log("in onSubmit");
-      comicSeries.author = document.cookie.split("=")[2];
+      console.log(document.cookie);
+      comicSeries.author = document.cookie.split("=")[1];
       console.log(comicSeries);
       this.createService.createComicSeries(comicSeries)
         .subscribe( data => {
