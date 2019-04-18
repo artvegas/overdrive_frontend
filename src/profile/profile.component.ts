@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Profile } from './profile';
 import { Users } from '../models/users/users';
 import { ProfileService } from './profile.service';
+import { ComicSeries } from '../models/comics/comic-series'
 
 @Component({
     selector: 'profile',
@@ -18,6 +19,10 @@ export class ProfileComponent {
 
     /* Current logged in user */
     currentUser: Users;
+    /* Series the user follows */
+    followedSeries: ComicSeries[];
+    /* Series the user created */
+    createdSeries: ComicSeries[];
 
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
@@ -27,6 +32,8 @@ export class ProfileComponent {
     ngOnInit(){
       console.log("inside ngOnInit");
       this.populatePage();
+      this.displayFollowedSeries();
+      this.displayCreatedSeries();
     }
 
     private loadScript(scriptUrl: string) {
@@ -45,6 +52,26 @@ export class ProfileComponent {
         console.log("inside get request: PROFILE");
         console.log(data);
         this.currentUser = data;
+      });
+    }
+
+    displayFollowedSeries(){
+      console.log("in followed series");
+      this.profileService.getFollowedSeries()
+      .subscribe(data => {
+        console.log("inside post request: displayfollows");
+        console.log(data);
+        this.followedSeries = data;
+      });
+    }
+
+    displayCreatedSeries(){
+      console.log("in followed series");
+      this.profileService.getCreatedSeries()
+      .subscribe(data => {
+        console.log("inside post request: display created");
+        console.log(data);
+        this.createdSeries = data;
       });
     }
 

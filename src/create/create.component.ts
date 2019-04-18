@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CreateService } from './create.service';
 
-const genreOptions = ["Action", "Fantasy", "Comedy", "Drama", "Sports", "Horror"]
+
 
 @Component({
     selector: 'create',
@@ -11,7 +11,7 @@ const genreOptions = ["Action", "Fantasy", "Comedy", "Drama", "Sports", "Horror"
 })
 export class CreateComponent {
     title = 'Create';
-
+    genreOptions = ["Action", "Fantasy", "Comedy", "Drama", "Sports", "Horror"];
     constructor (private createService: CreateService) {
       this.createService = createService;
     }
@@ -41,7 +41,12 @@ export class CreateComponent {
     })
 
     onSubmit(comicSeries) {
-      this.createService.createComicSeries(comicSeries);
+      console.log("in onSubmit");
+      console.log(comicSeries);
+      this.createService.createComicSeries(comicSeries)
+      .subscribe(data => {
+        console.log(data);
+      });
     }
 
 }
