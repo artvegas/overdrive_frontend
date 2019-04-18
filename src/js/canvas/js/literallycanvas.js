@@ -841,6 +841,8 @@ module.exports = LiterallyCanvas = (function() {
         opts.watermarkScale *= this.backingScale;
       }
     }
+    console.log(this.getSnapshot(), opts, "data");
+
     return renderSnapshotToImage(this.getSnapshot(), opts);
   };
 
@@ -1454,8 +1456,15 @@ defineCanvasRenderer('Rectangle', function(ctx, shape) {
     x += 0.5;
     y += 0.5;
   }
+
+  var img = new Image();
+  img.src = shape.fillImage;
+
   ctx.fillStyle = shape.fillColor;
   ctx.fillRect(x, y, shape.width, shape.height);
+
+  ctx.drawImage(img, x, y, shape.width, shape.height);
+
   ctx.lineWidth = shape.strokeWidth;
   ctx.strokeStyle = shape.strokeColor;
   return ctx.strokeRect(x, y, shape.width, shape.height);
@@ -1469,13 +1478,29 @@ defineCanvasRenderer('Ellipse', function(ctx, shape) {
   centerX = shape.x + halfWidth;
   centerY = shape.y + halfHeight;
   ctx.translate(centerX, centerY);
+
   ctx.scale(1, Math.abs(shape.height / shape.width));
+
+  var img = new Image();
+  img.src = shape.fillImage;
+
+
   ctx.beginPath();
   ctx.arc(0, 0, Math.abs(halfWidth), 0, Math.PI * 2);
   ctx.closePath();
   ctx.restore();
   ctx.fillStyle = shape.fillColor;
   ctx.fill();
+
+ if(shape.fillImage != null){
+  ctx.save();
+   ctx.globalCompositeOperation='source-atop';
+  ctx.drawImage(img, shape.x, shape.y, shape.width *1.2, shape.height *1.2);
+  ctx.restore();
+  ctx.globalCompositeOperation='source-over';
+ }
+
+
   ctx.lineWidth = shape.strokeWidth;
   ctx.strokeStyle = shape.strokeColor;
   return ctx.stroke();
@@ -1643,8 +1668,18 @@ defineCanvasRenderer('Text', function(ctx, shape) {
 });
 
 defineCanvasRenderer('Polygon', function(ctx, shape) {
-  ctx.fillStyle = shape.fillColor;
-  _drawRawLinePath(ctx, shape.points, shape.isClosed, 'butt');
+/**
+ if(shape.fillImage){
+	  var img = new Image();
+	  img.src = shape.fillImage;
+	  ctx.clip();
+     ctx.drawImage(img, leftMostXCoor, highestYCoor, polyWidth, polyHeight);
+ }else{
+ 		ctx.fillStyle = shape.fillColor;
+ } */
+
+	ctx.fillStyle = shape.fillColor;
+ _drawRawLinePath(ctx, shape.points, shape.isClosed, 'butt');
   ctx.fill();
   return ctx.stroke();
 });
@@ -2437,6 +2472,7 @@ defineShape('Rectangle', {
     this.height = args.height || 0;
     this.strokeWidth = args.strokeWidth || 1;
     this.strokeColor = args.strokeColor || 'black';
+    this.fillImage = args.fillImage || '';
     return this.fillColor = args.fillColor || 'transparent';
   },
   getBoundingRect: function() {
@@ -2455,7 +2491,8 @@ defineShape('Rectangle', {
       height: this.height,
       strokeWidth: this.strokeWidth,
       strokeColor: this.strokeColor,
-      fillColor: this.fillColor
+      fillColor: this.fillColor,
+      fillImage: this.fillImage
     };
   },
   fromJSON: function(data) {
@@ -2488,6 +2525,7 @@ defineShape('Ellipse', {
     this.height = args.height || 0;
     this.strokeWidth = args.strokeWidth || 1;
     this.strokeColor = args.strokeColor || 'black';
+    this.fillImage = '';
     return this.fillColor = args.fillColor || 'transparent';
   },
   getBoundingRect: function() {
@@ -2506,7 +2544,8 @@ defineShape('Ellipse', {
       height: this.height,
       strokeWidth: this.strokeWidth,
       strokeColor: this.strokeColor,
-      fillColor: this.fillColor
+      fillColor: this.fillColor,
+      fillImage: this.fillImage
     };
   },
   fromJSON: function(data) {
@@ -5273,7 +5312,8 @@ module.exports = Ellipse = (function(superClass) {
       y: y,
       strokeWidth: this.strokeWidth,
       strokeColor: lc.getColor('primary'),
-      fillColor: lc.getColor('secondary')
+      fillColor: lc.getColor('secondary'),
+      fillImage: ''
     });
   };
 
@@ -5821,7 +5861,8 @@ module.exports = Rectangle = (function(superClass) {
       y: y,
       strokeWidth: this.strokeWidth,
       strokeColor: lc.getColor('primary'),
-      fillColor: lc.getColor('secondary')
+      fillColor: lc.getColor('secondary'),
+      fillImage: ''
     });
   };
 

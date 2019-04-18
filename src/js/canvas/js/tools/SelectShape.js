@@ -6,6 +6,23 @@ Tool = require('./base').Tool;
 
 createShape = require('../core/shapes').createShape;
 
+getIsPointInBox = function(point, box) {
+    if (point.x < box.x) {
+        return false;
+    }
+    if (point.y < box.y) {
+        return false;
+    }
+    if (point.x > box.x + box.width) {
+        return false;
+    }
+    if (point.y > box.y + box.height) {
+        return false;
+    }
+    return true;
+};
+
+
 module.exports = SelectShape = (function(superClass) {
   extend(SelectShape, superClass);
 
@@ -17,6 +34,9 @@ module.exports = SelectShape = (function(superClass) {
     this.selectCanvas = document.createElement('canvas');
     this.selectCanvas.style['background-color'] = 'transparent';
     this.selectCtx = this.selectCanvas.getContext('2d');
+    this.initialShapeBoundingRect = null;
+    this.dragAction = null;
+    this.didDrag = false;
   }
 
   SelectShape.prototype.didBecomeActive = function(lc) {
@@ -146,6 +166,64 @@ module.exports = SelectShape = (function(superClass) {
   SelectShape.prototype._rgbToHex = function(r, g, b) {
     return "" + (this._componentToHex(r)) + (this._componentToHex(g)) + (this._componentToHex(b));
   };
+
+
+    // SelectShape.prototype.begin = function(x, y, lc) {
+    //     var br, point, selectionBox, selectionShape;
+    //     this.dragAction = 'none';
+    //     this.didDrag = false;
+    //     if (this.currentShapeState === 'selected' || this.currentShapeState === 'editing') {
+    //         br = this.currentShape.getBoundingRect(lc.ctx);
+    //         selectionShape = this._getSelectionShape(lc.ctx);
+    //         selectionBox = selectionShape.getBoundingRect();
+    //         point = {
+    //             x: x,
+    //             y: y
+    //         };
+    //         if (getIsPointInBox(point, br)) {
+    //             this.dragAction = 'move';
+    //         }
+    //         if (getIsPointInBox(point, selectionShape.getBottomRightHandleRect())) {
+    //             this.dragAction = 'resizeBottomRight';
+    //         }
+    //         if (getIsPointInBox(point, selectionShape.getTopLeftHandleRect())) {
+    //             this.dragAction = 'resizeTopLeft';
+    //         }
+    //         if (getIsPointInBox(point, selectionShape.getBottomLeftHandleRect())) {
+    //             this.dragAction = 'resizeBottomLeft';
+    //         }
+    //         if (getIsPointInBox(point, selectionShape.getTopRightHandleRect())) {
+    //             this.dragAction = 'resizeTopRight';
+    //         }
+    //         if (this.dragAction === 'none' && this.currentShapeState === 'editing') {
+    //             this.dragAction = 'stop-editing';
+    //             this._exitEditingState(lc);
+    //         }
+    //     } else {
+    //         this.color = lc.getColor('primary');
+    //         this.currentShape = createShape('Text', {
+    //             x: x,
+    //             y: y,
+    //             text: this.text,
+    //             color: this.color,
+    //             font: this.font,
+    //             v: 1
+    //         });
+    //         this.dragAction = 'place';
+    //         this.currentShapeState = 'selected';
+    //     }
+    //     if (this.dragAction === 'none') {
+    //         this.commit(lc);
+    //         return;
+    //     }
+    //     this.initialShapeBoundingRect = this.currentShape.getBoundingRect(lc.ctx);
+    //     this.dragOffset = {
+    //         x: x - this.initialShapeBoundingRect.x,
+    //         y: y - this.initialShapeBoundingRect.y
+    //     };
+    //     this._setShapesInProgress(lc);
+    //     return lc.repaintLayer('main');
+    // };
 
   return SelectShape;
 
