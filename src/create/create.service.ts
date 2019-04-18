@@ -13,7 +13,7 @@ export class CreateService {
   }
 
   createComicSeries(series: ComicSeries) {
-    this.http.post("http://localhost:8080/api/series/create", series);
+    return this.http.post("http://localhost:8080/api/series/create", series);
   }
 
 }
