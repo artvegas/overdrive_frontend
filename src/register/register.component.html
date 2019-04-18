@@ -2,7 +2,7 @@
 <br/>
 <div>
 	<div class='row'>
-		<p style='font-size:40px; position:relative; left:0px;'><span onclick='toggle_login(false)' id='signup_title' class='active_cus'>Sign up</span> | <span onclick='toggle_login(true)'  id='login_title'>Login</span></p>
+		<p style='font-size:40px; position:relative; left:0px;'><span id='signup_title' class='active_cus' routerLink='/register'>Sign up</span> | <span routerLink='/login'  id='login_title'>Login</span></p>
 		<form class="container" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
 			<div style='width:100%; margin-left:auto; margin-right:auto;  background:white; padding:40px;'>
 

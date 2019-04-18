@@ -44,21 +44,21 @@ function reset_option_weekly() {
     });
 }
 
-function toggle_login(flag) {
-    if(!flag) {
-        login = false;
-        document.getElementById("signup_title").className = 'active_cus';
-        document.getElementById("login_title").className = '';
-        document.getElementById("signup_extra").style.display = 'block';
-        document.getElementById('login_btn').innerText = 'Sign up NOW';
-    }else {
-        login = true;
-        document.getElementById("signup_title").className = '';
-        document.getElementById("login_title").className = 'active_cus';
-        document.getElementById("signup_extra").style.display = 'none';
-        document.getElementById('login_btn').innerText = 'Login';
-    }
-}
+// function toggle_login(flag) {
+//     if(!flag) {
+//         login = false;
+//         document.getElementById("signup_title").className = 'active_cus';
+//         document.getElementById("login_title").className = '';
+//         document.getElementById("signup_extra").style.display = 'block';
+//         document.getElementById('login_btn').innerText = 'Sign up NOW';
+//     }else {
+//         login = true;
+//         document.getElementById("signup_title").className = '';
+//         document.getElementById("login_title").className = 'active_cus';
+//         document.getElementById("signup_extra").style.display = 'none';
+//         document.getElementById('login_btn').innerText = 'Login';
+//     }
+// }
 
 function getUrlParam(parameter, defaultvalue){
     var urlparameter = defaultvalue;
@@ -98,11 +98,12 @@ function show_all() {
     $('#all_comics').slideDown();
 }
 
-var login_check = getUrlParam('login','Empty');
-
-if(login_check == 'true') {
-    toggle_login(true);
-}else {
-    toggle_login(false);
-}
+// var login_check = getUrlParam('login','Empty');
+//
+// if(login_check == 'true') {
+//     toggle_login(true);
+// }else {
+//     toggle_login(false);
+// }
+//
 
