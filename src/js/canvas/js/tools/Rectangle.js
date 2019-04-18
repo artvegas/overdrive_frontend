@@ -23,7 +23,8 @@ module.exports = Rectangle = (function(superClass) {
       y: y,
       strokeWidth: this.strokeWidth,
       strokeColor: lc.getColor('primary'),
-      fillColor: lc.getColor('secondary')
+      fillColor: lc.getColor('secondary'),
+      fillImage: ''
     });
   };
 
