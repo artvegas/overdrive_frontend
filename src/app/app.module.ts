@@ -39,6 +39,17 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  imports: [
+      HttpClientModule,
+      ReactiveFormsModule,
+      FormsModule,
+      BrowserModule,
+      RouterModule.forRoot(
+          appRoutes,
+          { 
+            enableTracing: true } // <-- debugging purposes only
+      )
+  ],
   declarations: [
     AppComponent,
       MainNavComponent,
@@ -52,16 +63,6 @@ const appRoutes: Routes = [
       SettingComponent,
       EditorComponent,
       LoginComponent
-  ],
-  imports: [
-      HttpClientModule,
-      ReactiveFormsModule,
-      FormsModule,
-    BrowserModule,
-      RouterModule.forRoot(
-          appRoutes,
-          { enableTracing: true } // <-- debugging purposes only
-      )
   ],
   providers: [
     RegisterService,

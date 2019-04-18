@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Users } from '../models/users/users';
 
 // const httpOptions: {headers; observe;} = {
 //   headers: new HttpHeaders({
@@ -44,11 +45,12 @@ export class LoginComponent implements OnInit {
       //   .set('username', user.username)
       //   .set('password', user.password);
 
-       this.http.post("http://localhost:8080/api/users/login", user)
+       this.http.post<Users>("http://localhost:8080/api/users/login", user)
         .subscribe( data => {
             console.log("inside login post request");
-            console.log(data);
-            this.router.navigateByUrl('/profile');
+            // console.log(JSON.parse(data));
+            document.cookie = "username="+ data.username;
+            this.router.navigate(['/profile']);
              // this.http.get("http://localhost:8080/api/users/profile", {headers: headers, responseType: 'text'})
              //  .subscribe( data => {
              //      console.log("inside api/users/profile get request");
