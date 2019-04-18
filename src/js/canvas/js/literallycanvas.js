@@ -842,6 +842,7 @@ module.exports = LiterallyCanvas = (function() {
       }
     }
     console.log(this.getSnapshot(), opts, "data");
+
     return renderSnapshotToImage(this.getSnapshot(), opts);
   };
 

@@ -30,11 +30,11 @@ panels.push(panel_snapshot_2);
 panels.push(panel_snapshot_3);
 
 var pages = new Array();
-var prevPage = 0;
+var prevPage = -1;
 
-for(var i = 0; i < document.getElementsByClassName('page-editor').length; i++) {
-    pages.push('{"colors":{"primary":"hsla(0, 0%, 0%, 1)","secondary":"hsla(0, 0%, 100%, 1)","background":"transparent"},"position":{"x":0,"y":0},"scale":1,"shapes":[],"backgroundShapes":[],"imageSize":{"width":"infinite","height":"infinite"}}');
-}
+// for(var i = 0; i < document.getElementsByClassName('page-editor').length; i++) {
+//     pages.push('{"colors":{"primary":"hsla(0, 0%, 0%, 1)","secondary":"hsla(0, 0%, 100%, 1)","background":"transparent"},"position":{"x":0,"y":0},"scale":1,"shapes":[],"backgroundShapes":[],"imageSize":{"width":"infinite","height":"infinite"}}');
+// }
 
 function selectPanel(index) {
     lc.loadSnapshot(JSON.parse(panels[index]));
@@ -77,6 +77,7 @@ function selectPage(index) {
     index = index.innerText;
     index = parseInt(index - 1);
     console.log("yoo whats the indx?", index);
+    console.log(pages[index], "checck ");
     if(index < 0 || index >= pages.length) {
         return;
     }
@@ -487,7 +488,9 @@ saveButton.addEventListener('click', function() {
     // {
     //     pages[i] = JSON.parse(pages[i]);
     // }
+    prevPageBeforeSave = prevPage;
     selectPage(document.getElementById('page_btn_1'));
+    selectPage(document.getElementById('page_btn_' + (prevPageBeforeSave + 1)));
     // selectPage(document.getElementById('page_btn_2'));
 
     temp_pages = JSON.stringify(pages);
