@@ -22,7 +22,6 @@ export class CreateComponent {
 
     ngOnInit(){
       console.log("in ngOnInit");
-      this.onSubmit(this.comicForm);
     }
 
     private loadScript(scriptUrl: string) {
@@ -35,18 +34,21 @@ export class CreateComponent {
     }
 
     comicForm = new FormGroup({
-      comicName: new FormControl(''),
+      comicSeriesName: new FormControl(''),
       genre: new FormControl(''),
-      description: new FormControl('')
+      description: new FormControl(''),
+      author: new FormControl('')
     })
 
     onSubmit(comicSeries) {
       console.log("in onSubmit");
+      console.log(document.cookie);
+      comicSeries.author = document.cookie.split("=")[1];
       console.log(comicSeries);
       this.createService.createComicSeries(comicSeries)
-      .subscribe(data => {
-        console.log(data);
-      });
+        .subscribe( data => {
+          console.log(data);
+        });
     }
 
 }
