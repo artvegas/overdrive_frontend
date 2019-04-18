@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CreateService } from './create.service';
 
+
+
 @Component({
     selector: 'create',
     templateUrl: './create.component.html',
@@ -10,7 +12,6 @@ import { CreateService } from './create.service';
 export class CreateComponent {
     title = 'Create';
     genreOptions = ["Action", "Fantasy", "Comedy", "Drama", "Sports", "Horror"];
-
     constructor (private createService: CreateService) {
       this.createService = createService;
     }
