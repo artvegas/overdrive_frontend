@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import {HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 const httpOptions: {headers; observe;} = {
   headers: new HttpHeaders({
@@ -19,8 +20,9 @@ const httpOptions: {headers; observe;} = {
 export class RegisterComponent {
     title = 'Create';
 
-    constructor (private http: HttpClient) {
+    constructor (private http: HttpClient, private router: Router) {
       this.http = http;
+      this.router = router;
     }
 
     //Describe FormGroup for user
@@ -35,10 +37,12 @@ export class RegisterComponent {
     onSubmit(user) {
         console.log(user);
         console.log("Hit area for register");
-        return this.http.post("http://localhost:8080/api/users/register", user, httpOptions)
+        this.http.post("http://localhost:8080/api/users/register", user, httpOptions)
           .subscribe( data => {
               console.log(data);
           });
+        this.router.navigate(["/login"]);
+
     }
 
 

@@ -22,7 +22,7 @@ import { CreateService } from '../create/create.service';
 
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
-
+import { LogoutComponent } from '../logout/logout.component';
 
 const appRoutes: Routes = [
     { path: 'genre', component: GenreComponent },
@@ -35,7 +35,8 @@ const appRoutes: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path: 'setting', component: SettingComponent },
     { path: 'editor', component: EditorComponent },
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    { path: 'logout', component: LogoutComponent }
 ];
 
 @NgModule({
@@ -46,7 +47,7 @@ const appRoutes: Routes = [
       BrowserModule,
       RouterModule.forRoot(
           appRoutes,
-          { 
+          {
             enableTracing: true } // <-- debugging purposes only
       )
   ],
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
       ProfileComponent,
       SettingComponent,
       EditorComponent,
-      LoginComponent
+      LoginComponent,
+      LogoutComponent
   ],
   providers: [
     RegisterService,
