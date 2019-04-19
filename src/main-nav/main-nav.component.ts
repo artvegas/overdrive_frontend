@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MainNavService } from './main-nav.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'main-nav',
@@ -8,5 +10,15 @@ import { Component } from '@angular/core';
 export class MainNavComponent {
     title = 'overdrive-comics';
 
+    constructor(private mainNavService: MainNavService, private router: Router){
+      this.mainNavService = mainNavService;
+      this.router = router;
+    }
+
+    ngOnInit(){
+      
+    }
+    currentLink: string;
+    currentUser = document.cookie.split("=")[1];
 
 }

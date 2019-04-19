@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DashboardService } from './dashboard.service';
+import { ComicSeries } from '../models/comics/comic-series';
 
 @Component({
     selector: 'dashboard',
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
     title = 'Genre';
+    /* List of user comics for dashboard*/
+    comics: ComicSeries[];
+
+    constructor(private dashboardService: DashboardService){
+      this.dashboardService = dashboardService;
+    }
+
+    ngOnInit(){
+      this.populateComics();
+    }
 
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
@@ -21,5 +33,12 @@ export class DashboardComponent {
         })
     }
 
+    populateComics(){
+      this.dashboardService.getUserComics()
+        .subscribe( data => {
+          console.log(data);
+          this.comics = data;
+        });
+    }
 
 }

@@ -18,29 +18,14 @@ import { EditorComponent }    from '../editor/editor.component';
 import { ReaderComponent }    from '../reader/reader.component';
 
 import { RegisterService }  from '../register/register.service';
+import { ProfileService } from '../profile/profile.service';
+import { CreateService } from '../create/create.service';
 
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
-
+import { LogoutComponent } from '../logout/logout.component';
 
 const appRoutes: Routes = [
-    //{
-      // path: 'genre',
-      //   children: [
-      //       { path: '',
-      //           redirectTo: '/genre/all',
-      //           pathMatch: 'full'
-      //       },
-      //       {
-      //           path: 'all',
-      //           component: GenreComponent
-      //       },
-      //       {
-      //           path: 'action',
-      //           component: GenreActionComponent
-      //       }
-      //   ]
-    //}
     { path: 'genre', component: GenreComponent },
     { path: '',  redirectTo: 'genre', pathMatch: 'full'},
     { path: 'popular', component: PopularComponent },
@@ -52,10 +37,22 @@ const appRoutes: Routes = [
     { path: 'setting', component: SettingComponent },
     { path: 'editor', component: EditorComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'reader', component: ReaderComponent }
+    { path: 'reader', component: ReaderComponent },
+    { path: 'logout', component: LogoutComponent }
 ];
 
 @NgModule({
+  imports: [
+      HttpClientModule,
+      ReactiveFormsModule,
+      FormsModule,
+      BrowserModule,
+      RouterModule.forRoot(
+          appRoutes,
+          {
+            enableTracing: true } // <-- debugging purposes only
+      )
+  ],
   declarations: [
     AppComponent,
       MainNavComponent,
@@ -69,19 +66,14 @@ const appRoutes: Routes = [
       SettingComponent,
       EditorComponent,
       LoginComponent,
-      ReaderComponent
+      ReaderComponent,
+      LogoutComponent
   ],
-  imports: [
-      HttpClientModule,
-      ReactiveFormsModule,
-      FormsModule,
-    BrowserModule,
-      RouterModule.forRoot(
-          appRoutes,
-          { enableTracing: true } // <-- debugging purposes only
-      )
+  providers: [
+    RegisterService,
+    ProfileService,
+    CreateService
   ],
-  providers: [RegisterService],
   bootstrap: [AppComponent,
       MainNavComponent,
       GenreComponent,
