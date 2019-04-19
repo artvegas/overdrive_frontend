@@ -16,29 +16,9 @@ export class MainNavComponent {
     }
 
     ngOnInit(){
-      this.setButton();
+      
     }
     currentLink: string;
+    currentUser = document.cookie.split("=")[1];
 
-    setButton(){
-      let login_btn = document.getElementById("login-btn");
-      //user not logged in
-      if(document.cookie.split["="][1] != ""){
-        login_btn.innerHTML = "Login";
-      } else {
-        login_btn.innerHTML = "Logout";
-      }
-    }
-
-    redirectToPage(){
-      if(document.cookie.split["="][1] != ""){
-        this.router.navigate(["/login"]);
-      } else {
-        this.mainNavService.logoutUser()
-          .subscribe( data => {
-
-          });
-        this.router.navigate(["/login"]);
-      }
-    }
 }

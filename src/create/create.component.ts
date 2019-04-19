@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CreateService } from './create.service';
-
-
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'create',
@@ -12,8 +11,9 @@ import { CreateService } from './create.service';
 export class CreateComponent {
     title = 'Create';
     genreOptions = ["Action", "Fantasy", "Comedy", "Drama", "Sports", "Horror"];
-    constructor (private createService: CreateService) {
+    constructor (private createService: CreateService, private router: Router) {
       this.createService = createService;
+      this.router = router;
     }
 
     async ngAfterViewInit() {
@@ -49,6 +49,7 @@ export class CreateComponent {
         .subscribe( data => {
           console.log(data);
         });
+      this.router.navigate(["/dashboard"]);
     }
 
 }
