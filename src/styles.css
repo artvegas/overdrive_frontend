@@ -331,3 +331,7 @@ input[type='text']:focus, select {
 a:active {
 	text-decoration: none;
 }
+
+body {
+	overflow-x:hidden;
+}

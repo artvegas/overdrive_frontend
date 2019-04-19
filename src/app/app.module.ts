@@ -15,6 +15,7 @@ import { RegisterComponent }  from '../register/register.component';
 import { ProfileComponent }   from '../profile/profile.component';
 import { SettingComponent }   from '../setting/setting.component';
 import { EditorComponent }    from '../editor/editor.component';
+import { ReaderComponent }    from '../reader/reader.component';
 
 import { RegisterService }  from '../register/register.service';
 
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path: 'setting', component: SettingComponent },
     { path: 'editor', component: EditorComponent },
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    { path: 'reader', component: ReaderComponent }
 ];
 
 @NgModule({
@@ -66,7 +68,8 @@ const appRoutes: Routes = [
       ProfileComponent,
       SettingComponent,
       EditorComponent,
-      LoginComponent
+      LoginComponent,
+      ReaderComponent
   ],
   imports: [
       HttpClientModule,
@@ -89,7 +92,8 @@ const appRoutes: Routes = [
       RegisterComponent,
       ProfileComponent,
       SettingComponent,
-      EditorComponent
+      EditorComponent,
+      ReaderComponent
   ]
 })
 export class AppModule { }

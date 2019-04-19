@@ -521,6 +521,11 @@ function loadPages() {
     pages_cookie = JSON.parse(pages_cookie);
     console.log(pages_cookie, "loded pages");
     pages = pages_cookie;
+
+    if(pages.length == 0) {
+        pages.push('{"colors":{"primary":"hsla(0, 0%, 0%, 1)","secondary":"hsla(0, 0%, 100%, 1)","background":"transparent"},"position":{"x":0,"y":0},"scale":1,"shapes":[],"backgroundShapes":[],"imageSize":{"width":"infinite","height":"infinite"}}');
+    }
+
     for(var i = 0; i < pages.length; i++) {
         var mainDiv = document.createElement('div');
         mainDiv.className = 'small-1 columns left';
