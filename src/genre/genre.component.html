@@ -18,8 +18,52 @@
 		</div>
 	</div>
 </div>
-<div #action_fan_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Action/Fantasy</p>
+
+<!-- ACTION SERIES	-->
+<div #action_section  class='comics content' style='padding:40px;'>
+	<p style='font-size:40px; position:relative; left:128px;'>Action</p>
+	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
+		<div *ngFor="let comic of actionSeries" class="column_comic" onclick='select_comic()'>
+			<div class='comic_banner'>
+				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
+			</div>
+		</div>
+	</div>
+
+<!-- FANTASY SERIES	-->
+<div #fantasy_section  class='comics content' style='padding:40px;'>
+	<p style='font-size:40px; position:relative; left:128px;'>Fantasy</p>
+	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
+		<div *ngFor="let comic of fantasySeries" class="column_comic" onclick='select_comic()'>
+			<div class='comic_banner'>
+				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
+			</div>
+		</div>
+	</div>
+
+<!-- COMEDY SERIES -->
+<div #fantasy_section  class='comics content' style='padding:40px;'>
+	<p style='font-size:40px; position:relative; left:128px;'>Fantasy</p>
+	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
+		<div *ngFor="let comic of fantasySeries" class="column_comic" onclick='select_comic()'>
+			<div class='comic_banner'>
+				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
+			</div>
+		</div>
+	</div>
+
+<!-- DRAMA SERIES	-->
+
+<!-- SPORTS SERIES -->
+<!-- HORROR SERIES -->
+
+	<!--	DELETE STATIC HTML	-->
 	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
 		<div class="column_comic">
 			<div class='comic_banner' onclick='window.location="/series.html"'>
@@ -44,8 +88,14 @@
 	</div>
 	<div class="column_comic">
 		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
+			<span class='title' style='font-size:22px; color:black'>A comic</span><br/>
+			<a>
+				<span #ref (click)="changeColor(ref)" class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span>
+			</a> &nbsp;
+			<a>
+				<span #fol (click)="changeColor(fol)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
+			</a>
+				<br/>
 			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
 		</div>
 	</div>

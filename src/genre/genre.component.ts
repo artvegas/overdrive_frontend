@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ComicSeries } from '../models/comics/comic-series';
+import { GenreService } from './genre.service';
 
 @Component({
     selector: 'genre',
@@ -7,6 +9,33 @@ import { Component } from '@angular/core';
 })
 export class GenreComponent {
     title = 'Genre';
+
+    constructor(private genreService: GenreService){
+      this.genreService = genreService;
+    }
+
+    /* list out series lists for each genre */
+    actionSeries: ComicSeries[];
+    fantasySeries: ComicSeries[];
+    comedySeries: ComicSeries[];
+    sportsSeries: ComicSeries[];
+    dramaSeries: ComicSeries[];
+    horrorSeries: ComicSeries[];
+
+    /*service results*/
+    // serviceResults: ComicSeries[][];
+
+    ngOnInit(){
+      this.genreService.getGenreComics()
+        .subscribe( genreResults => {
+          this.actionSeries = genreResults[0];
+          this.fantasySeries = genreResults[1];
+          this.comedySeries = genreResults[2];
+          this.dramaSeries = genreResults[3];
+          this.sportsSeries = genreResults[4];
+          this.horrorSeries = genreResults[5];
+        });
+    }
 
     async ngAfterViewInit() {
         await this.loadScript('./src/js/genre.js');
@@ -26,5 +55,14 @@ export class GenreComponent {
         el.scrollIntoView();
     }
 
+    loadGenres() {
+
+    }
+
+    changeColor(tag){
+      console.log("Hit changeColor function");
+      console.log(tag);
+      tag.children[0].style.cssText = "color: red;"
+    }
 
 }
