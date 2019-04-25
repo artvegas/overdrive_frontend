@@ -48,6 +48,31 @@ function selectFirstPage() {
 selectFirstPage();
 
 
+function createNewLayer() {
+    var drawingDiv = document.getElementsByClassName('lc-drawing')[0];
+    var newCanvas = document.createElement('canvas');
+    newCanvas.setAttribute('width', '1336');
+    newCanvas.setAttribute('height', '969');
+    newCanvas.style.width ='1336px';
+    newCanvas.style.height='969px';
+
+    var newCanvasTrans = document.createElement('canvas');
+    newCanvasTrans.style.backgroundColor = 'transparent';
+    newCanvasTrans.setAttribute('width', '1336');
+    newCanvasTrans.setAttribute('height', '969');
+    newCanvasTrans.style.width ='1336px';
+    newCanvasTrans.style.height='969px';
+
+    // var ctx = newCanvas.getContext('2d');
+    // ctx.fillStyle = 'blue';
+    // ctx.fillRect(50,50,150,150);
+
+    drawingDiv.appendChild(newCanvas);
+    drawingDiv.appendChild(newCanvasTran);
+    console.log('ji', newCanvas);
+
+}
+
 function createNewPage() {
     var mainDiv = document.createElement('div');
     mainDiv.className = 'small-1 columns left';
