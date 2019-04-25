@@ -8,8 +8,9 @@
 	<div class='row' style='margin-top:-7px;'>
 		<div class='small-12 columns small-offset-0' style='height:41px'>
 			<dl class="sub-nav">
-				<dd onclick='select_option_popular(this)' class="pop_btn active"><a (click)="scroll(action_fan_section)">ALL</a></dd>
-				<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(action_fan_section)">ACTION/FANTASY</a></dd>
+				<dd onclick='select_option_popular(this)' class="pop_btn active"><a (click)="scroll(action_section)">ALL</a></dd>
+				<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(action_section)">ACTION</a></dd>
+				<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(fantasy_section)">FANTASY</a></dd>
 				<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(drama_section)">DRAMA</a></dd>
 				<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(comedy_section)">COMEDY</a></dd>
 				<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(sports_section)">SPORTS</a></dd>
@@ -47,9 +48,9 @@
 
 <!-- COMEDY SERIES -->
 <div #fantasy_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Fantasy</p>
+	<p style='font-size:40px; position:relative; left:128px;'>Comedy</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
-		<div *ngFor="let comic of fantasySeries" class="column_comic" onclick='select_comic()'>
+		<div *ngFor="let comic of comedySeries" class="column_comic" onclick='select_comic()'>
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
@@ -59,348 +60,42 @@
 	</div>
 
 <!-- DRAMA SERIES	-->
+<div #drama_section  class='comics content' style='padding:40px;'>
+	<p style='font-size:40px; position:relative; left:128px;'>Drama</p>
+	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
+		<div *ngFor="let comic of dramaSeries" class="column_comic" onclick='select_comic()'>
+			<div class='comic_banner'>
+				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
+			</div>
+		</div>
+	</div>
 
 <!-- SPORTS SERIES -->
+<div #sports_section  class='comics content' style='padding:40px;'>
+	<p style='font-size:40px; position:relative; left:128px;'>Sports</p>
+	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
+		<div *ngFor="let comic of sportsSeries" class="column_comic" onclick='select_comic()'>
+			<div class='comic_banner'>
+				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
+			</div>
+		</div>
+	</div>
+
 <!-- HORROR SERIES -->
+<div #horror_section  class='comics content' style='padding:40px;'>
+	<p style='font-size:40px; position:relative; left:128px;'>Horror</p>
+	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
+		<div *ngFor="let comic of horrorSeries" class="column_comic" onclick='select_comic()'>
+			<div class='comic_banner'>
+				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
+			</div>
+		</div>
+	</div>
 
 	<!--	DELETE STATIC HTML	-->
-	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-		<div class="column_comic">
-			<div class='comic_banner' onclick='window.location="/series.html"'>
-			<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-			<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>A comic</span><br/>
-			<a>
-				<span #ref (click)="changeColor(ref)" class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span>
-			</a> &nbsp;
-			<a>
-				<span #fol (click)="changeColor(fol)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
-			</a>
-				<br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner'>
-			<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-			<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner'>
-			<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-			<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner'>
-			<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-			<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-		</div>
-	</div>
-
-	<div class="column_comic">
-		<div class='comic_banner'>
-			<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-			<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-		</div>
-	</div>
-	<div class="column_comic">
-		<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-			<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-			<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-			<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-		</div>
-	</div>
-
-</div>
-</div>
-
-<div #drama_section></div>
-<div class='comics' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Drama</p>
-	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-		<div class="column_comic">
-			<div class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-				<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div #comedy_section></div>
-<div class='comics' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Comedy</p>
-	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-		<div class="column_comic">
-			<div class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-				<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div #sports_section></div>
-<div class='comics' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Sports</p>
-	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-		<div class="column_comic">
-			<div class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-				<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div #horror_section></div>
-<div class='comics' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Horror</p>
-	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-		<div class="column_comic">
-			<div class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>Naruto</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://i.ytimg.com/vi/45KSweu1lpg/maxresdefault.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Bleach</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Romance</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Lzo0IZm2I-KSUus7bm3p9LA0mbakS51o_ffl2GmvBBxnjJFk') ">
-				<span class='title' style='font-size:22px; color:black'>Adventure Time</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.2</span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Action, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-		<div class="column_comic">
-			<div class='comic_banner' style="background-image:url('https://media.entertainmentearth.com/assets/images/dedf7df39ed6426f877137fe45b1e8eflg.jpg')">
-				<span class='title' style='font-size:22px; color:black'>Spongebob</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  100M </span><br/>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Life, Comedy</p>
-			</div>
-		</div>
-	</div>
-</div>
