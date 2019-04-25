@@ -30,6 +30,7 @@ panels.push(panel_snapshot_2);
 panels.push(panel_snapshot_3);
 
 var pages = new Array();
+var pagesExported = new Array();
 var prevPage = -1;
 
 // for(var i = 0; i < document.getElementsByClassName('page-editor').length; i++) {
@@ -158,15 +159,63 @@ function addImageAsPanelBackground(img) {
 
 
 $(document).ready(function() {
-    $('.controls.export [data-action=export-as-png]').click(function(e) {
+    $('#publish_btn').click(function(e) {
         e.preventDefault();
         //console.log(lc.getImage());
-        console.log(lc.getImage().toDataURL());
-        // var image = lc.getImage().toDataURL().replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-        // window.location.href=image;
+        // console.log(lc.getImage().toDataURL());
+       publishChapter();
     });
 });
 
+function getImagesExportedData() {
+    pagesExported = new Array();
+    for(var i = 0; i < pages.length; i++)
+    {
+        lc.loadSnapshot(JSON.parse(pages[i]));
+        var image = lc.getImage().toDataURL().split(',')[1];
+        pagesExported.push(image);
+        //window.location.href=image;
+    }
+
+    return pagesExported;
+}
+
+//ajax functions to connect with api
+function saveChapter() {
+    var chapter_id = document.getElementById('chap_id');
+    var pages = saveAndReturnPages();
+    var chapter = {
+        '_id': chapter_id,
+        'pages': pages ,
+    };
+    $.ajax({
+        url: "../xxx/functions/email/",
+        type: "POST",
+        data: chapter,
+        contentType: "application/json",
+        success: function (data) {
+            console.log(data, "api worked");
+        }
+    });
+}
+
+function publishChapter() {
+    var chapter_id = document.getElementById('chap_id');
+    var pagesExported = getImagesExportedData();
+    var chapter = {
+        '_id': chapter_id,
+        'pagesExported': pages ,
+    };
+    $.ajax({
+        url: "../xxx/functions/email/",
+        type: "POST",
+        data: chapter,
+        contentType: "application/json",
+        success: function (data) {
+            console.log(data, "api worked");
+        }
+    });
+}
 
 //select and delete shapes
 const deleteButton = document.getElementById('button-delete');
@@ -509,21 +558,17 @@ function alert_message(msg, type) {
 
 
 saveButton.addEventListener('click', function() {
-    // for(var i = 0;  i < pages.length; i++)
-    // {
-    //     pages[i] = JSON.parse(pages[i]);
-    // }
+    saveChapter();
+});
+
+function saveAndReturnPages() {
     prevPageBeforeSave = prevPage;
     selectPage(document.getElementById('page_btn_1'));
     selectPage(document.getElementById('page_btn_' + (prevPageBeforeSave + 1)));
     // selectPage(document.getElementById('page_btn_2'));
 
-    temp_pages = JSON.stringify(pages);
-    console.log(temp_pages, pages);
-    //temp_pages = JSON.parse(temp_pages);
-    localStorage.setItem('pages', temp_pages);
-
-});
+    return JSON.stringify(pages);
+}
 //
 // function setCookie(cname, cvalue, exdays) {
 //     var d = new Date();

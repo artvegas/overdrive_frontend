@@ -3,7 +3,8 @@
 <br/>
 
 <div id='current_page_data'>
-	<p style='text-align: center'>Chapter 1: Demo | Page 1 <button style='margin-left:20px;' class='tiny button radius secondary'>Back To Dashboard</button><button style='margin-left:20px;' class='tiny button radius success'>Publish</button></p>
+	<span style='display:none' id='chap_id'></span>
+	<p style='text-align: center'>Chapter 1: Demo | Page 1 <button style='margin-left:20px;' class='tiny button radius secondary'>Back To Dashboard</button><button style='margin-left:20px;' id='publish_btn' class='tiny button radius success'>Publish</button></p>
 	<div id='page_wrapper' class='row'>
 		<!--<div class='small-1 columns'>-->
 			<!--<button id='page_1' onclick='selectPage(this)' class='small page-editor secondary button'>1</button>-->
@@ -123,7 +124,3 @@
 
 <div class="my-drawing">
 </div>
-
-<form class="controls export">
-	<input type="submit" data-action="export-as-png" value="Export as PNG">
-</form>
