@@ -3,8 +3,12 @@
 <br/>
 
 <div id='current_page_data'>
-	<p style='text-align: center'>Chapter 1: Demo | Page 1 <button style='margin-left:20px;' class='tiny button radius secondary'>Back To Dashboard</button><button style='margin-left:20px;' class='tiny button radius success'>Publish</button></p>
+	<span style='display:none' id='chap_id'></span>
+	<p style='text-align: center'>Chapter 1: <input id='chap_title' value='' placeholder='Title goes here'> <button style='margin-left:20px;' class='tiny button radius secondary'>Back To Dashboard</button><button style='margin-left:20px;' id='publish_btn' class='tiny button radius success'>Publish</button></p>
 	<div id='page_wrapper' class='row'>
+		<div class='small-1 columns' style='margin-right:30px'>
+		<button class='small page-editor secondary button'>Page</button>
+		</div>
 		<!--<div class='small-1 columns'>-->
 			<!--<button id='page_1' onclick='selectPage(this)' class='small page-editor secondary button'>1</button>-->
 		<!--</div>-->
@@ -47,6 +51,7 @@
 		<dd><a id='button-add-image' onclick='toggle_img_nav()'>Add Image</a></dd>
 		<dd><a id='button-choose-layout'onclick='toggle_layout()'>Choose Layout</a></dd>
 		<dd><a onclick='createNewPage()'>Add Page</a></dd>
+		<dd><a onclick='createNewLayer()'>Add Layer</a></dd>
 		<!--<dd><a id='button-scale-image'><i class='fi-plus'></i> Image</a></dd>-->
 		<!--<dd><a id='button-descale-image'><i class='fi-minus'></i> Image</a></dd>-->
 		<dd><a id='button-increase-width'><i class='fi-plus'></i> Width</a></dd>
@@ -122,7 +127,3 @@
 
 <div class="my-drawing">
 </div>
-
-<form class="controls export">
-	<input type="submit" data-action="export-as-png" value="Export as PNG">
-</form>

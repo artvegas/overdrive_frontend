@@ -12,6 +12,7 @@ export class AppComponent {
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
         await this.loadScript('./src/js/genre.js');
+        await this.loadScript('https://cdn.commento.io/js/commento.js');
     }
 
     private loadScript(scriptUrl: string) {

@@ -30,6 +30,7 @@ panels.push(panel_snapshot_2);
 panels.push(panel_snapshot_3);
 
 var pages = new Array();
+var pagesExported = new Array();
 var prevPage = -1;
 
 // for(var i = 0; i < document.getElementsByClassName('page-editor').length; i++) {
@@ -47,6 +48,31 @@ function selectFirstPage() {
 
 selectFirstPage();
 
+
+function createNewLayer() {
+    var drawingDiv = document.getElementsByClassName('lc-drawing')[0];
+    var newCanvas = document.createElement('canvas');
+    newCanvas.setAttribute('width', '1336');
+    newCanvas.setAttribute('height', '969');
+    newCanvas.style.width ='1336px';
+    newCanvas.style.height='969px';
+
+    var newCanvasTrans = document.createElement('canvas');
+    newCanvasTrans.style.backgroundColor = 'transparent';
+    newCanvasTrans.setAttribute('width', '1336');
+    newCanvasTrans.setAttribute('height', '969');
+    newCanvasTrans.style.width ='1336px';
+    newCanvasTrans.style.height='969px';
+
+    // var ctx = newCanvas.getContext('2d');
+    // ctx.fillStyle = 'blue';
+    // ctx.fillRect(50,50,150,150);
+
+    drawingDiv.appendChild(newCanvas);
+    drawingDiv.appendChild(newCanvasTran);
+    console.log('ji', newCanvas);
+
+}
 
 function createNewPage() {
     var mainDiv = document.createElement('div');
@@ -133,15 +159,83 @@ function addImageAsPanelBackground(img) {
 
 
 $(document).ready(function() {
-    $('.controls.export [data-action=export-as-png]').click(function(e) {
+    $('#publish_btn').click(function(e) {
         e.preventDefault();
         //console.log(lc.getImage());
-        console.log(lc.getImage().toDataURL());
-        // var image = lc.getImage().toDataURL().replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-        // window.location.href=image;
+        // console.log(lc.getImage().toDataURL());
+       publishChapter();
     });
 });
 
+function getImagesExportedData() {
+    pagesExported = new Array();
+    for(var i = 0; i < pages.length; i++)
+    {
+        lc.loadSnapshot(JSON.parse(pages[i]));
+        var image = lc.getImage().toDataURL().split(',')[1];
+        pagesExported.push(image);
+        //window.location.href=image;
+    }
+
+    return pagesExported;
+}
+
+//ajax functions to connect with api
+function saveChapter() {
+    //var chapter_id = document.getElementById('chap_id');
+    var chapter_id = "5cc3468234690a4670d5d4e3";
+    var pages = saveAndReturnPages();
+    console.log("pages", pages);
+    var chapter = {
+        '_id': chapter_id,
+        'pages': pages ,
+    };
+    $.ajax({
+        url: "http://localhost:8080/api/series/chapter/save",
+        type: "POST",
+        data: JSON.stringify(chapter),
+        contentType: "application/json",
+        success: function (data) {
+            console.log(data, "api worked");
+        }
+    });
+}
+
+function getChapterPagesJson(){
+  var chapter_id = "5cc3468234690a4670d5d4e3";
+  $.ajax({
+      url: "http://localhost:8080/api/series/chapter/view/" + chapter_id,
+      type: "GET",
+      contentType: "application/json",
+      success: function (data) {
+          console.log(data);
+          if(data != 'error'){
+            pages = JSON.parse(data);
+          }
+
+            loadPages();
+      }
+  });
+}
+
+function publishChapter() {
+    //var chapter_id = document.getElementById('chap_id');
+    var chapter_id = "5cc3468234690a4670d5d4e3";
+    var pagesExported = JSON.stringify(getImagesExportedData());
+    var chapter = {
+        '_id': chapter_id,
+        'images':pagesExported
+    };
+    $.ajax({
+        url: "http://localhost:8080/api/series/chapter/publish",
+        type: "POST",
+        data: JSON.stringify(chapter),
+        contentType: "application/json",
+        success: function (data) {
+            alert_message('Chapter successfully published', 'success');
+        }
+    });
+}
 
 //select and delete shapes
 const deleteButton = document.getElementById('button-delete');
@@ -484,21 +578,20 @@ function alert_message(msg, type) {
 
 
 saveButton.addEventListener('click', function() {
-    // for(var i = 0;  i < pages.length; i++)
-    // {
-    //     pages[i] = JSON.parse(pages[i]);
-    // }
+    saveChapter();
+    alert_message('Chapter successfully saved', 'success');
+});
+
+function saveAndReturnPages() {
     prevPageBeforeSave = prevPage;
     selectPage(document.getElementById('page_btn_1'));
     selectPage(document.getElementById('page_btn_' + (prevPageBeforeSave + 1)));
     // selectPage(document.getElementById('page_btn_2'));
 
-    temp_pages = JSON.stringify(pages);
-    console.log(temp_pages, pages);
-    //temp_pages = JSON.parse(temp_pages);
-    localStorage.setItem('pages', temp_pages);
+    return JSON.stringify(pages);
+}
 
-});
+
 //
 // function setCookie(cname, cvalue, exdays) {
 //     var d = new Date();
@@ -517,10 +610,15 @@ saveButton.addEventListener('click', function() {
 ///testing dev
 function loadPages() {
 
-    pages_cookie = localStorage.getItem('pages');
-    pages_cookie = JSON.parse(pages_cookie);
-    console.log(pages_cookie, "loded pages");
-    pages = pages_cookie;
+    // pages_cookie = localStorage.getItem('pages');
+    // pages_cookie = JSON.parse(pages_cookie);
+    // console.log(pages_cookie, "loded pages");
+    // pages = pages_cookie;
+
+    if(pages.length == 0 || pages == []) {
+        pages.push('{"colors":{"primary":"hsla(0, 0%, 0%, 1)","secondary":"hsla(0, 0%, 100%, 1)","background":"transparent"},"position":{"x":0,"y":0},"scale":1,"shapes":[],"backgroundShapes":[],"imageSize":{"width":"infinite","height":"infinite"}}');
+    }
+
     for(var i = 0; i < pages.length; i++) {
         var mainDiv = document.createElement('div');
         mainDiv.className = 'small-1 columns left';
@@ -538,5 +636,5 @@ function loadPages() {
     selectFirstPage();
     selectPage(document.getElementById('page_btn_1'));
 }
-
-loadPages();
+getChapterPagesJson();
+//loadPages();
