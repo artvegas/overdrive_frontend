@@ -39,6 +39,7 @@ export class GenreService {
   selectedSeries = this.seriesSource.asObservable();
 
   selectSeries(curSeries){
+    console.log("inside select series");
     this.seriesSource.next(curSeries);
   }
 
