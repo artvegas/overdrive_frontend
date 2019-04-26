@@ -183,7 +183,7 @@ function getImagesExportedData() {
 //ajax functions to connect with api
 function saveChapter() {
     //var chapter_id = document.getElementById('chap_id');
-    var chapter_id = "5cc2468a34690a2004f89da8";
+    var chapter_id = "5cc3468234690a4670d5d4e3";
     var pages = saveAndReturnPages();
     console.log("pages", pages);
     var chapter = {
@@ -202,29 +202,34 @@ function saveChapter() {
 }
 
 function getChapterPagesJson(){
-  var chapter_id = "5cc2468a34690a2004f89da8";
+  var chapter_id = "5cc3468234690a4670d5d4e3";
   $.ajax({
-      url: "http://localhost:8080/api/series/chapter/view" + chapter_id,
+      url: "http://localhost:8080/api/series/chapter/view/" + chapter_id,
       type: "GET",
-      data: JSON.stringify(chapter),
       contentType: "application/json",
       success: function (data) {
-          console.log(data, "api worked");
+          console.log(data);
+          if(data != 'error'){
+            pages = JSON.parse(data);
+          }
+
+            loadPages();
       }
   });
 }
 
 function publishChapter() {
-    var chapter_id = document.getElementById('chap_id');
-    var pagesExported = getImagesExportedData();
+    //var chapter_id = document.getElementById('chap_id');
+    var chapter_id = "5cc3468234690a4670d5d4e3";
+    var pagesExported = JSON.stringify(getImagesExportedData());
     var chapter = {
         '_id': chapter_id,
-        'pagesExported': pages ,
+        'images':pagesExported
     };
     $.ajax({
-        url: "http://localhost:8080/chapter/view"",
-        type: "GET",
-        data: chapter,
+        url: "http://localhost:8080/api/series/chapter/publish",
+        type: "POST",
+        data: JSON.stringify(chapter),
         contentType: "application/json",
         success: function (data) {
             console.log(data, "api worked");
@@ -609,7 +614,7 @@ function loadPages() {
     // console.log(pages_cookie, "loded pages");
     // pages = pages_cookie;
 
-    if(pages.length == 0) {
+    if(pages.length == 0 || pages == []) {
         pages.push('{"colors":{"primary":"hsla(0, 0%, 0%, 1)","secondary":"hsla(0, 0%, 100%, 1)","background":"transparent"},"position":{"x":0,"y":0},"scale":1,"shapes":[],"backgroundShapes":[],"imageSize":{"width":"infinite","height":"infinite"}}');
     }
 
@@ -630,5 +635,5 @@ function loadPages() {
     selectFirstPage();
     selectPage(document.getElementById('page_btn_1'));
 }
-
-loadPages();
+getChapterPagesJson();
+//loadPages();
