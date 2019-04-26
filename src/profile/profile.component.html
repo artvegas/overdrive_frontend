@@ -43,7 +43,11 @@
 		<div *ngFor="let comic of followedSeries" class="column_comic">
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<span *ngIf="comic.score">
+					<span class='title label tiny success radius' style='font-size:12px; color:white'>
+							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
+					</span><br/>
+				</span>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
@@ -71,7 +75,11 @@
 		<div *ngFor="let comic of createdSeries" class="column_comic">
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
-				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<span *ngIf="comic.score">
+					<span class='title label tiny success radius' style='font-size:12px; color:white'>
+							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
+					</span><br/>
+				</span>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>

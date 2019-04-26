@@ -23,6 +23,7 @@ import { CreateService } from '../create/create.service';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { LogoutComponent } from '../logout/logout.component';
+import { DashboardSeriesComponent } from '../dashboard-series/dashboard-series.component';
 
 const appRoutes: Routes = [
     { path: 'genre', component: GenreComponent },
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
       SettingComponent,
       EditorComponent,
       LoginComponent,
-      LogoutComponent
+      LogoutComponent,
+      DashboardSeriesComponent
   ],
   providers: [
     RegisterService,
