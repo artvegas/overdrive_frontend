@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard/dashboard.service';
+import { ComicSeries } from '../models/comics/comic-series';
 
 @Component({
   selector: 'app-dashboard-series',
@@ -12,7 +13,15 @@ export class DashboardSeriesComponent implements OnInit {
     this.dashboardService = dashboardService;
   }
 
+  currentSeries: ComicSeries;
+
   ngOnInit() {
+    this.dashboardService.currentSeries
+      .subscribe(data => {
+        this.currentSeries = data;
+        console.log("dashboard series component ngOnInit");
+        console.log(data);
+      });
   }
 
 }

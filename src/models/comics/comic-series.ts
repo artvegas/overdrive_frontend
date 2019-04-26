@@ -1,3 +1,5 @@
+import { ComicChapter } from './comic-chapter';
+
 export interface ComicSeries {
   // private ObjectId _id;
   //
@@ -21,6 +23,7 @@ export interface ComicSeries {
   rating: string[];
   score: number;
   description: string;
-  chapters: string[];
+  followers: number;
+  chapters: ComicChapter[];
   isFollowed: boolean;
 }

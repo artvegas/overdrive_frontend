@@ -2,21 +2,23 @@
   <div class='small-12 columns'>
     <div class='row'>
       <div class='small-6 columns'>
-        <p style='font-size:40px; position:relative; left:0px;'>Naruto <span style='font-size:16px; color:darkgray'>Last Updated 5 days ago</span></p>
+        <p style='font-size:40px; position:relative; left:0px;'>{{ currentSeries.comicSeriesName }} <span style='font-size:16px; color:darkgray'>Last Updated 5 days ago</span></p>
       </div>
       <div class='small-2 columns right'>
-        <p onclick='show_all()' style='font-size:25px; position:relative; top:20px; left:50px'>View All</p>
+        <p onclick='show_all()' style='font-size:25px; position:relative; top:20px; left:50px'>
+          <a style="color:black;" routerLink="/dashboard" routerLinkActive="active"> View All</a>
+        </p>
       </div>
     </div>
     <div class='row'>
       <div class='small-12 columns'>
-        <div class='small-3 columns title'><i class='fi-star'></i> 9.2 Rating</div>
-        <div class='small-3 columns title'><i class='fi-torso purple'></i> 1M followers</div>
+        <div class='small-3 columns title'><i class='fi-star'></i> {{ currentSeries.score }}/10 Rating</div>
+        <div class='small-3 columns title'><i class='fi-torso purple'></i> {{ currentSeries.followers }} followers</div>
         <div class='small-3 columns title'><i class='fi-heart purple'></i> 10M likes</div>
-        <div class='small-3 columns title'><i class='fi-book purple'></i> 12 Chapters</div>
+        <div class='small-3 columns title'><i class='fi-book purple'></i> {{ currentSeries.chapters.length }} Chapters</div>
       </div>
       <div class='small-12 columns'>
-        <div class='small-3 columns title'><i class='fi-folder purple'></i> Action Genre</div>
+        <div class='small-3 columns title'><i class='fi-folder purple'></i> {{ currentSeries.genre }} Genre</div>
         <div class='small-3 columns title left'><i class='fi-clock purple'></i> Every Monday</div>
       </div>
     </div>

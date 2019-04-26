@@ -33,6 +33,10 @@ export class DashboardComponent {
         })
     }
 
+    updateCurrentSeries(series){
+      this.dashboardService.updateCurrentSeries(series);
+    }
+
     populateComics(){
       this.dashboardService.getUserComics()
         .subscribe( data => {
