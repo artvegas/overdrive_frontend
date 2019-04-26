@@ -182,14 +182,16 @@ function getImagesExportedData() {
 
 //ajax functions to connect with api
 function saveChapter() {
-    var chapter_id = document.getElementById('chap_id');
+    //var chapter_id = document.getElementById('chap_id');
+    var chapter_id = "5cc2468a34690a2004f89da8";
     var pages = saveAndReturnPages();
+    console.log("pages", pages);
     var chapter = {
         '_id': chapter_id,
         'pages': pages ,
     };
     $.ajax({
-        url: "../xxx/functions/email/",
+        url: "http://localhost:8080/api/series/chapter/save",
         type: "POST",
         data: JSON.stringify(chapter),
         contentType: "application/json",
@@ -197,6 +199,19 @@ function saveChapter() {
             console.log(data, "api worked");
         }
     });
+}
+
+function getChapterPagesJson(){
+  var chapter_id = "5cc2468a34690a2004f89da8";
+  $.ajax({
+      url: "http://localhost:8080/api/series/chapter/view" + chapter_id,
+      type: "GET",
+      data: JSON.stringify(chapter),
+      contentType: "application/json",
+      success: function (data) {
+          console.log(data, "api worked");
+      }
+  });
 }
 
 function publishChapter() {
@@ -207,8 +222,8 @@ function publishChapter() {
         'pagesExported': pages ,
     };
     $.ajax({
-        url: "../xxx/functions/email/",
-        type: "POST",
+        url: "http://localhost:8080/chapter/view"",
+        type: "GET",
         data: chapter,
         contentType: "application/json",
         success: function (data) {
@@ -570,6 +585,8 @@ function saveAndReturnPages() {
 
     return JSON.stringify(pages);
 }
+
+
 //
 // function setCookie(cname, cvalue, exdays) {
 //     var d = new Date();
