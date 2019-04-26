@@ -16,11 +16,11 @@
 				<!-- create two buttons: login & logout	-->
 				<!-- <div *ngIf="currentUser; then loginTag else logoutTag" id="login-logout-btns">
 					<ng-template #loginTag> -->
-						<li *ngIf="currentUser == null" style='background-color:white; color:black; id="login-btn" border: 1px solid #b4b4b4; color: #838383;' routerLink='/register' routerLinkActive="active"  class="button login publish small">Login</li>
+						<li *ngIf="currentUser == null" id="login-btn" style='background-color:white; color:black; border: 1px solid #b4b4b4; color: #838383;' routerLink='/register' routerLinkActive="active"  class="button login publish small">Login</li>
 					<!-- </ng-template>
 					<ng-template #logoutTag> -->
-						<i routerLink="/profile" routerLinkActive="active" *ngIf="currentUser != null" class="fi-torso"></i>
-						<li *ngIf="currentUser != null" style='background-color:white; color:black; id="login-btn" border: 1px solid #b4b4b4; color: #838383;' routerLink='/logout' routerLinkActive="active" class="button login publish small">Logout</li>
+						<li routerLink="/profile" routerLinkActive="active" *ngIf="currentUser != null"   class="button login publish small"  style='margin-left:-10px; margin-right:10px; background-color:white; color:black; border: 1px solid #b4b4b4; color: #838383;'>	<i class="fi-torso"></i></li>
+						<li *ngIf="currentUser != null" style='background-color:white; color:black; border: 1px solid #b4b4b4; color: #838383;' routerLink='/logout' routerLinkActive="active" class="button login publish small">Logout</li>
 					<!-- </ng-template>
 				</div> -->
 			</ul>
