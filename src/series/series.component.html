@@ -19,19 +19,21 @@
   <div class='row'>
     <br/>
     <div class='small-8 columns'>
-      <div class='row'  style='height:110px'>
+      <div *ngFor="let chapter of seriesChapters" class='row'  style='height:110px'>
         <div class='small-12 columns' style='height:82px; border-top: 1px solid #f5f5f5;'>
           <div class='row'>
+
+
             <div class='small-3 columns'>
               <div class="comic_banner" style='position:relative; left:-15px; display:inline-block'>
               </div>
 
             </div>
             <div class='small-2 columns '>
-              <span style='position:relative; top:20px; left:-70px'> Chap. 10</span>
+              <span style='position:relative; top:20px; left:-70px'> {{ chapter.chapterTitle }} </span>
             </div>
             <div class='small-5 columns'>
-              <span style='position:relative; font-size:15px; top:30px; left:100px; color:#c4c4c4;'> March 15, 2018 <span style='position:relative;left:20px;'> <i class='fi-heart'></i> 123,539 </span></span>
+              <span style='position:relative; font-size:15px; top:30px; left:100px; color:#c4c4c4;'> {{ chapter.created }} <span style='position:relative;left:20px;'> <i class='fi-heart'></i> 123,539 </span></span>
             </div>
             <div class='small-2 columns'>
               <span style='position:relative; top:30px; left:50px'> #10 </span>
@@ -39,48 +41,9 @@
           </div>
         </div>
       </div>
-      <div class='row' style='height:110px'>
-        <div class='small-12 columns' style='height:82px; border-top: 1px solid #f5f5f5;'>
-          <div class='row'>
-            <div class='small-3 columns'>
-              <div class="comic_banner" style='position:relative; left:-15px; display:inline-block'>
-              </div>
-
-            </div>
-            <div class='small-2 columns '>
-              <span style='position:relative; top:30px; left:-70px'> Chap. 9</span>
-            </div>
-            <div class='small-5 columns'>
-              <span style='position:relative; font-size:15px; top:30px; left:100px; color:#c4c4c4;'> March 15, 2018 <span style='position:relative;left:20px;'> <i class='fi-heart'></i> 123,539 </span></span>
-            </div>
-            <div class='small-2 columns'>
-              <span style='position:relative; top:30px; left:50px'> #9 </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class='row' style='height:110px'>
-        <div class='small-12 columns' style='height:82px; padding-bottom:110px; border-top: 1px solid #f5f5f5; border-bottom: 1px solid #f5f5f5;'>
-          <div class='row'>
-            <div class='small-3 columns'>
-              <div class="comic_banner" style='position:relative; left:-15px; display:inline-block'>
-              </div>
-
-            </div>
-            <div class='small-2 columns '>
-              <span style='position:relative; top:30px; left:-70px'> Chap. 8</span>
-            </div>
-            <div class='small-5 columns'>
-              <span style='position:relative; font-size:15px; top:30px; left:100px; color:#c4c4c4;'> March 15, 2018 <span style='position:relative;left:20px;'> <i class='fi-heart'></i> 123,539 </span></span>
-            </div>
-            <div class='small-2 columns'>
-              <span style='position:relative; top:30px; left:50px'> #8 </span>
-            </div>
-          </div>
-        </div>
-      </div>
 
     </div>
+    <!-- --------------------------- -->
     <div class='small-4 columns' style='padding-left:50px; border-left:2px solid #f5f5f5;'>
 
       <span><i class='fi-star'></i>&nbsp; {{ currentSeries.score }}/10 &nbsp;</span><span class='tiny label rate publish success' style='font-size:14px;'>Rate</span>

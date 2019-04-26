@@ -16,5 +16,8 @@ export interface ComicChapter {
   likes: number;
   likedUsers: string[];
   comments: Comment[];
-
+  pages: string;
+  images: string;
+  lastModified: Date;
+  created: Date;
 }
