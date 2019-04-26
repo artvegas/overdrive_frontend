@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComicSeries } from '../models/comics/comic-series';
 import { forkJoin } from "rxjs/observable/forkJoin";
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 const apiGenreUrl = 'http://localhost:8080/api/series/genre';
 const apiFollowUrl = 'http://localhost:8080/api/series/follow';
@@ -31,6 +32,14 @@ export class GenreService {
   followSeries(seriesObject){
     console.log("hit follow button: inside followSeries");
     return this.http.post(apiFollowUrl, seriesObject);
+  }
+
+  //methods to pass data to series component
+  private seriesSource = new BehaviorSubject(null);
+  selectedSeries = this.seriesSource.asObservable();
+
+  selectSeries(curSeries){
+    this.seriesSource.next(curSeries);
   }
 
 }

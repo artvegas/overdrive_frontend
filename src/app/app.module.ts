@@ -24,6 +24,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { LogoutComponent } from '../logout/logout.component';
 import { DashboardSeriesComponent } from '../dashboard-series/dashboard-series.component';
+import { SeriesComponent } from '../series/series.component';
 
 const appRoutes: Routes = [
     { path: 'genre', component: GenreComponent },
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     { path: 'discover', component: DiscoverComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'dashboardseries', component: DashboardSeriesComponent },
+    { path: 'series', component: SeriesComponent },
     { path: 'create', component: CreateComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'profile', component: ProfileComponent },
@@ -67,7 +69,8 @@ const appRoutes: Routes = [
       EditorComponent,
       LoginComponent,
       LogoutComponent,
-      DashboardSeriesComponent
+      DashboardSeriesComponent,
+      SeriesComponent
   ],
   providers: [
     RegisterService,

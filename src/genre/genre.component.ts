@@ -68,4 +68,9 @@ export class GenreComponent {
       tag.children[0].style.cssText = "color: red;"
     }
 
+    //method to call service to pass data to series page
+    selectSeries(curSeries){
+      this.genreService.selectSeries(curSeries);
+    }
+
 }
