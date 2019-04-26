@@ -212,7 +212,7 @@ function publishChapter() {
         data: chapter,
         contentType: "application/json",
         success: function (data) {
-            console.log(data, "api worked");
+            alert_message('Chapter successfully published', 'success');
         }
     });
 }
@@ -559,6 +559,7 @@ function alert_message(msg, type) {
 
 saveButton.addEventListener('click', function() {
     saveChapter();
+    alert_message('Chapter successfully saved', 'success');
 });
 
 function saveAndReturnPages() {
