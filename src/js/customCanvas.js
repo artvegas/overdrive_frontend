@@ -191,7 +191,7 @@ function saveChapter() {
     $.ajax({
         url: "../xxx/functions/email/",
         type: "POST",
-        data: chapter,
+        data: JSON.stringify(chapter),
         contentType: "application/json",
         success: function (data) {
             console.log(data, "api worked");
@@ -587,10 +587,10 @@ function saveAndReturnPages() {
 ///testing dev
 function loadPages() {
 
-    pages_cookie = localStorage.getItem('pages');
-    pages_cookie = JSON.parse(pages_cookie);
-    console.log(pages_cookie, "loded pages");
-    pages = pages_cookie;
+    // pages_cookie = localStorage.getItem('pages');
+    // pages_cookie = JSON.parse(pages_cookie);
+    // console.log(pages_cookie, "loded pages");
+    // pages = pages_cookie;
 
     if(pages.length == 0) {
         pages.push('{"colors":{"primary":"hsla(0, 0%, 0%, 1)","secondary":"hsla(0, 0%, 100%, 1)","background":"transparent"},"position":{"x":0,"y":0},"scale":1,"shapes":[],"backgroundShapes":[],"imageSize":{"width":"infinite","height":"infinite"}}');
