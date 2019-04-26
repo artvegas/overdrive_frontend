@@ -135,3 +135,18 @@ function time_since(date) {
     }
     return Math.floor(seconds) + " seconds";
 }
+
+function rateStar(score) {
+    for(var i = 0; i < 5; i++) {
+        var elem = document.getElementById('star_' + i);
+        elem.className = 'fa fa-star';
+    }
+
+    for(var i = 1; i <= score; i++) {
+        var elem = document.getElementById('star_' + i);
+        elem.className = 'fa fa-star checked';
+    }
+
+    console.log("LMAO WDF"):
+
+}

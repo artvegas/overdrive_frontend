@@ -46,7 +46,7 @@ export class SeriesComponent implements OnInit {
         return score / 5;
     }
 
-    rateStar(score) {
-        
+    rateStar(e, score) {
+        console.log(score, "LOL");
     }
 }

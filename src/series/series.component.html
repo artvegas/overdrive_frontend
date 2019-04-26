@@ -50,11 +50,11 @@
       <br/><br/>
 
       <div id='rate_wrapepr'>
-        <span id='star_1' ng-click='rateStar(1)' class="fa fa-star checked"></span>
-        <span id='star_2' ng-click='rateStar(2)' class="fa fa-star checked"></span>
-        <span id='star_3' ng-click='rateStar(3)' class="fa fa-star checked"></span>
-        <span id='star_4' ng-click='rateStar(4)' class="fa fa-star"></span>
-        <span id='star_5' ng-click='rateStar(5)' class="fa fa-star"></span>
+        <span id='star_1' (click)='rateStar($event,1)' class="fa fa-star checked"></span>
+        <span id='star_2' (click)='rateStar($event, 2)' class="fa fa-star checked"></span>
+        <span id='star_3' (click)='rateStar($event, 3)' class="fa fa-star checked"></span>
+        <span id='star_4' (click)='rateStar($event, 4)' class="fa fa-star"></span>
+        <span id='star_5' (click)='rateStar($event, 5)' class="fa fa-star"></span>
       </div>
 
       <h4 style='font-weight:bold'>UP EVERY WEDNESDAY</h4>
