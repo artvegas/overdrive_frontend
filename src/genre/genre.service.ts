@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComicSeries } from '../models/comics/comic-series';
 import { forkJoin } from "rxjs/observable/forkJoin";
 
-const apiUrl = 'http://localhost:8080/api/series/genre'
+const apiGenreUrl = 'http://localhost:8080/api/series/genre';
+const apiFollowUrl = 'http://localhost:8080/api/series/follow';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,19 @@ export class GenreService {
   results: ComicSeries[][]
 
   getGenreComics(){
-    let action = this.http.get<ComicSeries[]>(apiUrl+"?genre=Action");
-    let fantasy = this.http.get<ComicSeries[]>(apiUrl+"?genre=Fantasy");
-    let comedy = this.http.get<ComicSeries[]>(apiUrl+"?genre=Comedy");
-    let drama = this.http.get<ComicSeries[]>(apiUrl+"?genre=Drama");
-    let sports = this.http.get<ComicSeries[]>(apiUrl+"?genre=Sports");
-    let horror = this.http.get<ComicSeries[]>(apiUrl+"?genre=Horror");
+    let action = this.http.get<ComicSeries[]>(apiGenreUrl+"?genre=Action");
+    let fantasy = this.http.get<ComicSeries[]>(apiGenreUrl+"?genre=Fantasy");
+    let comedy = this.http.get<ComicSeries[]>(apiGenreUrl+"?genre=Comedy");
+    let drama = this.http.get<ComicSeries[]>(apiGenreUrl+"?genre=Drama");
+    let sports = this.http.get<ComicSeries[]>(apiGenreUrl+"?genre=Sports");
+    let horror = this.http.get<ComicSeries[]>(apiGenreUrl+"?genre=Horror");
 
     return forkJoin([action,fantasy,comedy,drama,sports,horror]);
+  }
+
+  followSeries(seriesObject){
+    console.log("hit follow button: inside followSeries");
+    return this.http.post(apiFollowUrl, seriesObject);
   }
 
 }

@@ -28,10 +28,17 @@
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<a *ngIf="comic.isFollowed != false">
+					<span #actionFollowButton (click)="sendFollowRequest(actionFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
+				</a>
+				<a *ngIf="comic.isFollowed">
+					<span #actionFollowButton (click)="sendFollowRequest(actionFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: blue;">Following</span>
+				</a>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
 	</div>
+</div>
 
 <!-- FANTASY SERIES	-->
 <div #fantasy_section  class='comics content' style='padding:40px;'>
@@ -41,23 +48,31 @@
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<a>
+					<span #fantasyFollowButton (click)="sendFollowRequest(fantasyFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
+				</a>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
 	</div>
+</div>
 
 <!-- COMEDY SERIES -->
-<div #fantasy_section  class='comics content' style='padding:40px;'>
+<div #comedy_section  class='comics content' style='padding:40px;'>
 	<p style='font-size:40px; position:relative; left:128px;'>Comedy</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of comedySeries" class="column_comic" onclick='select_comic()'>
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<a>
+					<span #comedyFollowButton (click)="sendFollowRequest(comedyFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
+				</a>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
 	</div>
+</div>
 
 <!-- DRAMA SERIES	-->
 <div #drama_section  class='comics content' style='padding:40px;'>
@@ -67,10 +82,14 @@
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<a>
+					<span #dramaFollowButton (click)="sendFollowRequest(dramaFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
+				</a>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
 	</div>
+</div>
 
 <!-- SPORTS SERIES -->
 <div #sports_section  class='comics content' style='padding:40px;'>
@@ -80,10 +99,14 @@
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<a>
+					<span #sportsFollowButton (click)="sendFollowRequest(sportsFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
+				</a>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
 	</div>
+</div>
 
 <!-- HORROR SERIES -->
 <div #horror_section  class='comics content' style='padding:40px;'>
@@ -93,9 +116,13 @@
 			<div class='comic_banner'>
 				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
+				<a>
+					<span #horrorFollowButton (click)="sendFollowRequest(horrorFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
+				</a>
 				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
 	</div>
+</div>
 
 	<!--	DELETE STATIC HTML	-->

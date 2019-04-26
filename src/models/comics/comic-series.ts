@@ -22,4 +22,5 @@ export interface ComicSeries {
   score: number;
   description: string;
   chapters: string[];
+  isFollowed: boolean;
 }

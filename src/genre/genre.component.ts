@@ -55,8 +55,11 @@ export class GenreComponent {
         el.scrollIntoView();
     }
 
-    loadGenres() {
-
+    sendFollowRequest(btn, comic){
+      this.genreService.followSeries(comic)
+        .subscribe(data => {
+          console.log(data);
+        });
     }
 
     changeColor(tag){
