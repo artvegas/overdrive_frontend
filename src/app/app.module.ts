@@ -31,6 +31,7 @@ const appRoutes: Routes = [
     { path: 'popular', component: PopularComponent },
     { path: 'discover', component: DiscoverComponent },
     { path: 'dashboard', component: DashboardComponent },
+    { path: 'dashboardseries', component: DashboardSeriesComponent },
     { path: 'create', component: CreateComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'profile', component: ProfileComponent },
