@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common'
 
 import { AppComponent }       from './app.component';
 import { MainNavComponent }   from '../main-nav/main-nav.component';
@@ -15,6 +16,7 @@ import { RegisterComponent }  from '../register/register.component';
 import { ProfileComponent }   from '../profile/profile.component';
 import { SettingComponent }   from '../setting/setting.component';
 import { EditorComponent }    from '../editor/editor.component';
+
 
 import { RegisterService }  from '../register/register.service';
 import { ProfileService } from '../profile/profile.service';
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
   providers: [
     RegisterService,
     ProfileService,
-    CreateService
+    CreateService,
+    DatePipe
   ],
   bootstrap: [AppComponent,
       MainNavComponent,

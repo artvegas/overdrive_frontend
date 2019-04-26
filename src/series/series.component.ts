@@ -3,6 +3,7 @@ import { GenreService } from '../genre/genre.service';
 import { SeriesService } from './series.service';
 import { ComicSeries } from '../models/comics/comic-series';
 import { ComicChapter } from '../models/comics/comic-chapter';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-series',
@@ -11,7 +12,8 @@ import { ComicChapter } from '../models/comics/comic-chapter';
 })
 export class SeriesComponent implements OnInit {
 
-  constructor(private genreService: GenreService, private seriesService: SeriesService) {
+  constructor(private genreService: GenreService, private seriesService: SeriesService,
+              public datepipe: DatePipe) {
     this.genreService = genreService;
     this.seriesService = seriesService;
   }
@@ -34,4 +36,17 @@ export class SeriesComponent implements OnInit {
       });
   }
 
+    formatDate(date_string){
+        let date = new Date(date_string);
+        let latest_date =this.datepipe.transform(date, 'yyyy-MM-dd');
+        return latest_date;
+    }
+
+    getFormattedScore(score) {
+        return score / 5;
+    }
+
+    rateStar(score) {
+        
+    }
 }
