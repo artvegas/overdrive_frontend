@@ -4,6 +4,8 @@ import { SeriesService } from './series.service';
 import { ComicSeries } from '../models/comics/comic-series';
 import { ComicChapter } from '../models/comics/comic-chapter';
 import { DatePipe } from '@angular/common'
+import { FormGroup, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-series',
@@ -21,6 +23,8 @@ export class SeriesComponent implements OnInit {
   currentSeries: ComicSeries;
   seriesChapters: ComicChapter[];
 
+  userSeriesScore : number;
+
   ngOnInit() {
     this.genreService.selectedSeries
       .subscribe( data => {
@@ -36,6 +40,15 @@ export class SeriesComponent implements OnInit {
       });
   }
 
+    seriesRating = new FormGroup({
+        author: new FormControl(''),
+        comicSeriesName: new FormControl(''),
+        score: new FormControl('')
+    });
+
+
+
+
     formatDate(date_string){
         let date = new Date(date_string);
         let latest_date =this.datepipe.transform(date, 'yyyy-MM-dd');
@@ -47,6 +60,29 @@ export class SeriesComponent implements OnInit {
     }
 
     rateStar(e, score) {
-        console.log(score, "LOL");
+        for(let i = 1; i <= 5; i++) {
+            let elem = document.getElementById('star_' + i);
+            elem.className = 'fa fa-star';
+        }
+
+        for(let i = 1; i <= score; i++) {
+            let elem = document.getElementById('star_' + i);
+            elem.className = 'fa fa-star checked';
+        }
+
+        this.userSeriesScore = score;
+        this.seriesRating.setValue({
+            author: this.currentSeries.author,
+            comicSeriesName: this.currentSeries.comicSeriesName,
+            score: this.userSeriesScore
+        });
+        console.log("inside rateStar");
+        console.log(this.seriesRating.value);
+
+        this.seriesService.setSeriseRating(this.seriesRating.value)
+            .subscribe( data => {
+                console.log("inside set series rating subscribe");
+                console.log(data);
+            });
     }
 }

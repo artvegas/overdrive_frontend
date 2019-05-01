@@ -137,16 +137,14 @@ function time_since(date) {
 }
 
 function rateStar(score) {
-    for(var i = 0; i < 5; i++) {
-        var elem = document.getElementById('star_' + i);
+    for(let i = 0; i < 5; i++) {
+        let elem = document.getElementById('star_' + i);
         elem.className = 'fa fa-star';
     }
 
-    for(var i = 1; i <= score; i++) {
-        var elem = document.getElementById('star_' + i);
+    for(let i = 1; i <= score; i++) {
+        let elem = document.getElementById('star_' + i);
         elem.className = 'fa fa-star checked';
     }
-
-    console.log("LMAO WDF"):
 
 }
