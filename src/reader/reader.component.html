@@ -3,14 +3,14 @@
 	<div class='row' style='height:50px;'>
 		<div class='small-5 columns left small-offset-0' style=''>
 			<dl class="sub-nav" style='margin-left:auto; margin-right:auto'>
-				<dd  class="pop_btn "><a>Naruto : Chapter 1 Demo Test</a></dd>
+				<dd  class="pop_btn "><a>{{chapter.seriesTitle}} : {{chapter.chapterTitle}}</a></dd>
 			</dl>
 		</div>
 		<div class='small-6 columns left small-offset-0' style=''>
 			<dl class="sub-nav" style='margin-left:auto; margin-right:auto'>
 				<dd  class="pop_btn "><a>Back</a></dd>
-				<dd  class="pop_btn "><a>#1</a></dd>
-				<dd  class="pop_btn "><a>Next</a></dd>
+				<dd  class="pop_btn "><a>#{{nextChap - 1}}</a></dd>
+				<dd  class="pop_btn " routerLink='/reader/{{seriesId}}/{{nextChap}}' (click)='callGetChapter()'><a>Next</a></dd>
 			</dl>
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 
 
 <div class='comic_wrapper' style='text-align: center'>
-	<div  *ngFor="let chapImage of chapterImages">
+	<div  *ngFor="let chapImage of chapter.imgUrls">
 		<img class='comic_img' src='http://localhost:8080/assets/{{chapImage}}'>
 	</div>
 </div>

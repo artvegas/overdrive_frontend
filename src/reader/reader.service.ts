@@ -17,7 +17,7 @@ export class ReaderService {
     return this.http.post(likeChpUrl, chapterId);
   }
 
-  getChapter(chapterId){
-      return this.http.get(getChapImgsUrl + chapterId);
+  getChapter(seriesId, chapNum){
+      return this.http.get(getChapImgsUrl + seriesId + "/" + chapNum);
   }
 }

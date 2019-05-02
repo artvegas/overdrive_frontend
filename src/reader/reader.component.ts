@@ -15,7 +15,9 @@ export class ReaderComponent {
       this.route = route;
     }
 
-    chapterImages;
+    chapter;
+    seriesId;
+    nextChap;
 
     callLikeChapter(element){
       let currentId = this.route.snapshot.paramMap.get("chapId");
@@ -37,13 +39,15 @@ export class ReaderComponent {
 
     callGetChapter(){
         console.log("calling callGetChapter");
-        let currentId = this.route.snapshot.paramMap.get("chapId");
-        console.log("id", currentId, this.route.snapshot.paramMap);
-        this.readerService.getChapter(currentId)
+        this.seriesId = this.route.snapshot.paramMap.get("seriesId");
+        let chapNum = this.route.snapshot.paramMap.get("chapNum");
+        console.log("id", this.seriesId, this.route.snapshot.paramMap);
+        this.nextChap = parseInt(chapNum) + 1;
+        this.readerService.getChapter(this.seriesId,chapNum)
             .subscribe( data=> {
                 console.log("inside callGetChapter");
                 console.log(data, "heey");
-                this.chapterImages = data;
+                this.chapter = data;
             });
     }
 
