@@ -18,6 +18,8 @@ export class ReaderComponent {
     chapter;
     seriesId;
     nextChap;
+    prevChap;
+    notFound = false;
 
     callLikeChapter(element){
       let currentId = this.route.snapshot.paramMap.get("chapId");
@@ -38,16 +40,59 @@ export class ReaderComponent {
     }
 
     callGetChapter(){
-        console.log("calling callGetChapter");
         this.seriesId = this.route.snapshot.paramMap.get("seriesId");
         let chapNum = this.route.snapshot.paramMap.get("chapNum");
         console.log("id", this.seriesId, this.route.snapshot.paramMap);
         this.nextChap = parseInt(chapNum) + 1;
+        this.prevChap = parseInt(chapNum) -  1 < 0 ? 0 : parseInt(chapNum) -  1;
+        console.log("calling callGetChapter");
         this.readerService.getChapter(this.seriesId,chapNum)
             .subscribe( data=> {
                 console.log("inside callGetChapter");
                 console.log(data, "heey");
-                this.chapter = data;
+                if(data == null)
+                   this.notFound = true;
+                else
+                    this.chapter = data;
+            });
+
+    }
+
+    callGetChapterNext(){
+        this.seriesId = this.route.snapshot.paramMap.get("seriesId");
+        let chapNum = this.nextChap;
+        console.log("id", this.seriesId, this.route.snapshot.paramMap);
+        this.nextChap = parseInt(chapNum) + 1;
+        this.prevChap = parseInt(chapNum) -  1 < 0 ? 0 : parseInt(chapNum) -  1;
+        this.readerService.getChapter(this.seriesId,chapNum)
+            .subscribe( data=> {
+                console.log("inside callGetChapter");
+                console.log(data, "heey");
+                if(data == null) {
+                    chapNum = parseInt(chapNum) - 1;
+                    this.nextChap = chapNum + 1;
+                    this.prevChap = chapNum - 1;
+                }else
+                    this.chapter = data;
+            });
+    }
+
+    callGetChapterPrev(){
+        this.seriesId = this.route.snapshot.paramMap.get("seriesId");
+        let chapNum = this.prevChap;
+        console.log("id", this.seriesId, this.route.snapshot.paramMap);
+        this.nextChap = parseInt(chapNum) + 1;
+        this.prevChap = parseInt(chapNum) -  1 < 0 ? 0 : parseInt(chapNum) -  1;
+        this.readerService.getChapter(this.seriesId,chapNum)
+            .subscribe( data=> {
+                console.log("inside callGetChapter");
+                console.log(data, "heey");
+                if(data == null) {
+                    chapNum = parseInt(chapNum) + 1;
+                    this.nextChap = chapNum + 1;
+                    this.prevChap = chapNum - 1;
+                }else
+                    this.chapter = data;
             });
     }
 
