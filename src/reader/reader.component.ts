@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ReaderService } from './reader.service';
 import { ActivatedRoute } from "@angular/router";
+import { Comment } from '../models/comics/comment';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'reader',
@@ -20,6 +22,21 @@ export class ReaderComponent {
     nextChap;
     prevChap;
     notFound = false;
+
+    chapterComments: Comment[];
+    editComment =  new FormGroup({
+      chapterId: new FormControl(this.route.snapshot.paramMap.get("id")),
+      username: new FormControl(document.cookie.split("=")[1]),
+      comment: new FormControl('')
+    });
+
+    postComment(comment){
+      this.readerService.postComment(comment)
+        .subscribe( data => {
+          console.log("inside postComment");
+          console.log(data);
+        });
+    }
 
     callLikeChapter(element){
       let currentId = this.route.snapshot.paramMap.get("chapId");
