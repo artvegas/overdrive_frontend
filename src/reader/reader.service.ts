@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 const likeChpUrl = 'http://localhost:8080/api/series/chapter/like';
 const getCommentUrl = 'http://localhost:8080/api/series/chapter/listcomments';
 const postCommentUrl = 'http://localhost:8080/api/series/chapter/addcomment';
+const getChapImgsUrl = 'http://localhost:8080/api/series/chapter/view/publish/';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,8 @@ export class ReaderService {
 
   getComments(){
     return this.http.get(getCommentUrl);
+  }
+  getChapter(seriesId, chapNum){
+      return this.http.get(getChapImgsUrl + seriesId + "/" + chapNum);
   }
 }
