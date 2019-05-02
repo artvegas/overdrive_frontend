@@ -17,6 +17,10 @@ export class ReaderComponent {
       this.route = route;
     }
 
+    chapter;
+    seriesId;
+    nextChap;
+    
     chapterComments: Comment[];
     editComment =  new FormGroup({
       chapterId: new FormControl(this.route.snapshot.paramMap.get("id")),
