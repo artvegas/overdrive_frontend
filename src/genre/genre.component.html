@@ -1,7 +1,7 @@
 <main-nav></main-nav>
 <!--<div id='action_fan_section'  class='comics content' style='padding:40px;'>-->
-	<!--<p style='font-size:40px; position:relative; left:128px;'>Action/Fantasy</p>-->
-	<!--<div class="row_comic" style='width:80%; position:relative; left:128px;'>-->
+	<!--<p style='font-size:40px; position:relative; left:0px;'>Action/Fantasy</p>-->
+	<!--<div class="row_comic" style='width:80%; position:relative; left:0px;'>-->
 	<!--</div>-->
 <!--</div>-->
 <div class='weekly_nav header' id='genre_nav' style='background-color:white; border-bottom-style:solid; border-width:.6px; border-color:rgb(219, 219, 219); margin-top:0px; margin-left:auto; margin-right:auto; border-top: 1px solid #eaeaea;'>
@@ -22,7 +22,7 @@
 
 <!-- ACTION SERIES	-->
 <div #action_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Action</p>
+	<p style='font-size:40px; position:relative; left:0px;'>Action</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of actionSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
@@ -46,7 +46,7 @@
 
 <!-- FANTASY SERIES	-->
 <div #fantasy_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Fantasy</p>
+	<p style='font-size:40px; position:relative; left:0px;'>Fantasy</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of fantasySeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
@@ -67,7 +67,7 @@
 
 <!-- COMEDY SERIES -->
 <div #comedy_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Comedy</p>
+	<p style='font-size:40px; position:relative; left:0px;'>Comedy</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of comedySeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
@@ -88,7 +88,7 @@
 
 <!-- DRAMA SERIES	-->
 <div #drama_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Drama</p>
+	<p style='font-size:40px; position:relative; left:0px;'>Drama</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of dramaSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
@@ -109,7 +109,7 @@
 
 <!-- SPORTS SERIES -->
 <div #sports_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Sports</p>
+	<p style='font-size:40px; position:relative; left:0px;'>Sports</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of sportsSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
@@ -130,7 +130,7 @@
 
 <!-- HORROR SERIES -->
 <div #horror_section  class='comics content' style='padding:40px;'>
-	<p style='font-size:40px; position:relative; left:128px;'>Horror</p>
+	<p style='font-size:40px; position:relative; left:0px;'>Horror</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of horrorSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>

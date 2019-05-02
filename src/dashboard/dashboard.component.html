@@ -5,6 +5,11 @@
 	<div class='row' id='all_comics' style='display:block'>
 		<p style='font-size:40px; position:relative; left:0px;'>My Comics</p>
 		<div class="row_comic" style='width:100%; position:relative; left:0px;'>
+			<div class="column_comic">
+				<div routerLink='/create' class='comic_banner no_shadow' style="background:black">
+					<span class='title' style='font-size:22px; color:black'><a routerLink='/create'>Create New Series</a></span><br/>
+				</div>
+			</div>
 			<div *ngFor="let comic of comics" class="column_comic" onclick='select_comic()'>
 				<div (click)="updateCurrentSeries(comic);" routerLink='/dashboardseries' routerLinkActive="active" class='comic_banner'>
 					<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
