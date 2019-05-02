@@ -5,7 +5,7 @@ import { ComicSeries } from '../models/comics/comic-series';
 import { ComicChapter } from '../models/comics/comic-chapter';
 import { DatePipe } from '@angular/common'
 import { FormGroup, FormControl } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-series',
@@ -15,9 +15,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class SeriesComponent implements OnInit {
 
   constructor(private genreService: GenreService, private seriesService: SeriesService,
-              public datepipe: DatePipe) {
+              public datepipe: DatePipe, private router: Router) {
     this.genreService = genreService;
     this.seriesService = seriesService;
+    this.router = router;
   }
 
   currentSeries: ComicSeries;
@@ -36,6 +37,9 @@ export class SeriesComponent implements OnInit {
             console.log("inside getSeriesChapters");
             console.log(data);
             this.seriesChapters = data;
+            for(var i=0; i<this.seriesChapters.length; i++){
+              this.seriesChapters[i].chapterNumber = i+1;
+            }
           });
       });
   }
@@ -84,5 +88,8 @@ export class SeriesComponent implements OnInit {
                 console.log("inside set series rating subscribe");
                 console.log(data);
             });
+    }
+    goToReader(chapterNumber){
+      this.router.navigate(['/reader/'+this.currentSeries.seriesId+"/"+chapterNumber]);
     }
 }
