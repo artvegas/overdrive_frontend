@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 
 const likeChpUrl = 'http://localhost:8080/api/series/chapter/like';
+const getChapImgsUrl = 'http://localhost:8080/api/series/chapter/view/publish/';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class ReaderService {
 
   likeChapter(chapterId){
     return this.http.post(likeChpUrl, chapterId);
+  }
+
+  getChapter(chapterId){
+      return this.http.get(getChapImgsUrl + chapterId);
   }
 }

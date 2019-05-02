@@ -41,7 +41,7 @@ const appRoutes: Routes = [
     { path: 'setting', component: SettingComponent },
     { path: 'editor', component: EditorComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'reader', component: ReaderComponent },
+    { path: 'reader/:chapId', component: ReaderComponent },
     { path: 'logout', component: LogoutComponent }
 ];
 
