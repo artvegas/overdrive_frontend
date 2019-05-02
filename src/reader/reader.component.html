@@ -32,14 +32,18 @@
 <div style='background-color:white; padding:30px;'>
 
 	<div class='row'>
-		<p style='font-weight:bold; font-size:24px; display:inline-block; margin-right:10px;'>Comments <span class='total_comments'> 123,123</span></p>
-		<p style="display:inline-block; float: right;">Like &nbsp;
-			<i #heartTag (click)="callLikeChapter(heartTag)" style="font-size:20pt; display:inline-block; color: #e0e0e0;" class="fi-heart"></i>
-		</p>
-		<textarea class='user-comment-box' type='text'></textarea>
-		<button class='button success expand' style='position:relative; top:-26px'>Comment</button>
-		<span style='position:relative; top:-40px; color:lightgrey; font-size:14px; float:right'>0/500</span>
+		<form [formGroup]="editComment" (ngSubmit)="postComment(editComment.value);">
+			<p style='font-weight:bold; font-size:24px; display:inline-block; margin-right:10px;'>Comments <span class='total_comments'> 123,123</span></p>
+			<p style="display:inline-block; float: right;">Like &nbsp;
+				<i #heartTag (click)="callLikeChapter(heartTag)" style="font-size:20pt; color: #e0e0e0;" class="fi-heart"></i>
+			</p>
+			<textarea formControlName="comment" class='user-comment-box' type='text'></textarea>
+			<button class='button success expand' type="submit" style='position:relative; top:-26px'>Comment</button>
+			<span style='position:relative; top:-40px; color:lightgrey; font-size:14px; float:right'>0/500</span>
+		</form>
 	</div>
+
+
 
 	<div  class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
 		<div class='comment-box small-12 columns'>
