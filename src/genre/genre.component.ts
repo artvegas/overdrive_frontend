@@ -28,12 +28,32 @@ export class GenreComponent {
     ngOnInit(){
       this.genreService.getGenreComics()
         .subscribe( genreResults => {
-          this.actionSeries = genreResults[0];
-          this.fantasySeries = genreResults[1];
-          this.comedySeries = genreResults[2];
-          this.dramaSeries = genreResults[3];
-          this.sportsSeries = genreResults[4];
-          this.horrorSeries = genreResults[5];
+            this.actionSeries = genreResults[0];
+            this.fantasySeries = genreResults[1];
+            this.comedySeries = genreResults[2];
+            this.dramaSeries = genreResults[3];
+            this.sportsSeries = genreResults[4];
+            this.horrorSeries = genreResults[5];
+
+            let __this = this;
+            this.actionSeries.forEach(function(series) {
+                series.comicSeriesName = __this.truncate(series.comicSeriesName);
+            });
+            this.fantasySeries.forEach(function(series) {
+                series.comicSeriesName = __this.truncate(series.comicSeriesName);
+            });
+            this.comedySeries.forEach(function(series) {
+                series.comicSeriesName = __this.truncate(series.comicSeriesName);
+            });
+            this.dramaSeries.forEach(function(series) {
+                series.comicSeriesName = __this.truncate(series.comicSeriesName);
+            });
+            this.sportsSeries.forEach(function(series) {
+                series.comicSeriesName = __this.truncate(series.comicSeriesName);
+            });
+            this.horrorSeries.forEach(function(series) {
+                series.comicSeriesName = __this.truncate(series.comicSeriesName);
+            });
         });
     }
 
@@ -72,5 +92,12 @@ export class GenreComponent {
     selectSeries(curSeries){
       this.genreService.selectSeries(curSeries);
     }
+
+    truncate(string){
+        if (string.length > 25)
+            return string.substring(0,25)+'...';
+        else
+            return string;
+    };
 
 }

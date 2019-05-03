@@ -26,7 +26,7 @@
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of actionSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span *ngIf="comic.score">
 					<span class='title label tiny success radius' style='font-size:12px; color:white'>
 							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
@@ -50,7 +50,7 @@
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of fantasySeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span *ngIf="comic.score">
 					<span class='title label tiny success radius' style='font-size:12px; color:white'>
 							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
@@ -71,7 +71,7 @@
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of comedySeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span *ngIf="comic.score">
 					<span class='title label tiny success radius' style='font-size:12px; color:white'>
 							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
@@ -92,7 +92,7 @@
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of dramaSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span *ngIf="comic.score">
 					<span class='title label tiny success radius' style='font-size:12px; color:white'>
 							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
@@ -113,7 +113,7 @@
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of sportsSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<span *ngIf="comic.score">
 					<span class='title label tiny success radius' style='font-size:12px; color:white'>
 							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
@@ -134,10 +134,10 @@
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of horrorSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
-				<span *ngIf="comic.score">
-					<span class='title label tiny success radius' style='font-size:12px; color:white'>
-							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
+				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
+				<span>
+					<span *ngIf='comic.score'  class='title label tiny success radius' style='font-size:12px; color:white'>
+							<i  style="color:white;" class='fi-star'></i> {{ comic.score }}/10
 					</span><br/>
 				</span>
 				<a>
