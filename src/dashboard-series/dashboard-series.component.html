@@ -29,42 +29,17 @@
         <div class='small-12 columns'>
           <div class="row_comic" style='width:100%; position:relative; left:0px;'>
             <div class="column_comic">
-              <div routerLink='/editor' class='comic_banner no_shadow' style="background:black">
+              <div (click)="createComicChapter()" routerLink='/editor' class='comic_banner no_shadow' style="background:black">
                 <span class='title' style='font-size:22px; color:black'><a routerLink='/editor'>Create New Chapter</a></span><br/>
               </div>
             </div>
-            <div class="column_comic">
+
+            <div *ngFor="let chapter of seriesChapters" class="column_comic">
               <div class='comic_banner no_shadow'>
-                <span class='title' style='font-size:22px; color:black'>Chapter 1</span><br/>
-                <span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-                <p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Published</p>
-              </div>
-            </div>
-            <div class="column_comic">
-              <div class='comic_banner no_shadow'>
-                <span class='title' style='font-size:22px; color:black'>Chapter 2</span><br/>
-                <span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-                <p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Published</p>
-              </div>
-            </div>
-            <div class="column_comic">
-              <div class='comic_banner no_shadow'>
-                <span class='title' style='font-size:22px; color:black'>Chapter 3</span><br/>
-                <span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-                <p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Published</p>
-              </div>
-            </div>
-            <div class="column_comic">
-              <div class='comic_banner no_shadow'>
-                <span class='title' style='font-size:22px; color:black'>Chapter 4</span><br/>
-                <span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>  1.M</span><br/>
-                <p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Published</p>
-              </div>
-            </div>
-            <div class="column_comic">
-              <div class='comic_banner no_shadow' >
-                <span class='title' style='font-size:22px; color:black'>Chapter 3</span><br/>
-                <p class='title label tiny black radius' style='position:relative; top:134px; font-size:12px; color:white'>Draft</p>
+                <span class='title' style='font-size:22px; color:black'>{{ chapter.chapterTitle }}</span><br/>
+                <span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>{{ chapter.likes }}</span><br/>
+                <p *ngIf="chapter.published == true" class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Published</p>
+                <p *ngIf="chapter.published != true" class='title label tiny black radius' style='position:relative; top:134px; font-size:12px; color:white'>Draft</p>
               </div>
             </div>
 

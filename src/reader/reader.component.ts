@@ -20,12 +20,17 @@ export class ReaderComponent {
     chapter;
     seriesId;
     nextChap;
-    
+
     chapterComments: Comment[];
     editComment =  new FormGroup({
       chapterId: new FormControl(this.route.snapshot.paramMap.get("id")),
       username: new FormControl(document.cookie.split("=")[1]),
       comment: new FormControl('')
+    });
+
+    likeObj = new FormGroup({
+      _id: new FormControl(window.location.href.split("/")[4]),
+      seriesId: new FormControl("helllo")
     });
 
     postComment(comment){
@@ -37,9 +42,10 @@ export class ReaderComponent {
     }
 
     callLikeChapter(element){
-      let currentId = this.route.snapshot.paramMap.get("chapId");
-      this.readerService.likeChapter(currentId)
-        .subscribe( data=> {
+      // let currentId = window.location.href.split("/")[4]
+      console.log(this.likeObj.value);
+      this.readerService.likeChapter(this.likeObj.value)
+        .subscribe( data => {
           console.log("inside callLikeChapter");
           console.log(data);
         });

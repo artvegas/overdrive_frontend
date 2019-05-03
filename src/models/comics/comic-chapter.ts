@@ -21,4 +21,5 @@ export interface ComicChapter {
   images: string;
   lastModified: Date;
   created: Date;
+  published: boolean;
 }
