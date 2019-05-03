@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DashboardSeriesService } from '../dashboard-series/dashboard-series.service';
 import { ActivatedRoute } from "@angular/router";
+import { EditorService } from './editor.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'editor',
@@ -10,8 +12,12 @@ import { ActivatedRoute } from "@angular/router";
 export class EditorComponent {
     title = 'Editor';
 
-    constructor(private dashboardSeriesService: DashboardSeriesService, private router: ActivatedRoute){
+
+    constructor(private dashboardSeriesService: DashboardSeriesService,
+      private editorService: EditorService,
+      private router: ActivatedRoute){
       this.dashboardSeriesService = dashboardSeriesService;
+      this.editorService = editorService;
       this.router = router;
     }
 
@@ -35,6 +41,38 @@ export class EditorComponent {
         await this.loadScript('./src/js/customCanvas.js');
         document.getElementById('load_btn').click();
         console.log(document.getElementById('load_btn'), "WDF");
+    }
+
+    ngOnInit(){
+      // this.dashboardSeriesService.newComicChapter
+      //   .subscribe( data => {
+      //     this.currentChapter = data;
+      //     console.log("inside dashboard series call");
+      //     console.log(data);
+      //     this.createInputForComic(data._id);
+      //   });
+      this.createInputForComic();
+      this.getChapterInfo();
+    }
+
+    createInputForComic(){
+      // let chpInput = document.createElement('input');
+      // chpInput.setAttribute("id", "chapter-id");
+      let chpInput = document.getElementById('chapter-id') as HTMLInputElement;
+      chpInput.value = window.location.href.split("/")[4];
+    }
+
+    chapterId =  new FormGroup({
+      _id: new FormControl(window.location.href.split("/")[4]),
+    });
+
+    getChapterInfo(){
+      this.editorService.getChapterById(this.chapterId.value)
+        .subscribe( data => {
+          console.log("inside editor service get chapter info");
+          console.log(data);
+          this.currentChapter = data;
+        });
     }
 
     private loadScript(scriptUrl: string) {

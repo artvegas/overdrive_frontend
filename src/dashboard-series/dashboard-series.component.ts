@@ -16,7 +16,8 @@ export class DashboardSeriesComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService,
     private dashboardSeriesService: DashboardSeriesService,
-    private seriesService: SeriesService,  private router: Router) {
+    private seriesService: SeriesService,
+    private router: Router) {
     this.dashboardService = dashboardService;
     this.dashboardSeriesService = dashboardSeriesService;
     this.seriesService = seriesService;
@@ -45,6 +46,10 @@ export class DashboardSeriesComponent implements OnInit {
   series =  new FormGroup({
     seriesId: new FormControl(''),
   });
+
+  goToEditorOld(chapter){
+    this.router.navigate(['/editor/' + chapter._id]);
+  }
 
   createComicChapter(){
     this.dashboardSeriesService.createComicChapter(this.series.value)
