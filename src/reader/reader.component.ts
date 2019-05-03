@@ -23,6 +23,7 @@ export class ReaderComponent {
     prevChap;
     notFound = false;
     loading = false;
+    comments;
 
     chapterComments: Comment[];
     editComment =  new FormGroup({
@@ -37,11 +38,21 @@ export class ReaderComponent {
     });
 
     postComment(comment){
+        comment.chapterId = this.chapter._id;
       this.readerService.postComment(comment)
         .subscribe( data => {
           console.log("inside postComment");
           console.log(data);
         });
+    }
+
+    getComments(){
+        this.readerService.getComments(this.chapter._id)
+            .subscribe( data => {
+                console.log("inside getComments");
+                console.log(data);
+                this.comments = data;
+            });
     }
 
     callLikeChapter(element){
@@ -77,10 +88,12 @@ export class ReaderComponent {
                     console.log("inside callGetChapter");
                     console.log(data, "heey");
                     this.loading = false;
-                    if(data == null)
+                    if (data == null){
                         this.notFound = true;
-                    else
+                    }else {
                         this.chapter = data;
+                        this.getComments();
+                    }
                 });
         }
 
@@ -104,8 +117,10 @@ export class ReaderComponent {
                         chapNum = parseInt(chapNum) - 1;
                         this.nextChap = chapNum + 1;
                         this.prevChap = chapNum - 1;
-                    }else
-                        this.chapter = data;
+                    }else {
+                            this.chapter = data;
+                            this.getComments();
+                        }
                 });
         }
     }
@@ -127,8 +142,10 @@ export class ReaderComponent {
                         chapNum = parseInt(chapNum) + 1;
                         this.nextChap = chapNum + 1;
                         this.prevChap = chapNum - 1;
-                    }else
-                        this.chapter = data;
+                    }else {
+                            this.chapter = data;
+                            this.getComments();
+                        }
                 });
         }
     }

@@ -34,7 +34,7 @@
 
 <div class='comic_wrapper' *ngIf="notFound != true"  style='text-align: center'>
 	<div  *ngFor="let chapImage of chapter.imgUrls">
-		<img class='comic_img' src='../overdrive_assets/{{chapImage}}'>
+		<img class='comic_img' src='../{{chapImage}}'>
 	</div>
 </div>
 
@@ -56,27 +56,12 @@
 
 
 
-	<div  class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
+	<div  *ngFor='let comment of comments' class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
 		<div class='comment-box small-12 columns'>
-			<p class='user_name' >Artvegas</p>
-			<p class='user_comment'>Hey, this comic is really wack man. You should stop using this website and stop.</p>
+			<p class='user_name' >{{comment.username}}</p>
+			<p class='user_comment'>{{comment.comment}}</p>
 			<p class='date'>12 mins ago</p>
 		</div>
 	</div>
 
-	<div  class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
-		<div class='comment-box small-12 columns'>
-			<p class='user_name' >Artvegas</p>
-			<p class='user_comment'>Hey, this comic is really wack man. You should stop using this website and stop.</p>
-			<p class='date'>12 mins ago</p>
-		</div>
-	</div>
-
-	<div  class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
-		<div class='comment-box small-12 columns'>
-			<p class='user_name' >Artvegas</p>
-			<p class='user_comment'>Hey, this comic is really wack man. You should stop using this website and stop.</p>
-			<p class='date'>12 mins ago</p>
-		</div>
-	</div>
 </div>
