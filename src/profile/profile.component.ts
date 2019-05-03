@@ -23,6 +23,14 @@ export class ProfileComponent {
     followedSeries: ComicSeries[];
     /* Series the user created */
     createdSeries: ComicSeries[];
+    /* User total likes */
+    userTotalLikes: any;
+    /* User total followers*/
+    userTotalFollowers: any;
+    /* User total comics*/
+    userTotalComics: any;
+    /* User total follows*/
+    userTotalFollows: any;
 
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
@@ -34,6 +42,10 @@ export class ProfileComponent {
       this.populatePage();
       this.displayFollowedSeries();
       this.displayCreatedSeries();
+      this.displayTotalLikes();
+      this.displayTotalComics();
+      this.displayTotalFollows();
+      this.displayTotalFollowers();
     }
 
     private loadScript(scriptUrl: string) {
@@ -79,5 +91,40 @@ export class ProfileComponent {
         el.scrollIntoView();
     }
 
+    displayTotalLikes(){
+      console.log("in display total likes");
+      this.profileService.getUserTotalLikes()
+        .subscribe( data => {
+          console.log("inside profile service total likes");
+          this.userTotalLikes = data;
+        });
+    }
+
+    displayTotalFollowers(){
+      console.log("in display total followers");
+      this.profileService.getUserTotalFollowers()
+        .subscribe( data => {
+          console.log("inside display total followers");
+          this.userTotalFollowers = data;
+        });
+    }
+
+    displayTotalComics(){
+      console.log("in display total comics");
+      this.profileService.getUserTotalComics()
+        .subscribe( data => {
+          console.log("inside profile service display total comics");
+          this.userTotalComics = data;
+        });
+    }
+
+    displayTotalFollows(){
+      console.log("in display total follows");
+      this.profileService.getUserTotalFollows()
+        .subscribe( data => {
+          console.log("inside profile service display total follows");
+          this.userTotalFollows = data;
+        });
+    }
 
 }

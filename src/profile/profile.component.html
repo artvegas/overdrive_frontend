@@ -20,10 +20,10 @@
 				</div>
 			</div>
 			<div class='small-8 columns' style='position:relative; top:30px'>
-				<button class='user_data small success radius button'><span class='user_info'></span></button>
-				<button class='user_data small success radius button'><span class='user_info'>followers</span></button>
-				<button class='user_data small success radius button'><span class='user_info'>likes</span></button>
-				<button class='user_data ssmall success radius button'><span class='user_info'> comics</span></button>
+				<button class='user_data small success radius button'><span class='user_info'></span>{{ userTotalFollows }} following</button>
+				<button class='user_data small success radius button'><span class='user_info'>{{ userTotalFollowers }} followers</span></button>
+				<button class='user_data small success radius button'><span class='user_info'>{{ userTotalLikes }} likes</span></button>
+				<button class='user_data ssmall success radius button'><span class='user_info'>{{ userTotalComics }} comics</span></button>
 				<p *ngIf="currentUser" style='font-size:16px; position:relative; top:30px'>
 					{{ currentUser.bio }}
 				</p>
