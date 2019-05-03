@@ -44,7 +44,7 @@ export class DashboardSeriesComponent implements OnInit {
   }
 
   series =  new FormGroup({
-    seriesId: new FormControl(''),
+    seriesId: new FormControl(),
   });
 
   goToEditorOld(chapter){
@@ -52,6 +52,9 @@ export class DashboardSeriesComponent implements OnInit {
   }
 
   createComicChapter(){
+    this.series.setValue({
+      seriesId: this.currentSeries.seriesId
+    });
     this.dashboardSeriesService.createComicChapter(this.series.value)
   }
 }
