@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DashboardSeriesService } from '../dashboard-series/dashboard-series.service';
 
 @Component({
     selector: 'editor',
@@ -7,6 +8,19 @@ import { Component } from '@angular/core';
 })
 export class EditorComponent {
     title = 'Editor';
+
+    constructor(private dashboardSeriesService: DashboardSeriesService){
+      this.dashboardSeriesService = dashboardSeriesService;
+    }
+
+    currentChapter;
+
+    ngOnInit(){
+      this.dashboardSeriesService.newComicChapter
+        .subscribe( data => {
+          this.currentChapter = data;
+        });
+    }
 
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');

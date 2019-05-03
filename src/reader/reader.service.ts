@@ -16,6 +16,8 @@ export class ReaderService {
   }
 
   likeChapter(chapterId){
+    console.log("inside readerService likeChapter");
+    console.log(chapterId);
     return this.http.post(likeChpUrl, chapterId);
   }
 

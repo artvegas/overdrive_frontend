@@ -43,17 +43,6 @@
 		</div>
 	</div>
 
-	<div #following_section  class='comics content' style='padding:40px;'>
-		<p style='font-size:40px; position:relative; left:128px;'>Following</p>
-		<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-			<div *ngFor="let comic of followedSeries" class="column_comic">
-				<div class='comic_banner'>
-					<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
-					<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-					<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
-				</div>
-			</div>
-
 <div #following_section  class='comics content' style='padding:40px;'>
 	<p style='font-size:40px; position:relative; left:128px;'>Following</p>
 	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
@@ -69,6 +58,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 	<div #followers_section></div>
 	<div class='comics' style='padding:40px;'>

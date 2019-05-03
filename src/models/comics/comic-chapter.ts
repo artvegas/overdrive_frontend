@@ -12,6 +12,7 @@ export interface ComicChapter {
   seriesId: number;
   chapterTitle: string;
   seriesTitle: string;
+  chapterNumber: number;
   author: string;
   likes: number;
   likedUsers: string[];
@@ -20,4 +21,5 @@ export interface ComicChapter {
   images: string;
   lastModified: Date;
   created: Date;
+  published: boolean;
 }
