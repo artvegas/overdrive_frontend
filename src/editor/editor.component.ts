@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DashboardSeriesService } from '../dashboard-series/dashboard-series.service';
+import { EditorService } from './editor.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'editor',
@@ -9,8 +11,10 @@ import { DashboardSeriesService } from '../dashboard-series/dashboard-series.ser
 export class EditorComponent {
     title = 'Editor';
 
-    constructor(private dashboardSeriesService: DashboardSeriesService){
+    constructor(private dashboardSeriesService: DashboardSeriesService,
+      private editorService: EditorService){
       this.dashboardSeriesService = dashboardSeriesService;
+      this.editorService = editorService;
     }
 
     currentChapter;
@@ -32,6 +36,7 @@ export class EditorComponent {
       //     this.createInputForComic(data._id);
       //   });
       this.createInputForComic();
+      this.getChapterInfo();
     }
 
     createInputForComic(){
@@ -39,6 +44,19 @@ export class EditorComponent {
       // chpInput.setAttribute("id", "chapter-id");
       let chpInput = document.getElementById('chapter-id') as HTMLInputElement;
       chpInput.value = window.location.href.split("/")[4];
+    }
+
+    chapterId =  new FormGroup({
+      _id: new FormControl(window.location.href.split("/")[4]),
+    });
+
+    getChapterInfo(){
+      this.editorService.getChapterById(this.chapterId.value)
+        .subscribe( data => {
+          console.log("inside editor service get chapter info");
+          console.log(data);
+          this.currentChapter = data;
+        });
     }
 
     private loadScript(scriptUrl: string) {
