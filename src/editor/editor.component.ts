@@ -51,7 +51,7 @@ export class EditorComponent {
           this.currentChapter = data;
           console.log("inside dashboard series call");
           console.log(data);
-          this.createInputForComic(data._id);
+          //this.createInputForComic(data._id);
         });
       this.createInputForComic();
       this.getChapterInfo();
