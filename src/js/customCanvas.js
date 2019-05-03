@@ -206,8 +206,9 @@ function saveChapter() {
     });
 }
 
-function getChapterPagesJson(){
-  var chapter_id = "5cc3468234690a4670d5d4e3";
+function getChapterPagesJson(chpId){
+  //var chapter_id = "5cc3468234690a4670d5d4e3";
+  var chapter_id = chpId;
   $.ajax({
       url: "http://localhost:8080/api/series/chapter/view/" + chapter_id,
       type: "GET",
@@ -261,6 +262,7 @@ const decreaseHeightButton = document.getElementById('button-decrease-height');
 const addImage = document.getElementById('button-add-image');
 const chooseLayout = document.getElementById('button-choose-layout');
 const saveButton = document.getElementById('button-save');
+const chapterIdInput = document.getElementById('chapter-id');
 
 function toggle_layout() {
     if( $('#panel_nav').css('display') == 'none') {
@@ -595,6 +597,11 @@ saveButton.addEventListener('click', function() {
     alert_message('Chapter successfully saved', 'success');
 });
 
+chapterIdInput.addEventListener('change', function() {
+  console.log("hit chapterIdInput event listener");
+  getChapterPagesJson(chapterIdInput.value);
+});
+
 function saveAndReturnPages() {
     prevPageBeforeSave = prevPage;
     selectPage(document.getElementById('page_btn_1'));
@@ -649,5 +656,6 @@ function loadPages() {
     selectFirstPage();
     selectPage(document.getElementById('page_btn_1'));
 }
-getChapterPagesJson();
+
+// getChapterPagesJson();
 //loadPages();

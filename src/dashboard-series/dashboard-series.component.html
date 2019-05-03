@@ -35,7 +35,7 @@
             </div>
 
             <div *ngFor="let chapter of seriesChapters" class="column_comic">
-              <div class='comic_banner no_shadow'>
+              <div (click)="goToEditorOld(chapter)" class='comic_banner no_shadow'>
                 <span class='title' style='font-size:22px; color:black'>{{ chapter.chapterTitle }}</span><br/>
                 <span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i>{{ chapter.likes }}</span><br/>
                 <p *ngIf="chapter.published == true" class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>Published</p>

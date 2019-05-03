@@ -15,19 +15,30 @@ export class EditorComponent {
 
     currentChapter;
 
-    ngOnInit(){
-      this.dashboardSeriesService.newComicChapter
-        .subscribe( data => {
-          this.currentChapter = data;
-        });
-    }
-
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
         await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js');
         await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js');
         await this.loadScript('./src/js/canvas/js/literallycanvas.js');
         await this.loadScript('./src/js/customCanvas.js');
+    }
+
+    ngOnInit(){
+      // this.dashboardSeriesService.newComicChapter
+      //   .subscribe( data => {
+      //     this.currentChapter = data;
+      //     console.log("inside dashboard series call");
+      //     console.log(data);
+      //     this.createInputForComic(data._id);
+      //   });
+      this.createInputForComic();
+    }
+
+    createInputForComic(){
+      // let chpInput = document.createElement('input');
+      // chpInput.setAttribute("id", "chapter-id");
+      let chpInput = document.getElementById('chapter-id') as HTMLInputElement;
+      chpInput.value = window.location.href.split("/")[4];
     }
 
     private loadScript(scriptUrl: string) {

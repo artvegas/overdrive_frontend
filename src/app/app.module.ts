@@ -41,7 +41,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'setting', component: SettingComponent },
-    { path: 'editor', component: EditorComponent },
+    { path: 'editor/:chapterId', component: EditorComponent },
     { path: 'login', component: LoginComponent },
     { path: 'reader/:seriesId/:chapNum', component: ReaderComponent },
     { path: 'logout', component: LogoutComponent }
