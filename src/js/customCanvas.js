@@ -188,7 +188,7 @@ function getImagesExportedData() {
 //ajax functions to connect with api
 function saveChapter() {
     //var chapter_id = document.getElementById('chap_id');
-    var chapter_id = "5cc3468234690a4670d5d4e3";
+    var chapter_id = document.getElementById('chap_id_hidden').value;
     var pages = saveAndReturnPages();
     console.log("pages", pages);
     var chapter = {
@@ -207,13 +207,15 @@ function saveChapter() {
 }
 
 function getChapterPagesJson(){
-  var chapter_id = "5cc3468234690a4670d5d4e3";
+    console.log("WDF lmaoo");
+  var chapter_id = document.getElementById('chap_id_hidden').value;
   $.ajax({
       url: "http://localhost:8080/api/series/chapter/view/" + chapter_id,
       type: "GET",
       contentType: "application/json",
       success: function (data) {
-          console.log(data);
+          console.log(data, " MAO ");
+
           if(data != 'error'){
             pages = JSON.parse(data);
           }
@@ -225,7 +227,7 @@ function getChapterPagesJson(){
 
 function publishChapter() {
     //var chapter_id = document.getElementById('chap_id');
-    var chapter_id = "5cc3468234690a4670d5d4e3";
+    var chapter_id = document.getElementById('chap_id_hidden').value;
     var pagesExported = getImagesExportedData();
 
     if(pagesExported == 'error') {
@@ -649,5 +651,20 @@ function loadPages() {
     selectFirstPage();
     selectPage(document.getElementById('page_btn_1'));
 }
-getChapterPagesJson();
 //loadPages();
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function getUrlParam(parameter, defaultvalue){
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = getUrlVars()[parameter];
+    }
+    return urlparameter;
+}

@@ -5,6 +5,7 @@ import { ComicSeries } from '../models/comics/comic-series';
 import { ComicChapter } from '../models/comics/comic-chapter';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SeriesService } from '../series/series.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-series',
@@ -15,10 +16,11 @@ export class DashboardSeriesComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService,
     private dashboardSeriesService: DashboardSeriesService,
-    private seriesService: SeriesService) {
+    private seriesService: SeriesService,  private router: Router) {
     this.dashboardService = dashboardService;
     this.dashboardSeriesService = dashboardSeriesService;
     this.seriesService = seriesService;
+    this.router = router;
   }
 
   currentSeries: ComicSeries;

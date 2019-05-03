@@ -1,7 +1,8 @@
 <main-nav></main-nav>
 
 <br/>
-
+<input id='chap_id_hidden' value='{{chapId}}' hidden>
+<button id='load_btn' style='display:none' onclick='getChapterPagesJson()'></button>
 <div id='current_page_data'>
 	<span style='display:none' id='chap_id'></span>
 	<p style='text-align: center'>Chapter 1: <input id='chap_title' value='' placeholder='Title goes here'> <button style='margin-left:20px;' class='tiny button radius secondary'>Back To Dashboard</button><button style='margin-left:20px;' id='publish_btn' class='tiny button radius success'>Publish</button></p>
