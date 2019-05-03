@@ -44,9 +44,9 @@
 
 	<div class='row'>
 		<form [formGroup]="editComment" (ngSubmit)="postComment(editComment.value);">
-			<p style='font-weight:bold; font-size:24px; display:inline-block; margin-right:10px;'>Comments <span class='total_comments'> 123,123</span></p>
+			<p style='font-weight:bold; font-size:24px; display:inline-block; margin-right:10px;'>Comments <span class='total_comments'>{{comments.length}}</span></p>
 			<p style="display:inline-block; float: right;"><span id='like_text'>Like</span> &nbsp;
-				<i #heartTag (click)="callLikeChapter(heartTag)" style="font-size:20pt; color: #e0e0e0;" class="fi-heart"></i>
+				<i #heartTag id='heartTag' (click)="callLikeChapter(heartTag)" style="font-size:20pt; color: #e0e0e0;" class="fi-heart"></i>
 			</p>
 			<textarea formControlName="comment" class='user-comment-box' type='text'></textarea>
 			<button class='button success expand' type="submit" style='position:relative; top:-26px'>Comment</button>

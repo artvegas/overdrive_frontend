@@ -5,6 +5,7 @@ const likeChpUrl = 'http://localhost:8080/api/series/chapter/like';
 const getCommentUrl = 'http://localhost:8080/api/series/chapter/listcomments/';
 const postCommentUrl = 'http://localhost:8080/api/series/chapter/addComment';
 const getChapImgsUrl = 'http://localhost:8080/api/series/chapter/view/publish/';
+const userLikedChapUrl = 'http://localhost:8080/api/series/chapter/liked/';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class ReaderService {
   }
   getChapter(seriesId, chapNum){
       return this.http.get(getChapImgsUrl + seriesId + "/" + chapNum);
+  }
+
+  hasUserLikedChapter(chapId) {
+      return this.http.get(userLikedChapUrl + chapId);
   }
 }

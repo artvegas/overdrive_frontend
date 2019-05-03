@@ -24,6 +24,7 @@ export class ReaderComponent {
     notFound = false;
     loading = false;
     comments;
+    chapLiked;
 
     chapterComments: Comment[];
     editComment =  new FormGroup({
@@ -33,17 +34,20 @@ export class ReaderComponent {
     });
 
     likeObj = new FormGroup({
-      _id: new FormControl(window.location.href.split("/")[4]),
+      _id: new FormControl(''),
       seriesId: new FormControl("helllo")
     });
 
     postComment(comment){
         comment.chapterId = this.chapter._id;
+        comment.username = "josuke";
       this.readerService.postComment(comment)
         .subscribe( data => {
           console.log("inside postComment");
           console.log(data);
         });
+
+      this.comments.unshift(comment);
     }
 
     getComments(){
@@ -52,6 +56,22 @@ export class ReaderComponent {
                 console.log("inside getComments");
                 console.log(data);
                 this.comments = data;
+                this.comments.reverse();
+            });
+    }
+
+    hasLikedChapter() {
+        this.readerService.hasUserLikedChapter(this.chapter._id)
+            .subscribe( data => {
+                console.log("inside getComments");
+                console.log(data);
+                this.chapLiked = data;
+
+                if(this.chapLiked == true) {
+                    let like_text = document.getElementById("like_text");
+                    like_text.innerText = 'Liked';
+                    document.getElementById('heartTag').style.color = 'red';
+                }
             });
     }
 
@@ -93,6 +113,12 @@ export class ReaderComponent {
                     }else {
                         this.chapter = data;
                         this.getComments();
+                        this.hasLikedChapter();
+                        this.likeObj.setValue({
+                            _id: this.chapter._id,
+                            seriesId: this.chapter.seriesId
+                        });
+
                     }
                 });
         }
@@ -120,7 +146,13 @@ export class ReaderComponent {
                     }else {
                             this.chapter = data;
                             this.getComments();
-                        }
+                            this.hasLikedChapter();
+                            this.likeObj.setValue({
+                                _id: this.chapter._id,
+                                seriesId: this.chapter.seriesId
+                            });
+
+                    }
                 });
         }
     }
@@ -145,7 +177,13 @@ export class ReaderComponent {
                     }else {
                             this.chapter = data;
                             this.getComments();
-                        }
+                            this.hasLikedChapter();
+                            this.likeObj.setValue({
+                                _id: this.chapter._id,
+                                seriesId: this.chapter.seriesId
+                            });
+
+                    }
                 });
         }
     }
