@@ -34,7 +34,7 @@
 
 <div class='comic_wrapper' *ngIf="notFound != true"  style='text-align: center'>
 	<div  *ngFor="let chapImage of chapter.imgUrls">
-		<img class='comic_img' src='../overdrive_assets/{{chapImage}}'>
+		<img class='comic_img' src='../{{chapImage}}'>
 	</div>
 </div>
 
@@ -44,9 +44,9 @@
 
 	<div class='row'>
 		<form [formGroup]="editComment" (ngSubmit)="postComment(editComment.value);">
-			<p style='font-weight:bold; font-size:24px; display:inline-block; margin-right:10px;'>Comments <span class='total_comments'> 123,123</span></p>
+			<p style='font-weight:bold; font-size:24px; display:inline-block; margin-right:10px;'>Comments <span class='total_comments'>{{comments.length}}</span></p>
 			<p style="display:inline-block; float: right;"><span id='like_text'>Like</span> &nbsp;
-				<i #heartTag (click)="callLikeChapter(heartTag)" style="font-size:20pt; color: #e0e0e0;" class="fi-heart"></i>
+				<i #heartTag id='heartTag' (click)="callLikeChapter(heartTag)" style="font-size:20pt; color: #e0e0e0;" class="fi-heart"></i>
 			</p>
 			<textarea formControlName="comment" class='user-comment-box' type='text'></textarea>
 			<button class='button success expand' type="submit" style='position:relative; top:-26px'>Comment</button>
@@ -56,27 +56,12 @@
 
 
 
-	<div  class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
+	<div  *ngFor='let comment of comments' class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
 		<div class='comment-box small-12 columns'>
-			<p class='user_name' >Artvegas</p>
-			<p class='user_comment'>Hey, this comic is really wack man. You should stop using this website and stop.</p>
+			<p class='user_name' >{{comment.username}}</p>
+			<p class='user_comment'>{{comment.comment}}</p>
 			<p class='date'>12 mins ago</p>
 		</div>
 	</div>
 
-	<div  class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
-		<div class='comment-box small-12 columns'>
-			<p class='user_name' >Artvegas</p>
-			<p class='user_comment'>Hey, this comic is really wack man. You should stop using this website and stop.</p>
-			<p class='date'>12 mins ago</p>
-		</div>
-	</div>
-
-	<div  class='comments_wrapper row' style='margin-left:auto; margin-right:auto;'>
-		<div class='comment-box small-12 columns'>
-			<p class='user_name' >Artvegas</p>
-			<p class='user_comment'>Hey, this comic is really wack man. You should stop using this website and stop.</p>
-			<p class='date'>12 mins ago</p>
-		</div>
-	</div>
 </div>

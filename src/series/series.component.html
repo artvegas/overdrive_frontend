@@ -21,7 +21,7 @@
     <div class='small-8 columns'>
       <div *ngFor="let chapter of seriesChapters" class='row'  style='height:110px'>
         <div class='small-12 columns' style='height:82px; border-top: 1px solid #f5f5f5;'>
-          <div (click)="goToReader(chapter)" class='row'>
+          <div (click)="goToReader(chapter.chapterNumber)" class='row'>
 
 
             <div class='small-3 columns'>

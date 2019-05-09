@@ -33,7 +33,6 @@ export class EditorComponent {
         this.getChapterInfo();
     }
 
-
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
         await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js');

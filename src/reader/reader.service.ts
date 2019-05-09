@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 
 const likeChpUrl = 'http://localhost:8080/api/series/chapter/like';
-const getCommentUrl = 'http://localhost:8080/api/series/chapter/listcomments';
-const postCommentUrl = 'http://localhost:8080/api/series/chapter/addcomment';
+const getCommentUrl = 'http://localhost:8080/api/series/chapter/listcomments/';
+const postCommentUrl = 'http://localhost:8080/api/series/chapter/addComment';
 const getChapImgsUrl = 'http://localhost:8080/api/series/chapter/view/publish/';
+const userLikedChapUrl = 'http://localhost:8080/api/series/chapter/liked/';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,14 @@ export class ReaderService {
     return this.http.post(postCommentUrl, comment);
   }
 
-  getComments(){
-    return this.http.get(getCommentUrl);
+  getComments(chapId){
+    return this.http.get(getCommentUrl + chapId);
   }
   getChapter(seriesId, chapNum){
       return this.http.get(getChapImgsUrl + seriesId + "/" + chapNum);
+  }
+
+  hasUserLikedChapter(chapId) {
+      return this.http.get(userLikedChapUrl + chapId);
   }
 }

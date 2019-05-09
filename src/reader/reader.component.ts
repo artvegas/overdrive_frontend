@@ -23,6 +23,8 @@ export class ReaderComponent {
     prevChap;
     notFound = false;
     loading = false;
+    comments;
+    chapLiked;
 
     chapterComments: Comment[];
     editComment =  new FormGroup({
@@ -32,16 +34,45 @@ export class ReaderComponent {
     });
 
     likeObj = new FormGroup({
-      _id: new FormControl(window.location.href.split("/")[4]),
+      _id: new FormControl(''),
       seriesId: new FormControl("helllo")
     });
 
     postComment(comment){
+        comment.chapterId = this.chapter._id;
+        comment.username = "josuke";
       this.readerService.postComment(comment)
         .subscribe( data => {
           console.log("inside postComment");
           console.log(data);
         });
+
+      this.comments.unshift(comment);
+    }
+
+    getComments(){
+        this.readerService.getComments(this.chapter._id)
+            .subscribe( data => {
+                console.log("inside getComments");
+                console.log(data);
+                this.comments = data;
+                this.comments.reverse();
+            });
+    }
+
+    hasLikedChapter() {
+        this.readerService.hasUserLikedChapter(this.chapter._id)
+            .subscribe( data => {
+                console.log("inside getComments");
+                console.log(data);
+                this.chapLiked = data;
+
+                if(this.chapLiked == true) {
+                    let like_text = document.getElementById("like_text");
+                    like_text.innerText = 'Liked';
+                    document.getElementById('heartTag').style.color = 'red';
+                }
+            });
     }
 
     callLikeChapter(element){
@@ -77,10 +108,18 @@ export class ReaderComponent {
                     console.log("inside callGetChapter");
                     console.log(data, "heey");
                     this.loading = false;
-                    if(data == null)
+                    if (data == null){
                         this.notFound = true;
-                    else
+                    }else {
                         this.chapter = data;
+                        this.getComments();
+                        this.hasLikedChapter();
+                        this.likeObj.setValue({
+                            _id: this.chapter._id,
+                            seriesId: this.chapter.seriesId
+                        });
+
+                    }
                 });
         }
 
@@ -104,8 +143,16 @@ export class ReaderComponent {
                         chapNum = parseInt(chapNum) - 1;
                         this.nextChap = chapNum + 1;
                         this.prevChap = chapNum - 1;
-                    }else
-                        this.chapter = data;
+                    }else {
+                            this.chapter = data;
+                            this.getComments();
+                            this.hasLikedChapter();
+                            this.likeObj.setValue({
+                                _id: this.chapter._id,
+                                seriesId: this.chapter.seriesId
+                            });
+
+                    }
                 });
         }
     }
@@ -127,8 +174,16 @@ export class ReaderComponent {
                         chapNum = parseInt(chapNum) + 1;
                         this.nextChap = chapNum + 1;
                         this.prevChap = chapNum - 1;
-                    }else
-                        this.chapter = data;
+                    }else {
+                            this.chapter = data;
+                            this.getComments();
+                            this.hasLikedChapter();
+                            this.likeObj.setValue({
+                                _id: this.chapter._id,
+                                seriesId: this.chapter.seriesId
+                            });
+
+                    }
                 });
         }
     }
