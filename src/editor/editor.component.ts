@@ -29,7 +29,8 @@ export class EditorComponent {
         .subscribe( data => {
           this.currentChapter = data;
         });
-
+        this.createInputForComic();
+        this.getChapterInfo();
     }
 
 
@@ -43,17 +44,17 @@ export class EditorComponent {
         console.log(document.getElementById('load_btn'), "WDF");
     }
 
-    ngOnInit(){
-      // this.dashboardSeriesService.newComicChapter
-      //   .subscribe( data => {
-      //     this.currentChapter = data;
-      //     console.log("inside dashboard series call");
-      //     console.log(data);
-      //     this.createInputForComic(data._id);
-      //   });
-      this.createInputForComic();
-      this.getChapterInfo();
-    }
+    // ngOnInit(){
+    //   // this.dashboardSeriesService.newComicChapter
+    //   //   .subscribe( data => {
+    //   //     this.currentChapter = data;
+    //   //     console.log("inside dashboard series call");
+    //   //     console.log(data);
+    //   //     this.createInputForComic(data._id);
+    //   //   });
+    //   this.createInputForComic();
+    //   this.getChapterInfo();
+    // }
 
     createInputForComic(){
       // let chpInput = document.createElement('input');
