@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SearchService } from './search.service';
+import { ComicSeries } from '../models/comics/comic-series';
 
 @Component({
   selector: 'app-search',
@@ -8,21 +10,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private searchService: SearchService) {
     this.activatedRoute = activatedRoute;
+    this.searchService = searchService;
   }
 
   /* current search query */
   searchQuery: string;
+  searchResults: ComicSeries[];
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(
       data => {
         this.searchQuery = data['query'];
         let searchQuery = data['query'];
-        //below here make rest call to search endpoint(s)
+        this.searchService.getSearchResults(searchQuery)
+          .subscribe( data => {
+            this.searchResults = data;
+          });
       }
     );
   }
+
+
 
 }
