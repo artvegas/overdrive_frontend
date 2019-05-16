@@ -24,16 +24,14 @@ export class EditorComponent {
     currentChapter;
     chapId = this.router.snapshot.paramMap.get("chapId");
 
-    // ngOnInit(){
-    //   this.dashboardSeriesService.newComicChapter
-    //     .subscribe( data => {
-    //       this.currentChapter = data;
-    //     });
-    //     this.createInputForComic();
-    //     this.getChapterInfo();
-    //
-    // }
-
+    ngOnInit(){
+      this.dashboardSeriesService.newComicChapter
+        .subscribe( data => {
+          this.currentChapter = data;
+        });
+        this.createInputForComic();
+        this.getChapterInfo();
+    }
 
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
@@ -45,17 +43,17 @@ export class EditorComponent {
         console.log(document.getElementById('load_btn'), "WDF");
     }
 
-  ngOnInit(){
-      this.dashboardSeriesService.newComicChapter
-        .subscribe( data => {
-          this.currentChapter = data;
-          console.log("inside dashboard series call");
-          console.log(data);
-          //this.createInputForComic(data._id);
-        });
-      this.createInputForComic();
-      this.getChapterInfo();
-   }
+    // ngOnInit(){
+    //   // this.dashboardSeriesService.newComicChapter
+    //   //   .subscribe( data => {
+    //   //     this.currentChapter = data;
+    //   //     console.log("inside dashboard series call");
+    //   //     console.log(data);
+    //   //     this.createInputForComic(data._id);
+    //   //   });
+    //   this.createInputForComic();
+    //   this.getChapterInfo();
+    // }
 
     createInputForComic(){
       // let chpInput = document.createElement('input');

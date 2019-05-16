@@ -28,6 +28,7 @@ import { LoginComponent } from '../login/login.component';
 import { LogoutComponent } from '../logout/logout.component';
 import { DashboardSeriesComponent } from '../dashboard-series/dashboard-series.component';
 import { SeriesComponent } from '../series/series.component';
+import { SearchComponent } from '../search/search.component';
 
 const appRoutes: Routes = [
     { path: 'genre', component: GenreComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     { path: 'editor/:chapId', component: EditorComponent },
     { path: 'login', component: LoginComponent },
     { path: 'reader/:seriesId/:chapNum', component: ReaderComponent },
+    { path: 'search', component: SearchComponent },
     { path: 'logout', component: LogoutComponent }
 ];
 
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
       LogoutComponent,
       DashboardSeriesComponent,
       ReaderComponent,
-      SeriesComponent
+      SeriesComponent,
+      SearchComponent
   ],
   providers: [
     RegisterService,
