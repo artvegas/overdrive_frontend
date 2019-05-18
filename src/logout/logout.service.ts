@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const apiUrl = "http://localhost:8080/api/users/logout";
+const apiUrl = "http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/users/logout";
 
 @Injectable({
   providedIn: 'root'

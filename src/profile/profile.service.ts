@@ -4,11 +4,11 @@ import {Observable} from 'rxjs';
 import { Users } from '../models/users/users';
 import { ComicSeries } from '../models/comics/comic-series'
 
-const apiUrl = "http://localhost:8080/api/users/profile";
+const apiUrl = "http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/users/profile";
 
-const followUrl = "http://localhost:8080/api/series/displayfollows";
+const followUrl = "http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/series/displayfollows";
 
-const createUrl = "http://localhost:8080/api/series/user";
+const createUrl = "http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/series/user";
 
 const totalLikesUrl = "http://localhost:8080/api/series/totallikes";
 

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       //   .set('username', user.username)
       //   .set('password', user.password);
 
-       this.http.post<Users>("http://localhost:8080/api/users/login", user)
+       this.http.post<Users>("http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/users/login", user)
         .subscribe( data => {
             console.log("inside login post request");
             // console.log(JSON.parse(data));

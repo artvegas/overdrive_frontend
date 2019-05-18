@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComicChapter } from '../models/comics/comic-chapter';
 
-const apiChapterUrl = "http://localhost:8080/api/series/chapter";
-const apiRatingUrl = "http://localhost:8080/api/series/rating";
-const apiLikeUrl = "http://localhost:8080/api/series/chapter/like";
+const apiChapterUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter";
+const apiRatingUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/rating";
+const apiLikeUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/like";
 
 @Injectable({
   providedIn: 'root'
