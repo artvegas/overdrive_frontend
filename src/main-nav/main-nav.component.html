@@ -32,7 +32,7 @@
 				<li><a routerLink='/discover'><span routerLinkActive="active_cus" routerLink="/discover">Discover</span></a></li>
 				<li><a routerLink='/dashboard'><span routerLinkActive="active_cus" routerLink="/dashboard">Dashboard</span></a></li>
 				<li onclick='expand_search()'><a><i id='search_icon' class='fi-magnifying-glass'></i></a></li>
-				<li id='search_input_box' style='display:none; background: white; margin-left:40px; width:300px;'><input id='search_input' style='padding:0px; position:relative; left:-16px; font-size:16px; box-shadow: 0px; box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.0);  border-style:none;
+				<li id='search_input_box' style='display:none; background: white; margin-left:40px; width:300px;'><input #searchText id='search_input' (keyup.enter)="onEnter(searchText.value)" style='padding:0px; position:relative; left:-16px; font-size:16px; box-shadow: 0px; box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.0);  border-style:none;
  							border-style:none; border-bottom-style:solid;' type='text' placeholder='Search for comics or authors'></li>
 			</ul>
 		</section>

@@ -16,9 +16,14 @@ export class MainNavComponent {
     }
 
     ngOnInit(){
-      
+
     }
     currentLink: string;
     currentUser = document.cookie.split("=")[1];
+
+    onEnter(searchText){
+      // console.log("Value of searchText is: " + searchText);
+      this.router.navigate(['/search'], {queryParams: {query: searchText}});
+    }
 
 }
