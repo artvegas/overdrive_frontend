@@ -9,6 +9,6 @@ export interface Users {
   username: string;
   password: string;
   email: string;
-  profilePic: File;
+  profilePic: string;
   bio: string;
 }

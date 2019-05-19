@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-series.component.css']
 })
 export class DashboardSeriesComponent implements OnInit {
+  public userFile: any = File;
 
   constructor(private dashboardService: DashboardService,
     private dashboardSeriesService: DashboardSeriesService,
@@ -56,5 +57,23 @@ export class DashboardSeriesComponent implements OnInit {
       seriesId: this.currentSeries.seriesId
     });
     this.dashboardSeriesService.createComicChapter(this.series.value)
+  }
+
+  onSelectFile(event){
+    const file = event.target.files[0];
+    console.log(file);
+    this.userFile = file;
+  }
+
+  updatePic(){
+    this.series.setValue({
+      seriesId: this.currentSeries.seriesId
+    });
+    const formData = new FormData();
+    formData.append("pic", this.userFile);
+    this.dashboardSeriesService.updateThumbnail(formData, this.series.value)
+    .subscribe(data => {
+      console.log(data);
+    });
   }
 }
