@@ -23,7 +23,7 @@ export class SeriesService {
 
   setSeriseRating(seriesRating) {
       console.log("inside rating");
-      return this.http.post(apiRatingUrl, seriesRating);
+      return this.http.post(apiRatingUrl, seriesRating, { withCredentials: true});
   }
 
   likeChapter(chapter) {

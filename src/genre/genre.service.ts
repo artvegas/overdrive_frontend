@@ -31,7 +31,7 @@ export class GenreService {
 
   followSeries(seriesObject){
     console.log("hit follow button: inside followSeries");
-    return this.http.post(apiFollowUrl, seriesObject);
+    return this.http.post(apiFollowUrl, seriesObject, { withCredentials: true});
   }
 
   //methods to pass data to series component

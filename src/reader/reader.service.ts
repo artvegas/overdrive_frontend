@@ -19,11 +19,11 @@ export class ReaderService {
   likeChapter(chapterId){
     console.log("inside readerService likeChapter");
     console.log(chapterId);
-    return this.http.post(likeChpUrl, chapterId);
+    return this.http.post(likeChpUrl, chapterId, {withCredentials: true});
   }
 
   postComment(comment){
-    return this.http.post(postCommentUrl, comment);
+    return this.http.post(postCommentUrl, comment, {withCredentials: true});
   }
 
   getComments(chapId){
@@ -34,6 +34,6 @@ export class ReaderService {
   }
 
   hasUserLikedChapter(chapId) {
-      return this.http.get(userLikedChapUrl + chapId);
+      return this.http.get(userLikedChapUrl + chapId, {withCredentials: true});
   }
 }

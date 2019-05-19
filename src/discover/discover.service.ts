@@ -14,6 +14,6 @@ export class DiscoverService {
   }
 
   getDiscoverSeries(){
-    return this.http.get<ComicSeries[]>(apiDiscoverUrl);
+    return this.http.get<ComicSeries[]>(apiDiscoverUrl, {withCredentials: true});
   }
 }

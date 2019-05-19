@@ -198,6 +198,9 @@ function saveChapter() {
     $.ajax({
         url: "http://localhost:8080/api/series/chapter/save",
         type: "POST",
+        xhrFields: {
+           withCredentials: true
+        },
         data: JSON.stringify(chapter),
         contentType: "application/json",
         success: function (data) {
@@ -212,6 +215,9 @@ function getChapterPagesJson(){
   $.ajax({
       url: "http://localhost:8080/api/series/chapter/view/" + chapter_id,
       type: "GET",
+      xhrFields: {
+       withCredentials: true
+      },
       contentType: "application/json",
       success: function (data) {
           console.log(data, " MAO ");
@@ -244,6 +250,9 @@ function publishChapter() {
     $.ajax({
         url: "http://localhost:8080/api/series/chapter/publish",
         type: "POST",
+        xhrFields: {
+           withCredentials: true
+        },
         data: JSON.stringify(chapter),
         contentType: "application/json",
         success: function (data) {

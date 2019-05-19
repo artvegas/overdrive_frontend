@@ -21,7 +21,7 @@ export class DashboardSeriesService {
   createComicChapter(comicSeriesId){
     console.log("inside dashboard series service");
     console.log(comicSeriesId);
-    this.http.post(apiChapterCreateUrl, comicSeriesId)
+    this.http.post(apiChapterCreateUrl, comicSeriesId, { withCredentials: true })
       .finally( () => {
         this.router.navigate(['/editor/'+this.currentChapter._id])
       })

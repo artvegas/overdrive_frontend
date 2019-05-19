@@ -13,7 +13,7 @@ export class DashboardService {
   }
 
   getUserComics(){
-    return this.http.get<ComicSeries[]>("http://localhost:8080/api/series/user");
+    return this.http.get<ComicSeries[]>("/api/series/user", {withCredentials: true});
   }
 
   //methods to pass data to dashboard-series
