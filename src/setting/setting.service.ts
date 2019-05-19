@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 
-const apiUserBio = 'http://localhost:8080/api/users/profile/bio';
-const apiUserDisplayName = 'http://localhost:8080/api/users/profile/username';
-const apiUserPassword = 'http://localhost:8080/api/users/profile/password';
+const apiUserBio = '/api/users/profile/bio';
+const apiUserDisplayName = '/api/users/profile/username';
+const apiUserPassword = '/api/users/profile/password';
 
 @Injectable({
   providedIn: 'root'

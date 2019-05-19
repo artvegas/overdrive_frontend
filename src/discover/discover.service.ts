@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComicSeries } from '../models/comics/comic-series';
 
-const apiDiscoverUrl = 'http://localhost:8080/api/series/discover';
+const apiDiscoverUrl = '/api/series/discover';
 
 @Injectable({
   providedIn: 'root'

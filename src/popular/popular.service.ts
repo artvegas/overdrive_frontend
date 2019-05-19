@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComicSeries } from '../models/comics/comic-series';
 import { forkJoin } from "rxjs/observable/forkJoin";
 
-const apiPopularUrl = 'http://localhost:8080/api/series/popular'
+const apiPopularUrl = '/api/series/popular'
 
 @Injectable({
   providedIn: 'root'

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/finally';
 
-const apiChapterCreateUrl = "http://localhost:8080/api/series/chapter/create";
+const apiChapterCreateUrl = "/api/series/chapter/create";
 
 @Injectable({
   providedIn: 'root'

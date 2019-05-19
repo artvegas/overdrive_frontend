@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         // console.log(payload);
         document.cookie = "username="+ user.username;
 
-       this.http.post<Users>("http://localhost:8080/api/login/loginuser", user)
+       this.http.post<Users>("/api/login/loginuser", user)
         .subscribe( data => {
             console.log("inside login post request");
             // console.log(JSON.parse(data.value));

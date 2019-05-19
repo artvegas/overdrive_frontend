@@ -196,7 +196,7 @@ function saveChapter() {
         'pages': pages ,
     };
     $.ajax({
-        url: "http://localhost:8080/api/series/chapter/save",
+        url: "/api/series/chapter/save",
         type: "POST",
         xhrFields: {
            withCredentials: true
@@ -213,7 +213,7 @@ function getChapterPagesJson(){
     console.log("WDF lmaoo");
   var chapter_id = document.getElementById('chap_id_hidden').value;
   $.ajax({
-      url: "http://localhost:8080/api/series/chapter/view/" + chapter_id,
+      url: "/api/series/chapter/view/" + chapter_id,
       type: "GET",
       xhrFields: {
        withCredentials: true
@@ -248,7 +248,7 @@ function publishChapter() {
         'images':pagesExported
     };
     $.ajax({
-        url: "http://localhost:8080/api/series/chapter/publish",
+        url: "/api/series/chapter/publish",
         type: "POST",
         xhrFields: {
            withCredentials: true

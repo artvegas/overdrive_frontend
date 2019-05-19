@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const apiUrl = "http://localhost:8080/api/users/logout";
+const apiUrl = "/api/login/logout";
 
 @Injectable({
   providedIn: 'root'
