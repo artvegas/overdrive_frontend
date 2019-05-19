@@ -47,7 +47,7 @@ export class ReaderComponent {
           console.log(data);
         });
 
-      document.getElementById('comment-box').value = "";
+        (<HTMLInputElement>document.getElementById('comment-box')).value = "";
       this.comments.unshift(comment);
     }
 
@@ -73,6 +73,10 @@ export class ReaderComponent {
                     let like_text = document.getElementById("like_text");
                     like_text.innerText = 'Liked';
                     document.getElementById('heartTag').style.color = 'red';
+                }else {
+                    let like_text = document.getElementById("like_text");
+                    like_text.innerText = 'Like';
+                    document.getElementById('heartTag').style.color = 'gray';
                 }
             });
     }
@@ -133,6 +137,7 @@ export class ReaderComponent {
             this.loading = true;
             this.seriesId = this.route.snapshot.paramMap.get("seriesId");
             let chapNum = this.nextChap;
+
             console.log("id", this.seriesId, this.route.snapshot.paramMap);
             this.nextChap = parseInt(chapNum) + 1;
             this.prevChap = parseInt(chapNum) -  1 < 0 ? 0 : parseInt(chapNum) -  1;
@@ -164,6 +169,13 @@ export class ReaderComponent {
             this.loading = true;
             this.seriesId = this.route.snapshot.paramMap.get("seriesId");
             let chapNum = this.prevChap;
+            if(chapNum == 0) {
+                chapNum = parseInt(chapNum) + 1;
+                this.nextChap = chapNum + 1;
+                this.prevChap = chapNum - 1;
+                this.loading = false;
+                return;
+            }
             console.log("id", this.seriesId, this.route.snapshot.paramMap);
             this.nextChap = parseInt(chapNum) + 1;
             this.prevChap = parseInt(chapNum) -  1 < 0 ? 0 : parseInt(chapNum) -  1;
