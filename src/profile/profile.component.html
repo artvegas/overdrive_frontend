@@ -16,7 +16,7 @@
 					{{currentUser.username}}
 					<button class='small black radius button'><a routerLink='/setting'>Edit Profile</a></button>
 				</p>
-				<div class='comic_banner' style= "background-image: url('{{ currentUser.profilePic }}');">
+				<div class='comic_banner' [ngStyle]="{'background-image': 'url(' + currentUser.profilePic + ')'}">
 				</div>
 			</div>
 			<div class='small-8 columns' style='position:relative; top:10px'>
