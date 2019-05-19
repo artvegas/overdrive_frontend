@@ -53,7 +53,7 @@ export class DashboardSeriesComponent implements OnInit {
 
   createComicChapter(){
     this.series.setValue({
-      seriesId: this.currentSeries.seriesId
+      seriesId: new FormControl(this.currentSeries.seriesId)
     });
     this.dashboardSeriesService.createComicChapter(this.series.value)
   }

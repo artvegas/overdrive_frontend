@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 
-const likeChpUrl = 'http://localhost:8080/api/series/chapter/like';
-const getCommentUrl = 'http://localhost:8080/api/series/chapter/listcomments/';
-const postCommentUrl = 'http://localhost:8080/api/series/chapter/addComment';
-const getChapImgsUrl = 'http://localhost:8080/api/series/chapter/view/publish/';
-const userLikedChapUrl = 'http://localhost:8080/api/series/chapter/liked/';
+const likeChpUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/like';
+const getCommentUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/listcomments/';
+const postCommentUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/addComment';
+const getChapImgsUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/view/publish/';
+const userLikedChapUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/liked/';
 
 @Injectable({
   providedIn: 'root'

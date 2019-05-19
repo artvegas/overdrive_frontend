@@ -4,8 +4,8 @@ import { ComicSeries } from '../models/comics/comic-series';
 import { forkJoin } from "rxjs/observable/forkJoin";
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-const apiGenreUrl = 'http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/series/genre';
-const apiFollowUrl = 'http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/series/follow';
+const apiGenreUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/genre';
+const apiFollowUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/follow';
 
 @Injectable({
   providedIn: 'root'

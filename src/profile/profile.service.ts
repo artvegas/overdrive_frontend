@@ -4,19 +4,19 @@ import {Observable} from 'rxjs';
 import { Users } from '../models/users/users';
 import { ComicSeries } from '../models/comics/comic-series'
 
-const apiUrl = "http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/users/profile";
+const apiUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/users/profile";
 
-const followUrl = "http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/series/displayfollows";
+const followUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/displayfollows";
 
-const createUrl = "http://ec2-3-14-12-133.us-east-2.compute.amazonaws.com:8080/api/series/user";
+const createUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/user";
 
-const totalLikesUrl = "http://localhost:8080/api/series/totallikes";
+const totalLikesUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/totallikes";
 
-const totalFollowers = "http://localhost:8080/api/series/totalfollowers";
+const totalFollowers = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/totalfollowers";
 
-const totalComics = "http://localhost:8080/api/series/totalcomics";
+const totalComics = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/totalcomics";
 
-const totalFollows = "http://localhost:8080/api/series/totalfollows";
+const totalFollows = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/totalfollows";
 
 @Injectable({
   providedIn: 'root'

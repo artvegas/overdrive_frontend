@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 
-const getChapterUrl = 'http://localhost:8080/api/series/getchapter';
+const getChapterUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/getchapter';
 
 @Injectable({
   providedIn: 'root'
