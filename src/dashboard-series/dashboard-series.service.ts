@@ -37,7 +37,7 @@ export class DashboardSeriesService {
 
   updateThumbnail(thumbnail, comicSeriesId){
     console.log("inside update thumbnail dashboard series service");
-    return this.http.post(apiThumbnail+"/"+comicSeriesId, thumbnail,  { withCredentials: true });
+    return this.http.post(apiThumbnail+"/"+comicSeriesId.seriesId, thumbnail,  { withCredentials: true });
   }
 
 }
