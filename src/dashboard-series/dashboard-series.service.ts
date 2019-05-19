@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/finally';
 
 const apiChapterCreateUrl = "/api/series/chapter/create";
+const apiThumbnail = '/api/series/thumbnail/pic';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,10 @@ export class DashboardSeriesService {
 
   private comicChapterSource = new BehaviorSubject(null);
   newComicChapter = this.comicChapterSource.asObservable();
+
+  updateThumbnail(thumbnail, comicSeriesId){
+    console.log("inside update thumbnail dashboard series service");
+    return this.http.post(apiThumbnail+"/"+comicSeriesId, thumbnail,  { withCredentials: true });
+  }
 
 }
