@@ -59,7 +59,6 @@ button.success, .button.success, .label.success {
 }
 
 .banner {
-	height: 400px;
 	background-color: white;
 	border-radius: 5px;
 	background-image: url('https://mangahelpers.com/forum/media/wsj-cover-issue-9-2016.19683/full?d=1454154995');
@@ -75,7 +74,7 @@ button.success, .button.success, .label.success {
 	width: 200px;
 	background-color: white;
 	border-radius: 5px;
-	background-image: url('https://i.ytimg.com/vi/msz83crkI1A/maxresdefault.jpg');
+	/*background-image: url('https://i.ytimg.com/vi/msz83crkI1A/maxresdefault.jpg');*/
 	background-size: cover;
 	background-position-y: 20%;
 	padding: 14px;

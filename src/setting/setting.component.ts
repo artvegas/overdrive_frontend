@@ -10,6 +10,7 @@ import { SettingService } from './setting.service';
 })
 export class SettingComponent {
     title = 'profile';
+    public userFile: any = File;
 
     constructor(private settingService: SettingService){
       this.settingService = settingService;
@@ -75,6 +76,21 @@ export class SettingComponent {
       } else{
         console.log("need to be the same password");
       }
+    }
+
+    onSelectFile(event){
+      const file = event.target.files[0];
+      console.log(file);
+      this.userFile = file;
+    }
+
+    updatePic(){
+      const formData = new FormData();
+      formData.append("pic", this.userFile);
+      this.settingService.updateProfilePic(formData)
+      .subscribe(data => {
+        console.log(data);
+      });
     }
 
     scroll(el: HTMLElement) {

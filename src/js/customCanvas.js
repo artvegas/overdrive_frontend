@@ -187,13 +187,21 @@ function getImagesExportedData() {
 
 //ajax functions to connect with api
 function saveChapter() {
-    //var chapter_id = document.getElementById('chap_id');
+    var chapter_name = document.getElementById('chap_title').value;
+
+    if(chapter_name == "") {
+        alert_message("Chapter must have a title.", "alert");
+        console.log("error title", chapter_name);
+        return;
+    }
+
     var chapter_id = document.getElementById('chap_id_hidden').value;
     var pages = saveAndReturnPages();
     console.log("pages", pages);
     var chapter = {
         '_id': chapter_id,
         'pages': pages ,
+        'chapterTitle': chapter_name
     };
     $.ajax({
         url: "/api/series/chapter/save",
@@ -204,6 +212,7 @@ function saveChapter() {
         data: JSON.stringify(chapter),
         contentType: "application/json",
         success: function (data) {
+            alert_message('Chapter successfully saved', 'success');
             console.log(data, "api worked");
         }
     });
@@ -604,7 +613,6 @@ function alert_message(msg, type) {
 
 saveButton.addEventListener('click', function() {
     saveChapter();
-    alert_message('Chapter successfully saved', 'success');
 });
 
 chapterIdInput.addEventListener('change', function() {
