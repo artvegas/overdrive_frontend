@@ -196,8 +196,11 @@ function saveChapter() {
         'pages': pages ,
     };
     $.ajax({
-        url: "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/save",
+        url: "/api/series/chapter/save",
         type: "POST",
+        xhrFields: {
+           withCredentials: true
+        },
         data: JSON.stringify(chapter),
         contentType: "application/json",
         success: function (data) {
@@ -210,8 +213,11 @@ function getChapterPagesJson(){
     console.log("WDF lmaoo");
   var chapter_id = document.getElementById('chap_id_hidden').value;
   $.ajax({
-      url: "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/view/" + chapter_id,
+      url: "/api/series/chapter/view/" + chapter_id,
       type: "GET",
+      xhrFields: {
+       withCredentials: true
+      },
       contentType: "application/json",
       success: function (data) {
           console.log(data, " MAO ");
@@ -242,8 +248,11 @@ function publishChapter() {
         'images':pagesExported
     };
     $.ajax({
-        url: "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/publish",
+       url: "/api/series/chapter/publish",
         type: "POST",
+        xhrFields: {
+           withCredentials: true
+        },
         data: JSON.stringify(chapter),
         contentType: "application/json",
         success: function (data) {

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/finally';
 
-const apiChapterCreateUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/create";
+const apiChapterCreateUrl = "/api/series/chapter/create";
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,9 @@ export class DashboardSeriesService {
   createComicChapter(comicSeriesId){
     console.log("inside dashboard series service");
     console.log(comicSeriesId);
-    this.http.post(apiChapterCreateUrl, comicSeriesId)
+    this.http.post(apiChapterCreateUrl, comicSeriesId, { withCredentials: true })
       .finally( () => {
-        this.router.navigate(['/editor/'+this.currentChapter._id])
+        this.router.navigate(['/editor/'+this.currentChapter._id]);
       })
       .subscribe( data => {
         this.comicChapterSource.next(data); //send chapter object to editor

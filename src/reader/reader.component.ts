@@ -47,7 +47,7 @@ export class ReaderComponent {
           console.log(data);
         });
 
-      document.getElementById('comment-box').value = "";
+      //document.getElementById('comment-box').value = "";
       this.comments.unshift(comment);
     }
 

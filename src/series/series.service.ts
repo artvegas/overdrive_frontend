@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComicChapter } from '../models/comics/comic-chapter';
 
-const apiChapterUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter";
-const apiRatingUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/rating";
-const apiLikeUrl = "http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/like";
+const apiChapterUrl = "/api/series/chapter";
+const apiRatingUrl = "/api/series/rating";
+const apiLikeUrl = "/api/series/chapter/like";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class SeriesService {
 
   setSeriseRating(seriesRating) {
       console.log("inside rating");
-      return this.http.post(apiRatingUrl, seriesRating);
+      return this.http.post(apiRatingUrl, seriesRating, { withCredentials: true});
   }
 
   likeChapter(chapter) {

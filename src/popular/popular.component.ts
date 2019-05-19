@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ComicSeries } from '../models/comics/comic-series';
+import { PopularService } from './popular.service';
+import { GenreService } from '../genre/genre.service';
 
 @Component({
     selector: 'popular',
@@ -8,8 +11,38 @@ import { Component } from '@angular/core';
 export class PopularComponent {
     title = 'Genre';
 
+    constructor(private popularService: PopularService,
+      private genreService: GenreService){
+      this.popularService = popularService;
+      this.genreService = genreService;
+    }
+
     async ngAfterViewInit() {
         // await this.loadScript('./src/js/genre.js');
+    }
+
+    /* do popular by genre */
+    popularAction: ComicSeries[];
+    popularFantasy: ComicSeries[];
+    popularDrama: ComicSeries[];
+    popularComedy: ComicSeries[];
+    popularSports: ComicSeries[];
+    popularHorror: ComicSeries[];
+
+    selectSeries(curSeries){
+      this.genreService.selectSeries(curSeries);
+    }
+
+    ngOnInit(){
+      this.popularService.getPopularComics()
+        .subscribe( data => {
+          this.popularAction = data[0];
+          this.popularFantasy = data[1];
+          this.popularDrama = data[2];
+          this.popularComedy = data[3];
+          this.popularSports = data[4];
+          this.popularHorror = data[5];
+        })
     }
 
     private loadScript(scriptUrl: string) {

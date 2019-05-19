@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 
-const likeChpUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/like';
-const getCommentUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/listcomments/';
-const postCommentUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/addComment';
-const getChapImgsUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/view/publish/';
-const userLikedChapUrl = 'http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/series/chapter/liked/';
+const likeChpUrl = '/api/series/chapter/like';
+const getCommentUrl = '/api/series/chapter/listcomments/';
+const postCommentUrl = '/api/series/chapter/addComment';
+const getChapImgsUrl = '/api/series/chapter/view/publish/';
+const userLikedChapUrl = '/api/series/chapter/liked/';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +19,11 @@ export class ReaderService {
   likeChapter(chapterId){
     console.log("inside readerService likeChapter");
     console.log(chapterId);
-    return this.http.post(likeChpUrl, chapterId);
+    return this.http.post(likeChpUrl, chapterId, {withCredentials: true});
   }
 
   postComment(comment){
-    return this.http.post(postCommentUrl, comment);
+    return this.http.post(postCommentUrl, comment, {withCredentials: true});
   }
 
   getComments(chapId){
@@ -34,6 +34,6 @@ export class ReaderService {
   }
 
   hasUserLikedChapter(chapId) {
-      return this.http.get(userLikedChapUrl + chapId);
+      return this.http.get(userLikedChapUrl + chapId, {withCredentials: true});
   }
 }

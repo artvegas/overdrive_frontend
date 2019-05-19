@@ -45,11 +45,17 @@ export class LoginComponent implements OnInit {
       //   .set('username', user.username)
       //   .set('password', user.password);
 
+        console.log("before http call");
+        // console.log(payload);
+        document.cookie = "username="+ user.username;
 
-       this.http.post<Users>("http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/users/login", user)
+       this.http.post<Users>("/api/login/loginuser", user)
         .subscribe( data => {
             console.log("inside login post request");
-            // console.log(JSON.parse(data));
+            // console.log(JSON.parse(data.value));
+
+
+
             document.cookie = "username="+ data.username;
             this.router.navigate(['/profile']);
              // this.http.get("http://localhost:8080/api/users/profile", {headers: headers, responseType: 'text'})

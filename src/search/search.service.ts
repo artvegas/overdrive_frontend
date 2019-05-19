@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { ComicSeries } from '../models/comics/comic-series';
 
-const apiSearchUrl = 'http://localhost:8080/api/series/search'
+const apiSearchUrl = '/api/series/search'
 
 @Injectable({
   providedIn: 'root'
