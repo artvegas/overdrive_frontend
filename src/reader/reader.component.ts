@@ -47,6 +47,7 @@ export class ReaderComponent {
           console.log(data);
         });
 
+      document.getElementById('comment-box').value = "";
       this.comments.unshift(comment);
     }
 
@@ -61,6 +62,7 @@ export class ReaderComponent {
     }
 
     hasLikedChapter() {
+        console.log(this.chapter._id);
         this.readerService.hasUserLikedChapter(this.chapter._id)
             .subscribe( data => {
                 console.log("inside getComments");
