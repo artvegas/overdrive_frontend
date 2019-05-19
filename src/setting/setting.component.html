@@ -69,6 +69,7 @@
 	</form>
 
 	<br/>
+	<form (ngSubmit)="updatePic()">
 	<div class='row'>
 		<p style='font-size:30px; position:relative; left:0px;'>Change Profile Picture</p>
 		<div style='width:100%; margin-left:auto; margin-right:auto;  background:white; padding:40px;'>
@@ -76,15 +77,16 @@
 				<p style='font-size:20px;'>Add New Profile Picture *</p>
 				<div class='small-12 columns'>
 					<input style='padding:0px; position:relative; left:-16px; font-size:20px; box-shadow: 0px; box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.0);  border-style:none; border-bottom-style:solid;'
-							 type="file" name="pic" accept="image/*" placeholder='Enter New Display Name'>
+							 type="file" class="form-control" accept="image/*" (change)="onSelectFile($event)" placeholder='Enter New Display Name'>
 				</div>
 			</div>
 			<br/>
 			<div style='text-align:center'>
-				<button id='login_btn' class='button small black publish' style='font-size:20px'>Update Profile Picture</button>
+				<button type="submit" id='login_btn' class='button small black publish' style='font-size:20px'>Update Profile Picture</button>
 			</div>
 		</div>
 	</div>
+	</form>
 
 	<br/>
 </div>
