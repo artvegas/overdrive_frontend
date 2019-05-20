@@ -88,4 +88,11 @@ export class DashboardSeriesComponent implements OnInit {
       console.log(data);
     });
   }
+
+    truncate(string){
+        if (string.length > 15)
+            return string.substring(0,15)+'...';
+        else
+            return string;
+    };
 }

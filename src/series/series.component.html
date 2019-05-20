@@ -17,10 +17,10 @@
 
 <div class='chap_row comics' style='z-index:4; border-radius:5px; margin-top:10px; background-color:white; width:80%; margin-left:auto; margin-right:auto; padding:0px;'>
   <div class='row'>
-    <br/>
+    <br/><h3>Chapters</h3>
     <div class='small-8 columns'>
-      <div *ngFor="let chapter of seriesChapters" class='row'  style='height:110px'>
-        <div class='small-12 columns' style='height:82px; border-top: 1px solid #f5f5f5;'>
+      <div *ngFor="let chapter of seriesChapters" class='row' >
+        <div *ngIf='chapter.published == true' class='small-12 columns' style='height:110px; border-top: 1px solid #f5f5f5;'>
           <div (click)="goToReader(chapter.chapterNumber)" class='row'>
 
 
@@ -33,7 +33,7 @@
               <span style='position:relative; top:20px; left:-70px'> {{ chapter.chapterTitle }} </span>
             </div>
             <div class='small-5 columns'>
-              <span style='position:relative; font-size:15px; top:20px; left:-60px; color:#c4c4c4;'> {{ formatDate(chapter.created) }} <span style='position:relative;left:20px;'> <i (onclick)='likeChapter()' class='fi-heart'></i> 123,539 </span></span>
+              <span style='position:relative; font-size:15px; top:20px; left:-60px; color:#c4c4c4;'> {{ formatDate(chapter.created) }} <span style='position:relative;left:20px;'> <i (onclick)='likeChapter()' class='fi-heart'></i> {{chapter.likes}} </span></span>
             </div>
             <div class='small-2 columns'>
               <span style='position:relative; top:0px; left:50px'> {{ chapter.chapterNumber }} </span>
@@ -45,26 +45,21 @@
     </div>
     <!-- --------------------------- -->
     <div class='small-4 columns' style='padding-left:50px; border-left:2px solid #f5f5f5;'>
-
-      <span><i class='fi-star'></i>&nbsp; {{ currentSeries.score}} / 5 &nbsp;</span>
-      <br/><br/>
-
       <div id='rate_wrapepr'>
+        <h3>Rating</h3>
         <span id='star_1' (click)='rateStar($event,1)' class="fa fa-star checked"></span>
         <span id='star_2' (click)='rateStar($event, 2)' class="fa fa-star checked"></span>
         <span id='star_3' (click)='rateStar($event, 3)' class="fa fa-star checked"></span>
         <span id='star_4' (click)='rateStar($event, 4)' class="fa fa-star"></span>
         <span id='star_5' (click)='rateStar($event, 5)' class="fa fa-star"></span>
+        &nbsp; {{ currentSeries.score}}
       </div>
 
-      <div *ngIf="currentSeries.day">
-        <h4 style='font-weight:bold'>UP EVERY {{ currentSeries.day }}</h4>
-      </div>
-
-      <br/> {{ currentSeries.description }}
+      <br/>
+      <h3>About</h3>
+      {{currentSeries.description}};
       <br/> <br/>
-      <!-- <button class='small button expand radius secondary'>Continue Reading</button>
-      <li class='small button expand radius black'>First Chapter</li> -->
+      <li *ngIf='numOfChapters > 0' (click)='goToReader(1)' class='small button expand radius black'>First Chapter</li>
     </div>
   </div>
 </div>

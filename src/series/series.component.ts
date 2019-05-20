@@ -23,6 +23,7 @@ export class SeriesComponent implements OnInit {
 
   currentSeries: ComicSeries;
   seriesChapters: ComicChapter[];
+  numOfChapters: number = 0;
 
   userSeriesScore : number;
 
@@ -35,6 +36,7 @@ export class SeriesComponent implements OnInit {
         if(data){
           console.log("inside if data");
           this.currentSeries = data;
+          this.rateStar(null, Math.round(this.currentSeries.score));
           localStorage.removeItem('currentSeries');
           localStorage.setItem('currentSeries', JSON.stringify(data));
 
@@ -72,7 +74,7 @@ export class SeriesComponent implements OnInit {
     }
 
     getFormattedScore(score) {
-        return score / 5;
+        return score;
     }
 
     rateStar(e, score) {
