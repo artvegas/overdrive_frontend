@@ -23,6 +23,7 @@ export class SeriesComponent implements OnInit {
 
   currentSeries: ComicSeries;
   seriesChapters: ComicChapter[];
+  numOfChapters: number = 0;
 
   userSeriesScore : number;
 
@@ -32,11 +33,13 @@ export class SeriesComponent implements OnInit {
         console.log("inside series page genreService call");
         console.log(data);
         this.currentSeries = data;
+        this.rateStar(null, Math.round(this.currentSeries.score));
         this.seriesService.getSeriesChapters(data.seriesId)
           .subscribe( data => {
             console.log("inside getSeriesChapters");
             console.log(data);
             this.seriesChapters = data;
+            this.numOfChapters = data.length;
             for(var i=0; i<this.seriesChapters.length; i++){
               this.seriesChapters[i].chapterNumber = i+1;
             }
@@ -60,7 +63,7 @@ export class SeriesComponent implements OnInit {
     }
 
     getFormattedScore(score) {
-        return score / 5;
+        return score;
     }
 
     rateStar(e, score) {
