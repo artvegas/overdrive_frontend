@@ -86,6 +86,11 @@ export class DashboardSeriesComponent implements OnInit {
     this.dashboardSeriesService.updateThumbnail(formData, this.series.value)
     .subscribe(data => {
       console.log(data);
+      if(data == true) {
+          this.showAlert('image-alert', 'success', 'Thumbnail updated succesfully');
+      }else {
+          this.showAlert('image-alert', 'alert', 'Error updating thumbnail');
+      }
     });
   }
 
@@ -95,4 +100,20 @@ export class DashboardSeriesComponent implements OnInit {
         else
             return string;
     };
+
+    showAlert(id, type, msg) {
+
+        if(document.getElementById(id).innerText == msg) {
+            if(document.getElementById(id).style.display  != 'none') {
+                return;
+            }
+        }
+
+        let current_alert = document.getElementById(id);
+        current_alert.className = "";
+
+        current_alert.className = "alert-box " + type;
+        current_alert.innerText = msg;
+        current_alert.style.display = "block";
+    }
 }
