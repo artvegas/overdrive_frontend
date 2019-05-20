@@ -94,8 +94,8 @@ export class GenreComponent {
     }
 
     truncate(string){
-        if (string.length > 25)
-            return string.substring(0,25)+'...';
+        if (string.length > 15)
+            return string.substring(0,15)+'...';
         else
             return string;
     };
