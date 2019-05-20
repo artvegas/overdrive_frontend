@@ -34,7 +34,7 @@
 						<h4>{{ comic.author }}</h4>
 						{{ comic.description.substring(0,40) }}
 						<br/> <br/>
-						<button (click)="selectSeries(comic)" class='button success expand radius'><a routerLink='/series'>View Series</a></button>
+						<button (click)="selectSeries(comic)" routerLink='/series' class='button success expand radius'><a>View Series</a></button>
 					</div>
 					</div>
 				</div>

@@ -3,6 +3,7 @@ import { Profile } from './profile';
 import { Users } from '../models/users/users';
 import { ProfileService } from './profile.service';
 import { ComicSeries } from '../models/comics/comic-series'
+import { GenreService } from '../genre/genre.service';
 
 @Component({
     selector: 'profile',
@@ -13,8 +14,9 @@ export class ProfileComponent {
     title = 'profile';
 
     /*In order to refer to service with 'this' dependency inject as private field*/
-    constructor(private profileService: ProfileService){
+    constructor(private profileService: ProfileService, private genreService: GenreService){
       this.profileService = profileService;
+      this.genreService = genreService;
     }
 
     /* Current logged in user */
@@ -127,4 +129,8 @@ export class ProfileComponent {
         });
     }
 
+    /* user selects particular comic series */
+    selectSeries(curSeries){
+      this.genreService.selectSeries(curSeries);
+    }
 }
