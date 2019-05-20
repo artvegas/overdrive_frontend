@@ -59,7 +59,7 @@
       <h3>About</h3>
       {{currentSeries.description}};
       <br/> <br/>
-      <li *ngIf='numOfChapters > 0' (click)='goToReader(1)' class='small button expand radius black'>First Chapter</li>
+      <li *ngIf='seriesChapters.length > 0' (click)='goToReader(1)' class='small button expand radius black'>First Chapter</li>
     </div>
   </div>
 </div>

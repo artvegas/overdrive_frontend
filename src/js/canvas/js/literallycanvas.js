@@ -1457,13 +1457,15 @@ defineCanvasRenderer('Rectangle', function(ctx, shape) {
     y += 0.5;
   }
 
-  var img = new Image();
-  img.src = shape.fillImage;
+  if(shape.fillImage != ''){
+    var img = new Image();
+    img.src = shape.fillImage;
+	  ctx.drawImage(img, x, y, shape.width, shape.height);
+  }else{
+    ctx.fillStyle = shape.fillColor;
+    ctx.fillRect(x, y, shape.width, shape.height);
+  }
 
-  ctx.fillStyle = shape.fillColor;
-  ctx.fillRect(x, y, shape.width, shape.height);
-
-  ctx.drawImage(img, x, y, shape.width, shape.height);
 
   ctx.lineWidth = shape.strokeWidth;
   ctx.strokeStyle = shape.strokeColor;

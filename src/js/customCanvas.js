@@ -132,19 +132,21 @@ function delete_page() {
 }
 
 function addImageToCanvas(img) {
-    var newImage = new Image()
+    var newImage = new Image();
     newImage.src = img.src;
     lc.saveShape(LC.createShape('Image', {x: 10, y: 10, image: newImage}));
 }
 
 function addImageAsPanelBackground(img) {
-    var newImage = new Image()
+    var newImage = new Image();
     newImage.src = img.src;
 
     const selectedShape = lc.tool.selectedShape;
     if(selectedShape) {
         prevFillImage = selectedShape.fillImage;
         selectedShape.fillImage = newImage.src;
+        var ss = lc.tool.selectedShape;
+        console.log(ss, "wdf");
         /* Redraw the canvas with the shape now removed */
         lc.repaintLayer('main');
 
@@ -166,7 +168,7 @@ function addImageAsPanelBackground(img) {
             }});
     }
 
-    lc.setTool(new LC.tools.SelectShape(lc));
+    //lc.setTool(new LC.tools.SelectShape(lc));
 }
 
 

@@ -14,14 +14,18 @@
     </div>
     <div class='row'>
       <div class='small-12 columns'>
-        <div class='small-3 columns title'><i class='fi-star'></i> {{ currentSeries.score }}/10 Rating</div>
+        <div class='small-3 columns title'>
+          <span *ngFor="let number of [1,2,3,4, 5]">
+             <i *ngIf="currentSeries.score >= number" class='fi-star'></i>
+          </span>
+          {{ currentSeries.score }} Rating
+        </div>
         <div class='small-3 columns title'><i class='fi-torso purple'></i> {{ currentSeries.followers }} followers</div>
-        <div class='small-3 columns title'><i class='fi-heart purple'></i> 10M likes</div>
-        <div class='small-3 columns title'><i class='fi-book purple'></i> {{ currentSeries.chapters.length }} Chapters</div>
+        <div class='small-3 columns title'><i class='fi-heart purple'></i> {{ currentSeries.likes }} likes</div>
+        <div class='small-3 columns title'><i class='fi-book purple'></i> {{ seriesChapters.length }} Chapters</div>
       </div>
       <div class='small-12 columns'>
         <div class='small-3 columns title'><i class='fi-folder purple'></i> {{ currentSeries.genre }} Genre</div>
-        <div class='small-3 columns title left'><i class='fi-clock purple'></i> Every Monday</div>
       </div>
     </div>
     <br/>
