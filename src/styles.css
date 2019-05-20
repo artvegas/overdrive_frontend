@@ -74,8 +74,7 @@ button.success, .button.success, .label.success {
 	width: 200px;
 	background-color: white;
 	border-radius: 5px;
-	/*background-image: url('https://i.ytimg.com/vi/msz83crkI1A/maxresdefault.jpg');*/
-	background-size: cover;
+	background:whitesmoke;
 	background-position-y: 20%;
 	padding: 14px;
 	-webkit-box-shadow: 5px 12px 20px -6px rgba(38, 83, 173, 1);
@@ -96,7 +95,7 @@ button.success, .button.success, .label.success {
 	width: 220px;
 	background-color: white;
 	border-radius: 5px;
-	background-image: url('https://i.ytimg.com/vi/msz83crkI1A/maxresdefault.jpg');
+	background-image: url('https://banner2.kisspng.com/20180413/peq/kisspng-comic-book-panel-comic-strip-comics-comic-5ad14b957d5572.4217825215236658135134.jpg');
 	background-size: cover;
 	background-position-y: 20%;
 	padding: 14px;
