@@ -84,7 +84,7 @@ export class SeriesComponent implements OnInit {
     }
 
     getFormattedScore(score) {
-        return score;
+        return  Math.round(score * 100) / 100;
     }
 
     rateStar(e, score) {

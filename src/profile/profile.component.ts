@@ -76,6 +76,10 @@ export class ProfileComponent {
         console.log("inside post request: displayfollows");
         console.log(data);
         this.followedSeries = data;
+          let __this = this;
+          this.followedSeries.forEach(function(series) {
+              series.comicSeriesName = __this.truncate(series.comicSeriesName);
+          });
       });
     }
 
@@ -86,6 +90,10 @@ export class ProfileComponent {
         console.log("inside post request: display created");
         console.log(data);
         this.createdSeries = data;
+          let __this = this;
+          this.createdSeries.forEach(function(series) {
+              series.comicSeriesName = __this.truncate(series.comicSeriesName);
+          });
       });
     }
 
@@ -133,4 +141,11 @@ export class ProfileComponent {
     selectSeries(curSeries){
       this.genreService.selectSeries(curSeries);
     }
+
+    truncate(string){
+        if (string.length > 15)
+            return string.substring(0,15)+'...';
+        else
+            return string;
+    };
 }

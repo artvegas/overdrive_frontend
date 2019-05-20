@@ -56,4 +56,8 @@ export class PopularComponent {
             document.body.appendChild(scriptElement);
         })
     }
+
+    scroll(el: HTMLElement) {
+        el.scrollIntoView();
+    }
 }

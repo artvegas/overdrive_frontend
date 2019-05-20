@@ -46,16 +46,28 @@
 <div #following_section  class='comics content' style='padding:40px;'>
 	<p style='font-size:40px; position:relative; left:128px;'>Following</p>
 	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-		<div *ngFor="let comic of followedSeries" class="column_comic">
-			<div (click)="selectSeries(comic)" routerLink="/series" class='comic_banner' [ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
-				<span *ngIf="comic.score">
-					<span class='title label tiny success radius' style='font-size:12px; color:white'>
-							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
-					</span><br/>
+		<div *ngFor="let comic of followedSeries" class="column_comic" onclick='select_comic()'>
+			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
+				  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' + comic.thumbnail + ') no-repeat center center / cover'}"></div>
+			<span class='title' style='font-size:18px; position:relative; left:30px; top:-220px; color:white'>{{ comic.comicSeriesName }}</span><br/>
+			<div class='title label tiny success radius' style='position:relative; left:30px; top:-220px;'>
+				<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
+				<span *ngFor="let number of [1,2,3,4, 5]">
+					<span *ngIf="comic.score >= number" class="fa fa-star" style='font-size:12px; margin-left:2px; color:white'>
+					</span>
 				</span>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
+			<br/>
+			<div class='description'style='position:relative; left:30px; top:-212px;'>
+				{{comic.author}}
+				<hr style='margin-top:6px; margin-bottom:6px;'/>
+				{{comic.description}}
+			</div>
+			<br/>
+			<p class='title label tiny success radius' style='position:relative; left:30px; top:-230px; font-size:12px; color:white'>{{ comic.genre }}</p>
+		</div>
+		<div *ngIf='followedSeries.length == 0'>
+			<div class='alert-box expand secondary' style='font-size:18px'>Currently following no series</div>
 		</div>
 	</div>
 </div>
@@ -77,17 +89,30 @@
 <div class='comics' style='padding:40px;'>
 	<p style='font-size:40px; position:relative; left:128px;'>Comics</p>
 	<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-		<div *ngFor="let comic of createdSeries" class="column_comic">
-			<div (click)="selectSeries(comic)" routerLink="/series" class='comic_banner' [ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
-				<span class='title' style='font-size:22px; color:black'>{{ comic.comicSeriesName }}</span><br/>
-				<span *ngIf="comic.score">
-					<span class='title label tiny success radius' style='font-size:12px; color:white'>
-							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
-					</span><br/>
+		<div *ngFor="let comic of createdSeries" class="column_comic" onclick='select_comic()'>
+			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
+				  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' + comic.thumbnail + ') no-repeat center center / cover'}"></div>
+			<span class='title' style='font-size:18px; position:relative; left:30px; top:-220px; color:white'>{{ comic.comicSeriesName }}</span><br/>
+			<div class='title label tiny success radius' style='position:relative; left:30px; top:-220px;'>
+				<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
+				<span *ngFor="let number of [1,2,3,4, 5]">
+					<span *ngIf="comic.score >= number" class="fa fa-star" style='font-size:12px; margin-left:2px; color:white'>
+					</span>
 				</span>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
+			<br/>
+			<div class='description'style='position:relative; left:30px; top:-212px;'>
+				{{comic.author}}
+				<hr style='margin-top:6px; margin-bottom:6px;'/>
+				{{comic.description}}
+			</div>
+			<br/>
+			<p class='title label tiny success radius' style='position:relative; left:30px; top:-230px; font-size:12px; color:white'>{{ comic.genre }}</p>
+		</div>
+		<div *ngIf='createdSeries.length == 0'>
+			<div class='alert-box expand secondary' style='font-size:18px'>User has not created any series yet</div>
 		</div>
 	</div>
 
+</div>
 </div>

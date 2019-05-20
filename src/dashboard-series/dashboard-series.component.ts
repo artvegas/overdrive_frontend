@@ -116,4 +116,8 @@ export class DashboardSeriesComponent implements OnInit {
         current_alert.innerText = msg;
         current_alert.style.display = "block";
     }
+
+    getFormattedScore(score) {
+        return  Math.round(score * 100) / 100;
+    }
 }
