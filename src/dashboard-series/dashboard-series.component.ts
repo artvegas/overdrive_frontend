@@ -31,16 +31,28 @@ export class DashboardSeriesComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.currentSeries
       .subscribe(data => {
-        this.currentSeries = data;
-        console.log("dashboard series component ngOnInit");
-        console.log(data);
+        if(data){
+          this.currentSeries = data;
+          console.log("dashboard series component ngOnInit");
+          console.log(data);
+          localStorage.removeItem('currentSeries');
+          localStorage.setItem('currentSeries', JSON.stringify(data));
 
-        this.seriesService.getSeriesChapters(data.seriesId)
-          .subscribe( data=> {
-            console.log("series service call inside dashboard series");
-            console.log(data);
-            this.seriesChapters = data;
-          });
+          this.seriesService.getSeriesChapters(data.seriesId)
+            .subscribe( data=> {
+              console.log("series service call inside dashboard series");
+              console.log(data);
+              this.seriesChapters = data;
+            });
+        } else {
+          this.currentSeries = JSON.parse(localStorage.getItem('currentSeries'));
+          this.seriesService.getSeriesChapters(this.currentSeries.seriesId)
+            .subscribe( data=> {
+              console.log("series service call inside dashboard series");
+              console.log(data);
+              this.seriesChapters = data;
+            });
+        }
       });
   }
 
@@ -74,6 +86,34 @@ export class DashboardSeriesComponent implements OnInit {
     this.dashboardSeriesService.updateThumbnail(formData, this.series.value)
     .subscribe(data => {
       console.log(data);
+      if(data == true) {
+          this.showAlert('image-alert', 'success', 'Thumbnail updated succesfully');
+      }else {
+          this.showAlert('image-alert', 'alert', 'Error updating thumbnail');
+      }
     });
   }
+
+    truncate(string){
+        if (string.length > 15)
+            return string.substring(0,15)+'...';
+        else
+            return string;
+    };
+
+    showAlert(id, type, msg) {
+
+        if(document.getElementById(id).innerText == msg) {
+            if(document.getElementById(id).style.display  != 'none') {
+                return;
+            }
+        }
+
+        let current_alert = document.getElementById(id);
+        current_alert.className = "";
+
+        current_alert.className = "alert-box " + type;
+        current_alert.innerText = msg;
+        current_alert.style.display = "block";
+    }
 }

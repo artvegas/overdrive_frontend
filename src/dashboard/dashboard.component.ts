@@ -42,7 +42,19 @@ export class DashboardComponent {
         .subscribe( data => {
           console.log(data);
           this.comics = data;
+            let __this = this;
+            this.comics.forEach(function(series) {
+                series.comicSeriesName = __this.truncate(series.comicSeriesName);
+            });
+
+            console.log(this.comics, "DATA");
         });
     }
 
+    truncate(string){
+        if (string.length > 15)
+            return string.substring(0,15)+'...';
+        else
+            return string;
+    };
 }

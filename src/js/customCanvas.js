@@ -46,6 +46,7 @@ function selectFirstPage() {
    $('#page_btn_1').addClass('success');
 }
 
+
 selectFirstPage();
 
 
@@ -84,6 +85,7 @@ function createNewPage() {
 
     pages.push('{"colors":{"primary":"hsla(0, 0%, 0%, 1)","secondary":"hsla(0, 0%, 100%, 1)","background":"transparent"},"position":{"x":0,"y":0},"scale":1,"shapes":[],"backgroundShapes":[],"imageSize":{"width":"infinite","height":"infinite"}}');
 
+    console.log("data page", pages, pages.length);
     button.innerText = pages.length;
 
     mainDiv.appendChild(button);
@@ -118,21 +120,33 @@ function selectPage(index) {
     prevPage = index;
 }
 
+function delete_page() {
+    if(prevPage == 0) {
+        alert_message("Cannot delete first page", "alert");
+    }else {
+        pages.splice(prevPage, 1);
+        console.log(prevPage, "page index");
+        prevPage--;
+        loadPages();
+    }
+}
 
 function addImageToCanvas(img) {
-    var newImage = new Image()
+    var newImage = new Image();
     newImage.src = img.src;
     lc.saveShape(LC.createShape('Image', {x: 10, y: 10, image: newImage}));
 }
 
 function addImageAsPanelBackground(img) {
-    var newImage = new Image()
+    var newImage = new Image();
     newImage.src = img.src;
 
     const selectedShape = lc.tool.selectedShape;
     if(selectedShape) {
         prevFillImage = selectedShape.fillImage;
         selectedShape.fillImage = newImage.src;
+        var ss = lc.tool.selectedShape;
+        console.log(ss, "wdf");
         /* Redraw the canvas with the shape now removed */
         lc.repaintLayer('main');
 
@@ -154,7 +168,7 @@ function addImageAsPanelBackground(img) {
             }});
     }
 
-    lc.setTool(new LC.tools.SelectShape(lc));
+    //lc.setTool(new LC.tools.SelectShape(lc));
 }
 
 
@@ -219,7 +233,6 @@ function saveChapter() {
 }
 
 function getChapterPagesJson(){
-    console.log("WDF lmaoo");
   var chapter_id = document.getElementById('chap_id_hidden').value;
   $.ajax({
       url: "/api/series/chapter/view/" + chapter_id,
@@ -242,6 +255,14 @@ function getChapterPagesJson(){
 
 function publishChapter() {
     //var chapter_id = document.getElementById('chap_id');
+    var chapter_name = document.getElementById('chap_title').value;
+
+    if(chapter_name == "") {
+        alert_message("Chapter must have a title.", "alert");
+        console.log("error title", chapter_name);
+        return;
+    }
+
     var chapter_id = document.getElementById('chap_id_hidden').value;
     var pagesExported = getImagesExportedData();
 
@@ -254,7 +275,8 @@ function publishChapter() {
 
     var chapter = {
         '_id': chapter_id,
-        'images':pagesExported
+        'images':pagesExported,
+        'chapterTitle': chapter_name
     };
     $.ajax({
        url: "/api/series/chapter/publish",
@@ -282,6 +304,7 @@ const addImage = document.getElementById('button-add-image');
 const chooseLayout = document.getElementById('button-choose-layout');
 const saveButton = document.getElementById('button-save');
 const chapterIdInput = document.getElementById('chapter-id');
+const deletePage = document.getElementById('delete-page');
 
 function toggle_layout() {
     if( $('#panel_nav').css('display') == 'none') {
@@ -646,6 +669,7 @@ function saveAndReturnPages() {
 
 
 ///testing dev
+
 function loadPages() {
 
     // pages_cookie = localStorage.getItem('pages');
@@ -656,6 +680,11 @@ function loadPages() {
     if(pages.length == 0 || pages == []) {
         pages.push(EMPTY_CANVAS);
     }
+    
+    console.log(pages, "dataaaaa");
+
+    document.getElementById('page_wrapper').innerHTML = "";
+
 
     for(var i = 0; i < pages.length; i++) {
         var mainDiv = document.createElement('div');

@@ -61,7 +61,7 @@ button.success, .button.success, .label.success {
 .banner {
 	background-color: white;
 	border-radius: 5px;
-	background-image: url('https://mangahelpers.com/forum/media/wsj-cover-issue-9-2016.19683/full?d=1454154995');
+	/* background-image: url('https://mangahelpers.com/forum/media/wsj-cover-issue-9-2016.19683/full?d=1454154995'); */
 	background-size: cover;
 	background-position-y: 20%;
 	-webkit-box-shadow: 10px 10px 58px -6px rgba(38, 83, 173, 1);
@@ -74,7 +74,7 @@ button.success, .button.success, .label.success {
 	width: 200px;
 	background-color: white;
 	border-radius: 5px;
-	/*background-image: url('https://i.ytimg.com/vi/msz83crkI1A/maxresdefault.jpg');*/
+	background:whitesmoke;
 	background-size: cover;
 	background-position-y: 20%;
 	padding: 14px;
@@ -92,11 +92,11 @@ button.success, .button.success, .label.success {
 }
 
 .comic_banner_2 {
-	height: 280px;
-	width: 220px;
+	height: 220px;
+	width: 200px;
 	background-color: white;
 	border-radius: 5px;
-	background-image: url('https://i.ytimg.com/vi/msz83crkI1A/maxresdefault.jpg');
+	background-image: url('https://banner2.kisspng.com/20180413/peq/kisspng-comic-book-panel-comic-strip-comics-comic-5ad14b957d5572.4217825215236658135134.jpg');
 	background-size: cover;
 	background-position-y: 20%;
 	padding: 14px;

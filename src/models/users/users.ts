@@ -11,4 +11,5 @@ export interface Users {
   email: string;
   profilePic: string;
   bio: string;
+  editorPics: string[];
 }

@@ -29,7 +29,10 @@ export class PopularComponent {
     popularSports: ComicSeries[];
     popularHorror: ComicSeries[];
 
+    /* user selects particular comic series */
     selectSeries(curSeries){
+      console.log("inside select Series");
+      console.log(curSeries);
       this.genreService.selectSeries(curSeries);
     }
 
@@ -53,6 +56,4 @@ export class PopularComponent {
             document.body.appendChild(scriptElement);
         })
     }
-
-
 }

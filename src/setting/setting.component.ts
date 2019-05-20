@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SettingService } from './setting.service';
+import {Users} from "../models/users/users";
 
 
 @Component({
@@ -10,6 +11,7 @@ import { SettingService } from './setting.service';
 })
 export class SettingComponent {
     title = 'profile';
+    currentUser: Users;
     public userFile: any = File;
 
     constructor(private settingService: SettingService){
@@ -18,6 +20,7 @@ export class SettingComponent {
 
     async ngAfterViewInit() {
         await this.loadScript('./src/js/main.js');
+        this.populatePage();
     }
 
     private loadScript(scriptUrl: string) {
@@ -27,6 +30,16 @@ export class SettingComponent {
             scriptElement.onload = resolve;
             document.body.appendChild(scriptElement);
         })
+    }
+
+    populatePage(){
+        this.settingService.getUserDetails()
+            .subscribe( data => {
+                console.log("inside get request: PROFILE");
+                console.log(data);
+                this.currentUser = data;
+                (<HTMLInputElement>document.getElementById('bio-input')).value = this.currentUser.bio;
+            });
     }
 
     userPasswordForm = new FormGroup({
@@ -49,6 +62,11 @@ export class SettingComponent {
         .subscribe( data => {
           console.log("updateBio subscribe");
           console.log(data);
+            if(data == true) {
+                this.showAlert('bio-alert', 'success', 'Updated profile bio');
+            }else {
+                this.showAlert('bio-alert', 'alert', 'Error updating profile bio');
+            }
         });
     }
 
@@ -61,7 +79,28 @@ export class SettingComponent {
         .subscribe( data => {
           console.log("updateDisplayName subscribe");
           console.log(data);
+            if(data == true) {
+                this.showAlert('username-alert', 'success', 'Updated username');
+            }else {
+                this.showAlert('username-alert', 'alert', 'Error updating username');
+            }
         });
+    }
+
+    showAlert(id, type, msg) {
+
+        if(document.getElementById(id).innerText == msg) {
+            if(document.getElementById(id).style.display  != 'none') {
+                return;
+            }
+        }
+
+        let current_alert = document.getElementById(id);
+        current_alert.className = "";
+
+        current_alert.className = "alert-box " + type;
+        current_alert.innerText = msg;
+        current_alert.style.display = "block";
     }
 
     updateUserPassword(userPass){
@@ -71,10 +110,15 @@ export class SettingComponent {
           .subscribe( data => {
             console.log("updateUserPassword subscribe");
             console.log(data);
+              if(data == true) {
+                  this.showAlert('password-alert', 'success', 'Updated password');
+              }else {
+                  this.showAlert('password-alert', 'alert', 'Error updating password');
+              }
           });
         console.log("passwords are same");
       } else{
-        console.log("need to be the same password");
+        this.showAlert('password-alert', 'alert', "Passwords are not the same");
       }
     }
 
@@ -90,6 +134,11 @@ export class SettingComponent {
       this.settingService.updateProfilePic(formData)
       .subscribe(data => {
         console.log(data);
+          if(data == true) {
+              this.showAlert('image-alert', 'success', 'Updated profile picture');
+          }else {
+              this.showAlert('image-alert', 'alert', 'Error updating profile picture');
+          }
       });
     }
 

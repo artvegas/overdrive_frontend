@@ -21,6 +21,7 @@ export interface ComicSeries {
   author: string;
   thumbnail: string;
   rating: string[];
+  likes: number;
   score: number;
   description: string;
   followers: number;

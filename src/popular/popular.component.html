@@ -21,7 +21,7 @@
 		<div class='small-9 columns'>
 			<p style='font-size:40px; position:relative; left:-20px;'>Most Popular in Action</p>
 			<div *ngFor="let comic of popularAction; let i = index">
-				<div class='row banner'>
+				<div class='row banner' [ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 					<div>
 					<div class='small-3 columns'>
 						<div class=''>
@@ -34,7 +34,7 @@
 						<h4>{{ comic.author }}</h4>
 						{{ comic.description.substring(0,40) }}
 						<br/> <br/>
-						<button (click)="selectSeries(comic)" class='button success expand radius'><a routerLink='/series'>View Series</a></button>
+						<button (click)="selectSeries(comic)" routerLink='/series' class='button success expand radius'><a>View Series</a></button>
 					</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 		<div class='small-9 columns'>
 			<p style='font-size:40px; position:relative; left:-20px;'>Most Popular in Fantasy</p>
 			<div *ngFor="let comic of popularFantasy; let i = index">
-				<div class='row banner'>
+				<div class='row banner' [ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 					<div>
 					<div class='small-3 columns'>
 						<div class=''>
@@ -94,7 +94,7 @@
 		<div class='small-9 columns'>
 			<p style='font-size:40px; position:relative; left:-20px;'>Most Popular in Drama</p>
 			<div *ngFor="let comic of popularDrama; let i = index">
-				<div class='row banner'>
+				<div class='row banner'[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 					<div>
 					<div class='small-3 columns'>
 						<div class=''>
@@ -121,7 +121,7 @@
 		<div class='small-9 columns'>
 			<p style='font-size:40px; position:relative; left:-20px;'>Most Popular in Comedy</p>
 			<div *ngFor="let comic of popularComedy; let i = index">
-				<div class='row banner'>
+				<div class='row banner'[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 					<div>
 					<div class='small-3 columns'>
 						<div class=''>
@@ -148,7 +148,7 @@
 		<div class='small-9 columns'>
 			<p style='font-size:40px; position:relative; left:-20px;'>Most Popular in Sports</p>
 			<div *ngFor="let comic of popularSports; let i = index">
-				<div class='row banner'>
+				<div class='row banner'[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 					<div>
 					<div class='small-3 columns'>
 						<div class=''>
@@ -175,7 +175,7 @@
 		<div class='small-9 columns'>
 			<p style='font-size:40px; position:relative; left:-20px;'>Most Popular in Horror</p>
 			<div *ngFor="let comic of popularHorror; let i = index">
-				<div class='row banner'>
+				<div class='row banner'[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 					<div>
 					<div class='small-3 columns'>
 						<div class=''>
