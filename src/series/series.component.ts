@@ -54,6 +54,16 @@ export class SeriesComponent implements OnInit {
           console.log("outside if data");
           console.log(JSON.parse(localStorage.getItem('currentSeries')));
           this.currentSeries = JSON.parse(localStorage.getItem('currentSeries'));
+
+          this.seriesService.getSeriesChapters(this.currentSeries.seriesId)
+            .subscribe( data => {
+              console.log("inside getSeriesChapters");
+              console.log(data);
+              this.seriesChapters = data;
+              for(var i=0; i<this.seriesChapters.length; i++){
+                this.seriesChapters[i].chapterNumber = i+1;
+              }
+            });
         }
       });
   }
