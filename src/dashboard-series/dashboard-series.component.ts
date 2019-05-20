@@ -39,7 +39,11 @@ export class DashboardSeriesComponent implements OnInit {
           .subscribe( data=> {
             console.log("series service call inside dashboard series");
             console.log(data);
+              let __this = this;
             this.seriesChapters = data;
+              this.seriesChapters.forEach(function(chapter) {
+                  chapter.chapterTitle = __this.truncate(chapter.chapterTitle);
+              });
           });
       });
   }
@@ -76,4 +80,11 @@ export class DashboardSeriesComponent implements OnInit {
       console.log(data);
     });
   }
+
+    truncate(string){
+        if (string.length > 15)
+            return string.substring(0,15)+'...';
+        else
+            return string;
+    };
 }
