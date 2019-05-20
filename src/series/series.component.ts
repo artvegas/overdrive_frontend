@@ -31,16 +31,28 @@ export class SeriesComponent implements OnInit {
       .subscribe( data => {
         console.log("inside series page genreService call");
         console.log(data);
-        this.currentSeries = data;
-        this.seriesService.getSeriesChapters(data.seriesId)
-          .subscribe( data => {
-            console.log("inside getSeriesChapters");
-            console.log(data);
-            this.seriesChapters = data;
-            for(var i=0; i<this.seriesChapters.length; i++){
-              this.seriesChapters[i].chapterNumber = i+1;
-            }
-          });
+        /*  store data in local storage */
+        if(data){
+          console.log("inside if data");
+          this.currentSeries = data;
+          localStorage.removeItem('currentSeries');
+          localStorage.setItem('currentSeries', JSON.stringify(data));
+
+          this.seriesService.getSeriesChapters(data.seriesId)
+            .subscribe( data => {
+              console.log("inside getSeriesChapters");
+              console.log(data);
+              this.seriesChapters = data;
+              for(var i=0; i<this.seriesChapters.length; i++){
+                this.seriesChapters[i].chapterNumber = i+1;
+              }
+            });
+
+        } else{
+          console.log("outside if data");
+          console.log(JSON.parse(localStorage.getItem('currentSeries')));
+          this.currentSeries = JSON.parse(localStorage.getItem('currentSeries'));
+        }
       });
   }
 

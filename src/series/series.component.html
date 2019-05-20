@@ -46,7 +46,7 @@
     <!-- --------------------------- -->
     <div class='small-4 columns' style='padding-left:50px; border-left:2px solid #f5f5f5;'>
 
-      <span><i class='fi-star'></i>&nbsp; {{ currentSeries.score}} / 10 &nbsp;</span>
+      <span><i class='fi-star'></i>&nbsp; {{ currentSeries.score}} / 5 &nbsp;</span>
       <br/><br/>
 
       <div id='rate_wrapepr'>
@@ -57,11 +57,14 @@
         <span id='star_5' (click)='rateStar($event, 5)' class="fa fa-star"></span>
       </div>
 
-      <h4 style='font-weight:bold'>UP EVERY WEDNESDAY</h4>
-      <br/> My Hero Academia is a superhero manga series written and illustrated by Kōhei Horikoshi. It has been serialized in Weekly Overdrive Comics since July 2014, and 20 volumes have been collected in tankōbon format.
+      <div *ngIf="currentSeries.day">
+        <h4 style='font-weight:bold'>UP EVERY {{ currentSeries.day }}</h4>
+      </div>
+
+      <br/> {{ currentSeries.description }}
       <br/> <br/>
-      <button class='small button expand radius secondary'>Continue Reading</button>
-      <li class='small button expand radius black'>First Chapter</li>
+      <!-- <button class='small button expand radius secondary'>Continue Reading</button>
+      <li class='small button expand radius black'>First Chapter</li> -->
     </div>
   </div>
 </div>
