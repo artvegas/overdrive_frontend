@@ -31,16 +31,28 @@ export class DashboardSeriesComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.currentSeries
       .subscribe(data => {
-        this.currentSeries = data;
-        console.log("dashboard series component ngOnInit");
-        console.log(data);
+        if(data){
+          this.currentSeries = data;
+          console.log("dashboard series component ngOnInit");
+          console.log(data);
+          localStorage.removeItem('currentSeries');
+          localStorage.setItem('currentSeries', JSON.stringify(data));
 
-        this.seriesService.getSeriesChapters(data.seriesId)
-          .subscribe( data=> {
-            console.log("series service call inside dashboard series");
-            console.log(data);
-            this.seriesChapters = data;
-          });
+          this.seriesService.getSeriesChapters(data.seriesId)
+            .subscribe( data=> {
+              console.log("series service call inside dashboard series");
+              console.log(data);
+              this.seriesChapters = data;
+            });
+        } else {
+          this.currentSeries = JSON.parse(localStorage.getItem('currentSeries'));
+          this.seriesService.getSeriesChapters(this.currentSeries.seriesId)
+            .subscribe( data=> {
+              console.log("series service call inside dashboard series");
+              console.log(data);
+              this.seriesChapters = data;
+            });
+        }
       });
   }
 
