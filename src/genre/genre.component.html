@@ -26,7 +26,7 @@
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of actionSeries" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
-			style= "background-image: {{ comic.thumbnail }};">
+			[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<div class='title label tiny success radius'>
 					<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
@@ -50,7 +50,8 @@
 	<p style='font-size:40px; position:relative; left:0px;'>Fantasy</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of fantasySeries" class="column_comic" onclick='select_comic()'>
-			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
+			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
+			[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<div class='title label tiny success radius'>
 					<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
@@ -74,7 +75,8 @@
 	<p style='font-size:40px; position:relative; left:0px;'>Comedy</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of comedySeries" class="column_comic" onclick='select_comic()'>
-			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
+			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
+			[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<div class='title label tiny success radius'>
 					<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
@@ -98,7 +100,8 @@
 	<p style='font-size:40px; position:relative; left:0px;'>Drama</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of dramaSeries" class="column_comic" onclick='select_comic()'>
-			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
+			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
+			[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<div class='title label tiny success radius'>
 					<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
@@ -122,7 +125,8 @@
 	<p style='font-size:40px; position:relative; left:0px;'>Sports</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of sportsSeries" class="column_comic" onclick='select_comic()'>
-			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
+			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
+			[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<div class='title label tiny success radius'>
 					<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
@@ -146,7 +150,8 @@
 	<p style='font-size:40px; position:relative; left:0px;'>Horror</p>
 	<div class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of horrorSeries" class="column_comic" onclick='select_comic()'>
-			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'>
+			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
+			[ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
 				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
 				<div class='title label tiny success radius'>
 					<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
