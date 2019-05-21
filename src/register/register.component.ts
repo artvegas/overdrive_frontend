@@ -37,7 +37,7 @@ export class RegisterComponent {
     onSubmit(user) {
         console.log(user);
         console.log("Hit area for register");
-        this.http.post("http://ec2-52-14-196-70.us-east-2.compute.amazonaws.com:8080/api/users/register", user, httpOptions)
+        this.http.post("/api/users/register", user, httpOptions)
           .subscribe( data => {
               console.log(data);
           });
