@@ -37,11 +37,11 @@ export class EditorComponent {
     }
 
     async ngAfterViewInit() {
-        await this.loadScript('./src/js/main.js');
         await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js');
         await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js');
-        await this.loadScript('./src/js/canvas/js/literallycanvas.js');
-        await this.loadScript('./src/js/customCanvas.js');
+	await this.loadScript('/assets/js/canvas/js/literallycanvas.js');
+	await this.loadScript('/assets/js/main.js');
+        await this.loadScript('/assets/js/customCanvas.js');
         document.getElementById('load_btn').click();
         console.log(document.getElementById('load_btn'), "WDF");
     }

@@ -4,21 +4,23 @@
   <div *ngIf="searchResults" class="row_comic" style='width:100%; position:relative; left:0px;'>
 		<div *ngFor="let comic of searchResults" class="column_comic" onclick='select_comic()'>
 			<div (click)="selectSeries(comic);" routerLink="/series" routerLinkActive="active" class='comic_banner'
-      [ngStyle]="{'background-image': 'url(' + comic.thumbnail + ')'}">
-				<span class='title' style='font-size:18px; color:black'>{{ comic.comicSeriesName }}</span><br/>
-				<span *ngIf="comic.score">
-					<span class='title label tiny success radius' style='font-size:12px; color:white'>
-							<i style="color:white;" class='fi-star'></i> {{ comic.score }}/10
-					</span><br/>
-				</span>
-				<a *ngIf="comic.isFollowed != false">
-					<span #actionFollowButton (click)="sendFollowRequest(actionFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: white;">Follow</span>
-				</a>
-				<a *ngIf="comic.isFollowed">
-					<span #actionFollowButton (click)="sendFollowRequest(actionFollowButton, comic)" class="title label tiny success radius" style="font-size:12px; color: blue;">Following</span>
-				</a>
-				<p class='title label tiny success radius' style='position:relative; top:111px; font-size:12px; color:white'>{{ comic.genre }}</p>
+				  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' + comic.thumbnail + ') no-repeat center center / cover'}"></div>
+				<span class='title' style='font-size:18px; position:relative; left:30px; top:-220px; color:white'>{{ comic.comicSeriesName }}</span><br/>
+				<div class='title label tiny success radius' style='position:relative; left:30px; top:-220px;'>
+					<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
+					<span *ngFor="let number of [1,2,3,4, 5]">
+						<span *ngIf="comic.score >= number" class="fa fa-star" style='font-size:12px; margin-left:2px; color:white'>
+						</span>
+					</span>
+				</div>
+				<br/>
+			<div class='description'style='position:relative; left:30px; top:-212px;'>
+				{{comic.author}}
+				<hr style='margin-top:6px; margin-bottom:6px;'/>
+				{{comic.description}}
 			</div>
+			<br/>
+			<p class='title label tiny success radius' style='position:relative; left:30px; top:-230px; font-size:12px; color:white'>{{ comic.genre }}</p>
 		</div>
 	</div>
 </div>

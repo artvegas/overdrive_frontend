@@ -64,9 +64,7 @@ button.success, .button.success, .label.success {
 	/* background-image: url('https://mangahelpers.com/forum/media/wsj-cover-issue-9-2016.19683/full?d=1454154995'); */
 	background-size: cover;
 	background-position-y: 20%;
-	-webkit-box-shadow: 10px 10px 58px -6px rgba(38, 83, 173, 1);
-	-moz-box-shadow: 10px 10px 58px -6px rgba(38, 83, 173, 1);
-	box-shadow: 10px 10px 58px -6px rgba(38, 83, 173, 1);
+
 }
 
 .comic_banner {
@@ -78,9 +76,7 @@ button.success, .button.success, .label.success {
 	background-size: cover;
 	background-position-y: 20%;
 	padding: 14px;
-	-webkit-box-shadow: 5px 12px 20px -6px rgba(38, 83, 173, 1);
-	-moz-box-shadow: 5px 12px 20px -6px rgba(38, 83, 173, 1);
-	box-shadow: 5px 12px 20px -6px rgba(38, 83, 173, 1);
+
 	margin:15px;
 }
 
@@ -205,8 +201,9 @@ a:hover {
 /* Create four equal columns that sits next to each other */
 .column_comic {
 	flex: 25%;
-	max-width: 25%;
+	max-width: 230px;
 	padding: 0 10px;
+	max-height: 250px;
 }
 
 .column_comic img {
@@ -330,4 +327,23 @@ input[type='text']:focus, select {
 
 a:active {
 	text-decoration: none;
+}
+
+.description {
+	position: absolute;
+	color: #fff;
+	visibility: hidden;
+	opacity: 0;
+	width:60%;
+	height:100px;
+	border-style:none;
+	font-size:12px;
+	/* transition effect. not necessary */
+	transition: opacity .2s, visibility .2s;
+}
+
+.column_comic:hover .description {
+	visibility: visible;
+	opacity: 1;
+	border-style:none;
 }

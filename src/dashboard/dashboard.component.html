@@ -10,9 +10,9 @@
 					<span class='title' style='font-size:22px; color:black'><a routerLink='/create'>Create New Series</a></span><br/>
 				</div>
 			</div>
-			<div *ngFor="let comic of comics" class="column_comic" onclick='select_comic()'>
+			<div *ngFor="let comic of comics" class="column_comic">
 				<div (click)="updateCurrentSeries(comic);" routerLink='/dashboardseries' routerLinkActive="active" class='comic_banner'
-					  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(' + comic.thumbnail + ') no-repeat center center / cover'}"></div>
+					  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' + comic.thumbnail + ') no-repeat center center / cover'}"></div>
 					<span class='title' style='font-size:18px; position:relative; left:30px; top:-220px; color:white'>{{ comic.comicSeriesName }}</span><br/>
 					<div class=' label tiny success radius' style='position:relative; left:30px; top:-220px;'>
 						<span *ngIf='comic.score == 0' style='font-size:12px; margin-left:2px; color:white'>Not yet rated</span>
@@ -21,8 +21,13 @@
 							</span>
 						</span>
 					</div>
-					<br/>
-					<p class='title label tiny success radius' style='position:relative; left:30px; top:-220px;font-size:12px; color:white'>{{ comic.genre }}</p>
+				<div class='description'style='position:relative; left:30px; top:-212px;'>
+					{{comic.author}}
+					<hr style='margin-top:6px; margin-bottom:6px;'/>
+					{{comic.description}}
+				</div>
+				<br/>
+				<p class='title label tiny success radius' style='position:relative; left:30px; top:-230px; font-size:12px; color:white'>{{ comic.genre }}</p>
 			</div>
 		</div>
 	</div>
