@@ -60,7 +60,7 @@
 		<div class='comment-box small-12 columns'>
 			<p class='user_name' >{{comment.username}}</p>
 			<p class='user_comment'>{{comment.comment}}</p>
-			<p class='date'>12 mins ago</p>
+			<p class='date'>{{ comment.date.substring(0,10) }} &nbsp; {{ comment.date.substring(14, 19) }} </p>
 		</div>
 	</div>
 

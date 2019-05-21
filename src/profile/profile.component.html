@@ -36,7 +36,6 @@
 			<div class='small-12 columns small-offset-3	' style='height:41px'>
 				<dl class="sub-nav">
 					<dd onclick='select_option_popular(this)' class="pop_btn active"><a (click)="scroll(following_section)">FOLLOWING</a></dd>
-					<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(followers_section)">FOLLOWERS</a></dd>
 					<dd onclick='select_option_popular(this)' class="pop_btn"><a (click)="scroll(comics_section)">COMICS</a></dd>
 				</dl>
 			</div>
@@ -72,19 +71,6 @@
 	</div>
 </div>
 
-	<div #followers_section></div>
-	<div class='comics' style='padding:40px;'>
-		<p style='font-size:40px; position:relative; left:128px;'>Followers</p>
-		<div class="row_comic" style='width:80%; position:relative; left:128px;'>
-			<div class="column_comic">
-				<div class='comic_banner'>
-					<span class='title' style='font-size:22px; color:black'>artvegas</span><br/>
-					<span class='title label tiny success radius' style='font-size:12px; color:white'><i class='fi-heart'></i> 100</span><br/>
-				</div>
-			</div>
-		</div>
-	</div>
-
 <div #comics_section></div>
 <div class='comics' style='padding:40px;'>
 	<p style='font-size:40px; position:relative; left:128px;'>Comics</p>
@@ -115,4 +101,3 @@
 	</div>
 
 </div>
-

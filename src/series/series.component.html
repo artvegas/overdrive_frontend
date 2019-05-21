@@ -7,7 +7,7 @@
           <p style='font-size:18px'> {{ currentSeries.genre }} </p>
           <p style='font-size:40px; position:relative; top:-20px;'> {{ currentSeries.comicSeriesName }} </p>
           <p style='font-size:24px; position:relative; top:-45px' onclick='window.location.href="/profile.html"'> {{ currentSeries.author }}</p>
-          <button style='position:relative;  font-size:17px; top:-55px' class='small button radius success'>+ Subscribe</button>
+          <button (click)="sendFollowRequest(currentSeries);" style='position:relative;  font-size:17px; top:-55px' class='small button radius success'>+ Subscribe</button>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
           <p style='font-size:18px'> {{ currentSeries.genre }} </p>
           <p style='font-size:40px; position:relative; top:-20px;'> {{ currentSeries.comicSeriesName }} </p>
           <p style='font-size:24px; position:relative; top:-45px' onclick='window.location.href="/profile.html"'> {{ currentSeries.author }}</p>
-          <button style='position:relative;  font-size:17px; top:-55px' class='small button radius success'>+ Subscribe</button>
+          <button (click)="sendFollowRequest(currentSeries);" style='position:relative;  font-size:17px; top:-55px' class='small button radius success'>+ Subscribe</button>
         </div>
       </div>
     </div>

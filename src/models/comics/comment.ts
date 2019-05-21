@@ -3,4 +3,5 @@ export interface Comment {
   chapterId: string;
   username: string;
   comment: string;
+  date: any;
 }

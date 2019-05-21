@@ -116,4 +116,13 @@ export class SeriesComponent implements OnInit {
     goToReader(chapterNumber){
       this.router.navigate(['/reader/'+this.currentSeries.seriesId+"/"+chapterNumber]);
     }
+
+    sendFollowRequest(comic){
+      console.log("inside sendFollowRequest");
+      console.log("hit send follow method");
+      this.genreService.followSeries(comic)
+        .subscribe(data => {
+          console.log(data);
+        });
+    }
 }
