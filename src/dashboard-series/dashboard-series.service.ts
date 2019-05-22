@@ -6,6 +6,7 @@ import 'rxjs/add/operator/finally';
 
 const apiChapterCreateUrl = "/api/series/chapter/create";
 const apiThumbnail = '/api/series/thumbnail/pic';
+const apiSeriesEdit = '/api/series/settings';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class DashboardSeriesService {
   updateThumbnail(thumbnail, comicSeriesId){
     console.log("inside update thumbnail dashboard series service");
     return this.http.post(apiThumbnail+"/"+comicSeriesId.seriesId, thumbnail,  { withCredentials: true });
+  }
+
+  updateSeries(series, comicSeriesId){
+    return this.http.post(apiSeriesEdit+"/"+comicSeriesId.seriesId, series);
   }
 
 }

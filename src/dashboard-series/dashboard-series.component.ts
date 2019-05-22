@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-series.component.css']
 })
 export class DashboardSeriesComponent implements OnInit {
+    genreOptions = ["Action", "Fantasy", "Comedy", "Drama", "Sports", "Horror"];
   public userFile: any = File;
 
   constructor(private dashboardService: DashboardService,
@@ -69,6 +70,21 @@ export class DashboardSeriesComponent implements OnInit {
       seriesId: this.currentSeries.seriesId
     });
     this.dashboardSeriesService.createComicChapter(this.series.value)
+  }
+
+  seriesEdit= new FormGroup({
+    genre: new FormControl(''),
+    description: new FormControl('')
+  });
+
+  editSeries(seriesChange){
+    this.series.setValue({
+      seriesId: this.currentSeries.seriesId
+    });
+    this.dashboardSeriesService.updateSeries(seriesChange, this.series.value)
+    .subscribe(data => {
+      console.log(data);
+    });
   }
 
   onSelectFile(event){

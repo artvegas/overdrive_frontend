@@ -79,17 +79,17 @@
             <a class="close">&times;</a>
           </div>
           <br/>
+          <form [formGroup]="seriesEdit" (ngSubmit)="editSeries(seriesEdit.value)">
           <div class='row' style='width:80%; margin-left:auto; margin-right:auto; '>
             <p style='font-size:20px; font-weight:bold'>Genre </p>
             <div class='small-12 columns'>
-              <select style='padding:0px; position:relative; left:-16px; font-size:20px; box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.0);  border-style:none; border-bottom-style:solid;'>
-                <option value="volvo">Action</option>
-                <option value="saab">Fantasy</option>
-                <option value="mercedes">Comedy</option>
-                <option value="audi">Drama</option>
-                <option value="audi">Sports</option>
-                <option value="audi">Horror</option>
-              </select>
+              <select formControlName="genre" style='padding:0px; left:-4px; position:relative;
+  						font-size:20px; box-shadow:
+  						inset 0 0px 0px rgba(0, 0, 0, 0.0);  border-style:none;
+  						border-bottom-style:solid;'>
+  							<option *ngFor="let genre of genreOptions"
+  							[value]="genre" value="volvo">{{ genre }}</option>
+  						</select>
             </div>
           </div>
 
@@ -97,7 +97,7 @@
           <div class='row' style='width:80%; margin-left:auto; margin-right:auto; '>
             <p style='font-size:20px; font-weight:bold'>About </p>
             <div class='small-12 columns'>
-              <textarea style='padding:0px; position:relative; min-height:100px; left:-16px; font-size:20px; box-shadow: 0px; box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.0);  border-style:none; border-bottom-style:solid;'
+              <textarea formControlName="description" style='padding:0px; position:relative; min-height:100px; left:-16px; font-size:20px; box-shadow: 0px; box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.0);  border-style:none; border-bottom-style:solid;'
                      value='' placeholder='Enter About'></textarea>
             </div>
           </div>
@@ -106,6 +106,7 @@
           <div style='text-align:center'>
             <button class='button small black publish' style='font-size:20px'>Update Details</button>
           </div>
+          </form>
           <div data-alert class="alert-box success radius" id='details-alert' style="margin:0px; display:none">
             This is a success alert with a radius.
             <a class="close">&times;</a>
