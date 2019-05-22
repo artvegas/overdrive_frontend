@@ -77,13 +77,15 @@ export class DashboardSeriesComponent implements OnInit {
     description: new FormControl('')
   });
 
-  editSeries(seriesChange){
+  editSeries(seriesChange, genreClear, clear){
     this.series.setValue({
       seriesId: this.currentSeries.seriesId
     });
     this.dashboardSeriesService.updateSeries(seriesChange, this.series.value)
     .subscribe(data => {
       console.log(data);
+      genreClear.value="";
+      clear.value="";
     });
   }
 

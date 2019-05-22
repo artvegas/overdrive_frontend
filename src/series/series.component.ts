@@ -21,6 +21,7 @@ export class SeriesComponent implements OnInit {
     this.router = router;
   }
 
+  isFollowed: any;
   currentSeries: ComicSeries;
   seriesChapters: ComicChapter[];
   numOfChapters: number = 0;
@@ -49,7 +50,7 @@ export class SeriesComponent implements OnInit {
                 this.seriesChapters[i].chapterNumber = i+1;
               }
             });
-
+            this.getIfFollowed(this.currentSeries.seriesId);
         } else{
           console.log("outside if data");
           console.log(JSON.parse(localStorage.getItem('currentSeries')));
@@ -64,6 +65,7 @@ export class SeriesComponent implements OnInit {
                 this.seriesChapters[i].chapterNumber = i+1;
               }
             });
+            this.getIfFollowed(this.currentSeries.seriesId);
         }
       });
   }
@@ -117,12 +119,31 @@ export class SeriesComponent implements OnInit {
       this.router.navigate(['/reader/'+this.currentSeries.seriesId+"/"+chapterNumber]);
     }
 
-    sendFollowRequest(comic){
+    sendFollowRequest(comic, btn){
       console.log("inside sendFollowRequest");
       console.log("hit send follow method");
       this.genreService.followSeries(comic)
         .subscribe(data => {
           console.log(data);
+          if(this.isFollowed=true){
+            btn.innerHTML = 'Following';
+          }else{
+            btn.innerHTML = 'Subscribe +';
+          }
+
         });
+    }
+
+    getIfFollowed(seriesId){
+      console.log("inside get if folllowed");
+      this.seriesService.getIsFollowed(seriesId)
+      .subscribe(data => {
+        console.log(data);
+        if(data.followed){
+          this.isFollowed=true;
+        }else{
+          this.isFollowed=false;
+        }
+      });
     }
 }
